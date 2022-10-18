@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Day of the oDEADra</title>
+    <title>Hallowqueen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -12,17 +12,20 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
-  <body  id="body">
+  <body id="body">
+
+      <img src="assets/imgs/hallowqueen.png" />
+
       <div class="wallpaper">
         <video id="video" loop playsinline muted>
             <source src="assets/video/video.mp4" type="video/mp4" />
         </video>
         <audio id="audio" loop playsinline>
+          <source src="assets/video/song.m4a">
           <source src="assets/video/song.mp3" type="audio/mpeg">
         </audio>
       </div>
       
-      <canvas id="photobooth"></canvas>
       <div class="pages">
         <div class="candle">
           <div class="fire">
@@ -86,7 +89,6 @@
 
 
         <section id="home">    
-          <img src="assets/imgs/logo.png" />
           <ul class="menu">
             <li><a href="#info" class="btn btn--alt animate__fadeInRight delay-1">INFORMATION</a></li>
             <li><a href="#time" class="btn btn--alt animate__fadeInRight delay-2">TIME & DATE</a></li>

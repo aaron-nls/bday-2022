@@ -5,6 +5,7 @@ const audio = document.getElementById('audio');
 
 $(document).ready(function(){
   video.play();
+  video.loop = true;
   $('[href^="#"]').click(function(){
     changePage($(this).attr('href'));
   });
