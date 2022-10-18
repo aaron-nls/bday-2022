@@ -4,7 +4,6 @@ const audio = document.getElementById('audio');
 
 
 $(document).ready(function(){
-  window.navigator.vibrate([300, 100, 200, 50, 300]);
   video.play();
   $('[href^="#"]').click(function(){
     changePage($(this).attr('href'));
