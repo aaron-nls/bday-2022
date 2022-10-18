@@ -1,6 +1,6 @@
 name: bday-2022
 type: php
-docroot: "dist"
+docroot: ""
 php_version: "7.4"
 webserver_type: nginx-fpm
 router_http_port: "80"
