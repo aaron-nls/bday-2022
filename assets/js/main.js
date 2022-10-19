@@ -50,7 +50,7 @@ function changePage(pageID){
   $('.pages ' + pageID).addClass('visible');
   $('body').removeClass('black-flame');
   $('html,body').scrollTop(0);
-  window.navigator.vibrate([300, 100, 200, 50, 300]);
+  
   if(pageID == '#quiet') {
     $('body').addClass('quiet');
     video.muted = true;
@@ -60,6 +60,7 @@ function changePage(pageID){
     $('body').removeClass('extinguished quiet');
 
     video.muted = false;
+    video.volume=1;
   }
 }
 
