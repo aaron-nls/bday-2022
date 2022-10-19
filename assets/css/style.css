@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
+
 html,body{
     width: 100%;
     height: 100%;
@@ -5,7 +7,8 @@ html,body{
     margin: 0;
     background-color: black;
     color: white;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Alkalami', sans-serif;
+    overflow: hidden;
 }
 @font-face {
   font-family: 'Blood Crow';
@@ -30,15 +33,15 @@ html,body{
 }
 
 h2{
-    text-transform: uppercase;
-    text-shadow: 0 0 15px rgb(212 2 2);
-    font-weight: lighter;
-    font-size: 20px;
-    letter-spacing: 3px;
-    margin-top: 40px;
+  color: #3e2e0dd9;
+  text-shadow: 1px 1px 3px #ffdfb294, -1px -1px 2px #724111a6;
+  font-size: 39px;
+  margin: 0;
+  letter-spacing: 3px;
+  font-family: 'Blood Crow';
 }
 strong {
-    color: #9a0909;
+    color: #3e2e0dd9;
 }
 small{
     font-size: 9px;
@@ -46,9 +49,11 @@ small{
     opacity: 0.25;
 }
 p{
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 1px;
     line-height: 1.7;
+    color: #f3e1ab;
+    text-shadow: -1px -1px 13px #000000a1;
 }
 ul{
     list-style: none;
@@ -59,34 +64,35 @@ ul{
 }
 
 .btn{
-    border: 1px solid #f00c0c;
-    box-shadow: 0 0 2px #f00c0c;
-    display: inline-block;
-    padding: 15px 20px;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: #f00c0c;
-    text-shadow: 0 0 2px #f00c0c;
-    backdrop-filter: blur(5px);
-    text-align: center;
+  border: 1px solid #834daf;
+  box-shadow: inset 0 0 10px 4px #7c44a1, 1px 7px 14px #00000047;
+  display: inline-block;
+  padding: 10px 20px 5px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: rgb(65 31 84);
+  border-radius: 100px;
+  color: #edcb4e;
+  text-shadow: 0 0 2px #f00c0c;
+  text-align: center;
 }
 
 .btn--alt{
-    border: none;
-    box-shadow: none;
-    display: inline-block;
-    padding: 12px 20px;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(81, 3, 3, 0.5);;
-    color: #ffffffcc;
-    text-shadow: none;
-    backdrop-filter: blur(12px);
-    width: 100%;
-    font-size: 12px;
-    letter-spacing: 3px;
-    font-family: 'Blood Crow';
+  font-weight: normal;
+  border: none;
+  box-shadow: none;
+  background: none;
+  display: inline-block;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #3e2e0dd9;
+  text-shadow: 1px 1px 3px #ffdfb294, -1px -1px 2px #724111a6;
+  width: 100%;
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-family: 'Blood Crow';
+  backdrop-filter:none;
 }
 
 .wallpaper{
@@ -97,14 +103,24 @@ ul{
 }
 
 .wallpaper #video{
-    object-fit: cover;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    filter: contrast(1.6);
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 60vh;
+  filter: contrast(1.6);
+  mix-blend-mode: lighten;
+}
+.wallpaper #bg{
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 .pages{
     position: absolute;
@@ -128,26 +144,28 @@ text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    min-width: 100%;
-    height: 50vh;
+    height: 46vh;
     overflow-x: hidden;
     overflow-y: auto;
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: 0;
-    filter: blur(30px), scale(0.75);
-    transition: opacity 0.5s ease-in-out, filter 1s ease-in-out;
-    padding: 20px;
-    height: 0;
+    transform: translateX(-50%);
+    filter: blur(30px);
+    transition: all 0.5s ease-in-out, filter 1s ease-in-out;
+    padding: 4vh 20px;
+    max-width: 370px;
+    width: 100%;
+    max-width: 370px;
 }
 
 .pages section.visible{
     opacity: 1;
     pointer-events: all;
-    filter: blur(0), scale(1);
-    height: 50vh;
+    filter: blur(0);
+    height: 46vh;
 }
 
 .pages section.visible [class*="animate_"]{
@@ -166,7 +184,7 @@ text-align: center;
 
 .menu{
     list-style: none;
-    margin: 40px 0 0 0;
+    margin:0;
     width: 100%;
     max-width: 370px;
 }
@@ -234,6 +252,20 @@ text-align: center;
     animation-delay: 6s;
 }
 
+#witches {
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  mix-blend-mode: hard-light;
+  position: absolute;
+  top: 5vh;
+  width: 100%;
+  left: 0;
+  z-index: 2;
+}
+
+.black-flame #witches{
+  opacity: 0.5;
+}
 
 .candle{
     position: absolute;
@@ -263,7 +295,18 @@ text-align: center;
     transition: all .5s ease-out;
   }
 
-  .fire.black-flame {
+  .quiet .fire{
+    --scale: 1;
+    opacity: var(--scale);
+    transform: translateX(-40%) scale(var(--scale));
+  }
+  .quiet.extinguished .fire{
+    filter: blur(0.02em) brightness(0.3) contrast(1.4) grayscale(1);
+    transform: translateX(-40%) scale(.5, 1);
+  }
+
+  .black-flame
+  .fire {
     filter: blur(0.02em) brightness(0.3) contrast(1.4) grayscale(1);
     mix-blend-mode: color-burn;
   }
@@ -497,7 +540,41 @@ text-align: center;
   #logo {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    left: calc(50% - 180px);
+    WIDTH: 360PX;
+    HEIGHT: auto;
     z-index: 999;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  #queen {
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: -100vh;
+    object-position: bottom;
+    z-index: 9999999;
+    display: none;
+    transition: bottom .5s ease-in-out;
+    opacity: 0;
+  }
+
+
+  .quiet #queen {
+    display: block;
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+  }
+  .extinguished #queen {
+    height: 100%;
+    opacity: 1;
+    bottom: 0;
+    pointer-events: all;
   }
