@@ -49,8 +49,8 @@ function changePage(pageID){
   $('.pages section').removeClass('visible');
   $('.pages ' + pageID).addClass('visible');
   $('body').removeClass('black-flame');
+
   $('html,body').scrollTop(0);
-  
   if(pageID == '#quiet') {
     $('body').addClass('quiet');
     video.muted = true;
