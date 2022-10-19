@@ -1,10 +1,11 @@
 const player = document.getElementById('user');
 const video = document.getElementById('video');
-const audio = document.getElementById('audio');
+const bg = document.getElementById('bg');
 
 
 $(document).ready(function(){
   video.play();
+  bg.play();
   video.loop = true;
   $('[href^="#"]').click(function(){
     changePage($(this).attr('href'));
@@ -50,6 +51,7 @@ $(document).ready(function(){
     // Use
     $('.js-enterFullScreen').click(function(){
       // Updating every 100ms (should be same as CSS transition speed)
+      video.muted =false;
       if(volumeCallback !== null && volumeInterval === null)
         volumeInterval = setInterval(volumeCallback, 100);
       
