@@ -125,9 +125,10 @@ function volumeCallback()  {
   if(vol > 63) {
     stopBlow();
     $('body').addClass('extinguished');
-    scream.currentTime = 0;
-    scream.play();
     $('#quiettime').remove();
+    scream.currentTime = 0;
+    scream.volume = 1;
+    scream.play();
   }
 }
 
