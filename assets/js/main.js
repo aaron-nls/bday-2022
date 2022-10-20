@@ -119,9 +119,10 @@ function volumeCallback()  {
   const averageVolume = volumeSum / volumes.length;
   // Value range: 127 = analyser.maxDecibels - analyser.minDecibels;
   let vol = (averageVolume * 100 / 127);
-  console.log(vol);
-  flame.style.setProperty('--scale', 1 - (averageVolume / 127) + '');
-  if(vol > 70) {
+  (vol/63)
+  // console.log(vol);
+  flame.style.setProperty('--scale', 1 - (vol/63) + '');
+  if(vol > 63) {
     stopBlow();
     $('body').addClass('extinguished');
     scream.currentTime = 0;
