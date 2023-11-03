@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advent Calendar</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700&family=Rancho&display=swap" rel="stylesheet">
+    <script src="main.js"></script>
+</head>
+<body>
+    <main>
+        <page id="warning">
+            Is your sound on?
+            <button data-page="intro">Confirm</button>
+        </page>
+
+        <page id="intro" data-sound="story-1" data-bg-audio="bg-intro">
+            <button data-page="start" >Skip</button>
+            <button data-page="intro2" >Next</button>
+        </page>
+        <page id="intro2" data-sound="story-2" data-bg-audio="bg-intro">
+            <button data-page="start" >Skip</button>
+            <button data-page="intro3" >Next</button>
+        </page>
+        <page id="intro3" data-sound="story-3" data-bg-audio="bg-intro">
+            <button data-page="start" >Begin your adventure</button>
+        </page>
+
+        <page id="start" data-bg-audio="bg-intro" data-bg-volume="1">
+            <img class="animate__animated animate__jackInTheBox" src="images/logo.png" alt="Countdown to Christmas">
+            <button class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house" >Start</button>
+            <button class="animate__animated animate__fadeInUp animate__delay-1s" data-page="intro" >Play Intro</button>
+        </page>
+
+        <page id="house">
+            goodbye
+            <button data-page="warning" >back</button>
+        </page>
+    </main>
+</body>
+</html>
