@@ -83,7 +83,7 @@
                     </button>
                 </div>
                 <div class="room room-water">
-                    <button class="door"  onclick="waterCycle()" data-page="door2">
+                    <button class="door"  onclick="requestGyroscopeAccess('waterCycle')" data-page="door2">
                         <span class="material-symbols-outlined">
                             water_drop
                         </span>
@@ -112,7 +112,6 @@
             <a class="play-button" data-id="play-button" data-enabled="false" data-sound-fx="1-clue"></a>
         </page>
 
-
         <page id="door2" data-sound="2">
             <toolbar>
                 <button class="btn-icon btn-help" data-toggle="helper"></button>
@@ -123,7 +122,7 @@
             </helper>
 
             <a class="laundry-button" data-drag-x="true"></a>
-            <div class="water"></div>
+            <div class="water a-rotating"></div>
         </page>
 
         <page id="door3" data-sound="3">

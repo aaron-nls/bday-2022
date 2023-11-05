@@ -150,46 +150,39 @@ function windowFocus() {
     }, false);
 }
 
-function waterCycle() {
-    console.log(requestGyroscopeAccess());
-    $('#door2 .water').addClass('a-rotating');
-    if(requestGyroscopeAccess()) {
-        var hasGyro = false;
-        window.addEventListener('deviceorientation', (event) => { 
-            if(hasGyro==false) {
-                $('#door2 .water').removeClass('a-rotating');
-                hasGyro = true;
-            }
-            var alpha = event.alpha; // rotation around z-axis (-180 to 180)
-            var beta = event.beta; // front to back motion (-180 to 180)
-            var gamma = event.gamma; // left to right motion (-90 to 90)
-    
-            console.log('alpha: ' + alpha);
-            console.log('beta: ' + beta);
-            console.log('gamma: ' + gamma);
-            $('#door2 .water').style.transform = `rotateX(${gamme}deg)`;
-        });
+var hasGyro = false;
+async function waterCycle(event) {
+    if(hasGyro==false) {
+        $('#door2 .water').removeClass('a-rotating');
+        hasGyro = true;
     }
+    var alpha = event.alpha; // rotation around z-axis (-180 to 180)
+    var beta = event.beta; // front to back motion (-180 to 180)
+    var gamma = event.gamma; // left to right motion (-90 to 90)
+
+    console.log('alpha: ' + alpha);
+    console.log('beta: ' + beta);
+    console.log('gamma: ' + gamma);
+    $('#door2 .water').style.transform = `rotateX(${gamma}deg)`;
 }
 
-function requestGyroscopeAccess() {
+function requestGyroscopeAccess(functionToCall) {
+    hasGyro = false;
     if (window.DeviceOrientationEvent) {
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             DeviceOrientationEvent.requestPermission()
                 .then(permissionState => {
                     if (permissionState === 'granted') {
-                        return true;
-                    }else{
-                        return false;
+                        window.addEventListener('deviceorientation', (event) => { 
+                            window[functionToCall](event);
+                        });
                     }
                 })
                 .catch();
         } else {
-            // handle regular non iOS 13+ devices
-            return true;
+            window.addEventListener('deviceorientation', (event) => { 
+                window[functionToCall](event);
+            });
         }
-    } else {
-        console.log('This browser does not support gyroscope functionality.');
-        return false;
     }
 }
