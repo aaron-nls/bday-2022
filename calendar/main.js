@@ -158,12 +158,7 @@ async function waterCycle(event) {
         hasGyro = true;
     }
     var alpha = event.alpha; // rotation around z-axis (-180 to 180)
-    var beta = event.beta; // front to back motion (-180 to 180)
-    var gamma = event.gamma; // left to right motion (-90 to 90)
 
-    console.log('alpha: ' + alpha);
-    console.log('beta: ' + beta);
-    console.log('gamma: ' + gamma);
     document.getElementById('waterElement').style.transform = `rotateZ(${alpha}deg)`;
 }
 
