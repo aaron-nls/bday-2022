@@ -164,7 +164,7 @@ async function waterCycle(event) {
     console.log('alpha: ' + alpha);
     console.log('beta: ' + beta);
     console.log('gamma: ' + gamma);
-    document.getElementById('waterElement').style.transform = `rotateX(${alpha}deg)`;
+    document.getElementById('waterElement').style.transform = `rotateZ(${alpha}deg)`;
 }
 
 function requestGyroscopeAccess(functionToCall) {
