@@ -37,7 +37,6 @@ $(document).ready(function() {
     var draggable = null;
     $('[data-drag-x]').on('touchstart', function(event) {
         event.preventDefault();
-        console.log('touchstart');
         draggable = this;
         var clientX = event.clientX || event.touches[0].clientX;
         var rect = draggable.getBoundingClientRect();
@@ -151,13 +150,16 @@ function windowFocus() {
     }, false);
 }
 
-function onDragStart(event) {
-  }
-
 function waterCycle() {
-
+    console.log(requestGyroscopeAccess());
+    $('#door2 .water').addClass('a-rotating');
     if(requestGyroscopeAccess()) {
+        var hasGyro = false;
         window.addEventListener('deviceorientation', (event) => { 
+            if(hasGyro==false) {
+                $('#door2 .water').removeClass('a-rotating');
+                hasGyro = true;
+            }
             var alpha = event.alpha; // rotation around z-axis (-180 to 180)
             var beta = event.beta; // front to back motion (-180 to 180)
             var gamma = event.gamma; // left to right motion (-90 to 90)
@@ -167,8 +169,6 @@ function waterCycle() {
             console.log('gamma: ' + gamma);
             $('#door2 .water').style.transform = `rotateX(${gamme}deg)`;
         });
-    }else{
-        $('#door2 .water').addClass('a-rotating');
     }
 }
 
