@@ -9,6 +9,7 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700&family=Rancho&display=swap" rel="stylesheet">
@@ -18,30 +19,113 @@
     <main>
         <page id="warning">
             Is your sound on?
-            <button data-page="intro">Confirm</button>
+            <button class="btn" data-page="house">Confirm</button>
         </page>
 
         <page id="intro" data-sound="story-1" data-bg-audio="bg-intro">
-            <button data-page="start" >Skip</button>
-            <button data-page="intro2" >Next</button>
+            <button class="btn" data-page="start" >Skip</button>
+            <button class="btn" data-page="intro2" >Next</button>
         </page>
         <page id="intro2" data-sound="story-2" data-bg-audio="bg-intro">
-            <button data-page="start" >Skip</button>
-            <button data-page="intro3" >Next</button>
+            <button class="btn" data-page="start" >Skip</button>
+            <button class="btn" data-page="intro3" >Next</button>
         </page>
         <page id="intro3" data-sound="story-3" data-bg-audio="bg-intro">
-            <button data-page="start" >Begin your adventure</button>
+            <button class="btn" data-page="start" >Begin your adventure</button>
         </page>
 
         <page id="start" data-bg-audio="bg-intro" data-bg-volume="1">
             <img class="animate__animated animate__jackInTheBox" src="images/logo.png" alt="Countdown to Christmas">
-            <button class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house" >Start</button>
-            <button class="animate__animated animate__fadeInUp animate__delay-1s" data-page="intro" >Play Intro</button>
+            <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house" >Start</button>
+            <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="intro" >Play Intro</button>
         </page>
 
         <page id="house">
-            goodbye
-            <button data-page="warning" >back</button>
+            <toolbar>
+                <button class="btn-icon btn-back" data-page="start"></button>
+            </toolbar>
+            <div class="rooms">
+                <div class="room">
+                    <button class="door" data-page="door1">
+                        <span class="material-symbols-outlined">
+                            1
+                        </span>
+                    </button>
+                </div>
+                <div class="room">
+                    <button class="door" data-page="door3">
+                        <span class="material-symbols-outlined">
+                            casino
+                        </span>
+                    </button>
+                </div>
+                <div class="room room-water">
+                    <button class="door" data-page="door2">
+                        <span class="material-symbols-outlined">
+                            water_drop
+                        </span>
+                    </button>
+                </div>
+                <div class="room">
+                    <button class="door" data-page="door1">
+                        <span class="material-symbols-outlined">
+                            self_improvement
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </page>
+
+        <page id="door1" data-sound="1">
+            <toolbar>
+                <button class="btn-icon btn-help" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-page="house"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                This is my recording studio, but I haven't used it much since I lost my Christmas spirit. Maybe something in here can help you find it? I'm sure what's <em>left</em> is working...
+            </helper>
+
+            <a class="on-button" data-id="on-button" data-enabled="false" data-sound-fx="1-switch" data-enable="play-button"><div class="btn-fake" data-enable="on-button"></div></a>
+            <a class="play-button" data-id="play-button" data-enabled="false" data-sound-fx="1-clue"></a>
+        </page>
+
+
+        <page id="door2" data-sound="2">
+            <toolbar>
+                <button class="btn-icon btn-help" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-page="house"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                Now now, I don't think we'll find the Queen's Christmas spirit in here! That said, I suppose it couldn't hurt to look...
+            </helper>
+
+            <a class="laundry-button" data-drag-x="true" data-run="waterCycle"></a>
+            <div class="water"></div>
+        </page>
+
+        <page id="door3" data-sound="3">
+            <toolbar>
+                <button class="btn-icon btn-help" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-page="house"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                I loved playing games! Hide and seek used to be my favourite, but I don't think I can play that anymore. I'm not sure I can even remember how to play...
+            </helper>
+            <helper data-id="note" data-hide="note">
+                <h2>How to play hide and seek:</h2>
+               <ol>
+                    <li>Leave for and count to 10</li>
+                    <li>Come back and find what might present itself</li>    
+                    <li>That's it! Leave and come back to find...</li>
+                </ol>
+            </helper>
+            <helper data-id="answer">
+                <h2>You found me!</h2>
+                You're two good four this! You're one Person to watch!
+            </helper>
+
+            <a class="paper-button" data-id="paper-button" data-enabled="true" data-toggle="note" data-run="windowFocus"></a>
+            <a class="present-button" data-id="present-button" data-show="answer" data-enabled="false" data-sound-fx="1-clue"></a>
         </page>
     </main>
 </body>
