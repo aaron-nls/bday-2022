@@ -151,6 +151,7 @@ function windowFocus() {
 }
 
 var hasGyro = false;
+var waterElement = document.querySelector('#door2 .water');
 async function waterCycle(event) {
     if(hasGyro==false) {
         $('#door2 .water').removeClass('a-rotating');
@@ -163,7 +164,7 @@ async function waterCycle(event) {
     console.log('alpha: ' + alpha);
     console.log('beta: ' + beta);
     console.log('gamma: ' + gamma);
-    $('#door2 .water').style.transform = `rotateX(${gamma}deg)`;
+    waterElement.style.transform = `rotateX(${alpha}deg)`;
 }
 
 function requestGyroscopeAccess(functionToCall) {
