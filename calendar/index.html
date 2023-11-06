@@ -15,10 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700&family=Rancho&display=swap" rel="stylesheet">
     <script src="main.js"></script>
     <meta name="apple-mobile-web-app-title" content="Countdown 🎄">
-    <!-- Define the web app capable -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <!-- Hide the status bar -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" sizes="57x57" href="images/icon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/icon/apple-icon-60x60.png">
@@ -96,6 +94,20 @@
                         </span>
                     </button>
                 </div>
+                <div class="room">
+                    <button class="door" data-run="isDisconnected" data-page="door5">
+                        <span class="material-symbols-outlined">
+                            electric
+                        </span>
+                    </button>
+                </div>
+                <div class="room">
+                    <button class="door6" data-page="door6">
+                        <span class="material-symbols-outlined">
+                            STAIRS
+                        </span>
+                    </button>
+                </div>
             </div>
         </page>
 
@@ -148,6 +160,24 @@
 
             <a class="paper-button" data-id="paper-button" data-enabled="true" data-toggle="note" data-run="windowFocus"></a>
             <a class="present-button" data-id="present-button" data-show="answer" data-enabled="false"></a>
+        </page>
+
+
+        <page id="door5" data-sound="5">
+            <div class="background"></div>
+            <toolbar>
+                <button class="btn-icon btn-help" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-page="house"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                Eww, I don't think I've ever been in this room before. My Christmas spirit must be around somewhere, but I don't feel connected that this is the place...
+            </helper>
+
+            <a class="powerbox" data-id="powerbox" data-enabled="false"></a>
+            <div data-drag="true" class="illuminate"> 
+                <div class="glow"></div>
+                <div class="torch"></div>
+            </div>
         </page>
     </main>
 </body>

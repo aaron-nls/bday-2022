@@ -20,6 +20,10 @@ $(document).ready(function() {
         var target = $(this).attr('data-enable');
         enableElement(target);
     });
+    $('[data-disable]').click(function() {
+        var target = $(this).attr('data-enable');
+        disableElement(target);
+    });
     $('[data-run]').click(function() {
         var target = $(this).attr('data-run');
         window[target]();
@@ -33,7 +37,7 @@ $(document).ready(function() {
     });
 
 
-    var dragStartX, initialLeft;
+    var dragStartX, dragStartY, initialTop, initialLeft;
     var draggable = null;
     $('[data-drag-x]').on('touchstart', function(event) {
         event.preventDefault();
@@ -43,6 +47,23 @@ $(document).ready(function() {
         dragStartX = clientX;
         initialLeft = rect.left;
 
+        document.addEventListener('mousemove', onMoveX);
+        document.addEventListener('touchmove', onMoveX);
+        document.addEventListener('mouseup', onEnd);
+        document.addEventListener('touchend', onEnd);
+    });
+
+    $('[data-drag]').on('touchstart', function(event) {
+        event.preventDefault();
+        draggable = this;
+        var clientX = event.clientX || event.touches[0].clientX;
+        var clientY = event.clientY || event.touches[0].clientY;
+        var rect = draggable.getBoundingClientRect();
+        dragStartX = clientX;
+        dragStartY = clientY;
+        initialLeft = rect.left;
+        initialTop = rect.top;
+
         document.addEventListener('mousemove', onMove);
         document.addEventListener('touchmove', onMove);
         document.addEventListener('mouseup', onEnd);
@@ -50,6 +71,14 @@ $(document).ready(function() {
     });
 
     function onMove(event) {
+        var clientX = event.clientX || event.touches[0].clientX;
+        var newLeft = initialLeft + clientX - dragStartX;
+        var clientY = event.clientY || event.touches[0].clientY;
+        var newTop = initialTop + clientY - dragStartY;
+        draggable.style.transform = `translateX(${newLeft}px) translateY(${newTop}px)`;
+    }
+
+    function onMoveX(event) {
         var clientX = event.clientX || event.touches[0].clientX;
         var newLeft = initialLeft + clientX - dragStartX;
         draggable.style.transform = `translateX(${newLeft}px)`;
@@ -62,6 +91,8 @@ $(document).ready(function() {
         document.removeEventListener('touchend', onEnd);
     }
 
+
+
 });
 
 
@@ -69,6 +100,7 @@ let bgAudio = null;
 let bgAudioPlayer = null;
 let soundAudio =  null; 
 let soundAudioPlayer = null;
+let globalInterval = null;
 
 function goToPage(page) {
     $('page:visible').fadeOut();
@@ -76,7 +108,7 @@ function goToPage(page) {
     const curBackground = $(curPage).data('bg-audio');
     const curBgVolume = $(curPage).data('bg-volume');
     const curSound = $(curPage).data('sound');
-
+    if(globalInterval) clearInterval(globalInterval);
     playSound(curSound ?? null);
     playBackground(curBackground ?? null, curBgVolume ?? 0.5);
     $(curPage).fadeIn();
@@ -133,6 +165,10 @@ function enableElement(element) {
     $('page:visible [data-id="' + element + '"]').attr('data-enabled', 'true');
 }
 
+function disableElement(element) {
+    $('page:visible [data-id="' + element + '"]').attr('data-enabled', 'false');
+}
+
 let blurTime;
 function windowFocus() {
     window.addEventListener("focus", function(event) {
@@ -181,4 +217,15 @@ function requestGyroscopeAccess(functionToCall) {
             });
         }
     }
+}
+
+function isDisconnected() {
+    globalInterval = setInterval(function() {
+        console.log(navigator.onLine);
+        if (!navigator.onLine) {
+            enableElement('powerbox');
+        } else {
+            disableElement('powerbox');
+        }
+    }, 3000); 
 }
