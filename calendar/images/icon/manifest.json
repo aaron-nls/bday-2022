@@ -1,5 +1,7 @@
 {
- "name": "Countdown to Christmas",
+ "name": "⏰ to 🎅",
+ "display": "standalone",
+ "orientation": "portrait",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
