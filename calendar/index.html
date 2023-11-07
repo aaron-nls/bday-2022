@@ -55,13 +55,13 @@
             <button class="btn" data-page="start" >Begin your adventure</button>
         </page>
 
-        <page id="start" data-bg-audio="bg-intro" data-bg-volume="1">
+        <page id="start" data-sound="start" data-bg-audio="bg-intro" data-bg-volume="1">
             <img class="animate__animated animate__jackInTheBox" src="images/logo.png" alt="Countdown to Christmas">
             <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house" >Start</button>
             <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="intro" >Play Intro</button>
         </page>
 
-        <page id="house">
+        <page id="house" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
@@ -88,7 +88,7 @@
                     </button>
                 </div>
                 <div class="room">
-                    <button class="door" data-page="door1">
+                    <button class="door" data-page="door4">
                         <span class="material-symbols-outlined">
                             self_improvement
                         </span>
@@ -111,7 +111,7 @@
             </div>
         </page>
 
-        <page id="door1" data-sound="1">
+        <page id="door1" data-sound="1"  data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-page="house"></button>
@@ -124,7 +124,7 @@
             <a class="play-button" data-id="play-button" data-enabled="false" data-sound-fx="1-clue"></a>
         </page>
 
-        <page id="door2" data-sound="2">
+        <page id="door2" data-sound="2" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-page="house"></button>
@@ -137,7 +137,7 @@
             <div id="waterElement" class="water a-rotating"></div>
         </page>
 
-        <page id="door3" data-sound="3">
+        <page id="door3" data-sound="3" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-page="house"></button>
@@ -163,14 +163,25 @@
         </page>
 
 
-        <page id="door5" data-sound="5">
-            <div class="background"></div>
+        <page id="door4" data-sound="4" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-page="house"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
-                Eww, I don't think I've ever been in this room before. My Christmas spirit must be around somewhere, but I don't feel connected that this is the place...
+                My yoga studio is where I would sit and meditate, thinking about all the presents I could gift to the towns people. It was so still, quiet and calm here...
+            </helper>
+
+            <div class="clock" onclick="door4()"></div>
+        </page>
+
+        <page id="door5" data-sound="5" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-page="house"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                I've only ever gone in this room when the Christmas lights used to trip the circuit. I guess that's not a problem this year, I don't feel connected to this place anymore...
             </helper>
 
             <a class="powerbox" data-id="powerbox" data-enabled="false"></a>

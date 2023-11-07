@@ -229,3 +229,57 @@ function isDisconnected() {
         }
     }, 3000); 
 }
+
+function door4(){
+
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        const microphone = audioContext.createMediaStreamSource(stream);
+        const javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+
+        analyser.smoothingTimeConstant = 0.8;
+        analyser.fftSize = 1024;
+
+        microphone.connect(analyser);
+        analyser.connect(javascriptNode);
+        javascriptNode.connect(audioContext.destination);
+
+        let timeoutId;
+        const startTimer = () => {
+
+            $('#door4 .clock').addClass('a-rotating');
+            timeoutId = setTimeout(() => {
+                console.log('Success!');
+
+                $('#door4 .clock').removeClass('a-rotating').addClass('a-code');
+                stream.getTracks().forEach(track => track.stop());
+            }, 10000); // 10 seconds
+        };
+
+        startTimer();
+        
+
+        javascriptNode.onaudioprocess = function() {
+            const array = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(array);
+            let values = 0;
+
+            const length = array.length;
+            for (let i = 0; i < length; i++) {
+                values += (array[i]);
+            }
+
+            const average = values / length;
+            if (average > 5) {
+                $('#door4 .clock').removeClass('a-rotating').addClass('a-rotating');
+                clearTimeout(timeoutId);
+                startTimer();
+            }
+        }
+    })
+    .catch(err => {
+        console.log('The following error occurred: ' + err.name)
+    });
+}
