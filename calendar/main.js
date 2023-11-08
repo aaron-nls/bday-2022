@@ -1,7 +1,15 @@
 $(document).ready(function() {
 
+    $('.door').attr('data-enabled', 'true');
     $('button[data-page]').click(function() {
         var target = $(this).attr('data-page');
+        if(target.includes('door')) {
+            if($(this).attr('data-enabled') == 'true') {
+                playSoundFx('open');
+            }else{
+                playSoundFx('locked');
+            }
+        }
         goToPage(target);
     });
     $('[data-show]').click(function() {
@@ -32,7 +40,7 @@ $(document).ready(function() {
         var target = $(this).attr('data-sound-fx');
         var enabled = $(this).attr('data-enabled') ?? 'true';
         if(enabled === 'true') {
-            playSound(target ?? null);
+            playSoundFx(target ?? null);
         }
     });
 
@@ -100,6 +108,8 @@ let bgAudio = null;
 let bgAudioPlayer = null;
 let soundAudio =  null; 
 let soundAudioPlayer = null;
+let soundFxAudio =  null; 
+let soundFxAudioPlayer = null;
 let globalInterval = null;
 
 function goToPage(page) {
@@ -140,12 +150,31 @@ function playSound(newSoundAudio) {
             soundAudioPlayer.pause();
         }   
         soundAudioPlayer = new Audio('audio/' + soundAudio + '.mp3');
-        soundAudioPlayer.play();
+        setTimeout(function() {    
+            soundAudioPlayer.play();
+        }, 1500);
     }
 
     if(newSoundAudio === null) {
         soundAudio = null;
         if(soundAudioPlayer) soundAudioPlayer.pause();
+    }
+}
+
+
+function playSoundFx(newSoundFxAudio) {
+    if(newSoundFxAudio) {
+        soundFxAudio = newSoundFxAudio;
+        if(soundFxAudioPlayer) {
+            soundFxAudioPlayer.pause();
+        }   
+        soundFxAudioPlayer = new Audio('audio/' + soundFxAudio + '.mp3');
+        soundFxAudioPlayer.play();
+    }
+
+    if(newSoundFxAudio === null) {
+        soundFxAudio = null;
+        if(soundAudioFxPlayer) soundAudioFxPlayer.pause();
     }
 }
 
@@ -174,15 +203,16 @@ function windowFocus() {
     window.addEventListener("focus", function(event) {
         const focusTime = new Date();
         const elapsedSeconds = (focusTime - blurTime) / 1000;
-        if (elapsedSeconds >= 10) {
+        if (elapsedSeconds >= 10 && $('#door3:visible').length > 0) {
             enableElement('present-button');
-            hideElement('paper-button');
-            hideElement('note');
+            playSoundFx('sparkle');
         }
     }, false);
 
     window.addEventListener("blur", function(event) {
         blurTime = new Date();
+        hideElement('paper-button');
+        hideElement('note');
     }, false);
 }
 
@@ -231,7 +261,7 @@ function isDisconnected() {
 }
 
 function door4(){
-
+    if($('#door4 .clock').hasClass('a-code') || $('#door4 .clock').hasClass('a-rotating')) { return; }
     navigator.mediaDevices.getUserMedia({ audio: true })
     .then(stream => {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -249,12 +279,13 @@ function door4(){
         let timeoutId;
         const startTimer = () => {
 
-            $('#door4 .clock').addClass('a-rotating');
+            $('#door4 .clock').stop().addClass('a-rotating');
             timeoutId = setTimeout(() => {
                 console.log('Success!');
 
                 $('#door4 .clock').removeClass('a-rotating').addClass('a-code');
                 stream.getTracks().forEach(track => track.stop());
+                javascriptNode.disconnect();
             }, 10000); // 10 seconds
         };
 
@@ -272,8 +303,13 @@ function door4(){
             }
 
             const average = values / length;
+            console.log(Math.round(average));
             if (average > 5) {
-                $('#door4 .clock').removeClass('a-rotating').addClass('a-rotating');
+                console.log('Noise detected!');  
+                const clockElement = document.querySelector('#door4 .clock');
+                clockElement.classList.remove('a-rotating');
+                void clockElement.offsetWidth; // force a reflow
+                clockElement.classList.add('a-rotating');
                 clearTimeout(timeoutId);
                 startTimer();
             }
