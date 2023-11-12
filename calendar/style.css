@@ -295,26 +295,13 @@ page:first-child {
     transition: all 0.5s ease-in-out;
     position: absolute;
     color: #ffc77cc4;
-    top: 54.8%;
-    left: 44%;
+    top: 25.8%;
+    left: 45%;
     text-align: center;
     width: 21px;
     font-family: 'Grenze Gotisch', sans-serif;
     font-size: 18px;
     text-shadow: 1px 1px 0px black;
-}
-
-#house2 .door div{
-    color: #ffc77cc4;
-    top: 54.8%;
-    left: 44%;
-}
-
-#house2 .door span{
-    top: 38.5%;
-    left: 41.6%;
-    color: #d3bd7f;
-    text-shadow: 1px 1px 0px #5c3b038c;
 }
 
 .door[data-enabled="true"] div{
@@ -340,6 +327,27 @@ page:first-child {
 
 .door[data-enabled="true"]:after{
     opacity: 0;
+}
+
+#house2 .door div{
+    color: #ffc77cc4;
+    top: 54.8%;
+    left: 44%;
+}
+
+#house2 .door span{
+    top: 38.5%;
+    left: 41.6%;
+    color: #d3bd7f;
+    text-shadow: 1px 1px 0px #5c3b038c;
+}
+
+#house2 .door:after{
+    background-image: url(images/padlock2.jpg);
+    top: 52.8%;
+    left: 6.5%;
+    aspect-ratio: 76/86;
+    width: 15%;
 }
 
 @keyframes rotating {
@@ -389,6 +397,21 @@ page:first-child {
 }
 .a-code {
     animation: code 10s linear infinite;
+}
+
+.doorPadlock{
+    display: none;
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: gray;
+    border: 2px solid gold;
+    flex-direction: column;
+    text-align: center;
 }
 
 
@@ -564,4 +587,67 @@ page:first-child {
     pointer-events: none;
     transform: translate(-50%, -50%);
     background: radial-gradient(circle at center,  rgba(0,0,0,0) 10px, rgba(0,0,0,1) 100px,rgba(0,0,0,1) 100%);
+}
+
+
+/* DOOR 10
+*/
+
+
+#door10 {
+    background-image: url(images/bg-10.jpg);
+}
+
+#door10 .tap {
+    position: absolute;
+    top: 55%;
+    left: 21%;
+    aspect-ratio: 1/1;
+    width: 10%;
+}
+
+#door10 .tapwater {
+    position: absolute;
+    top: 59.6%;
+    left: 27.3%;
+    aspect-ratio: 40/64;
+    width: 3.7%;
+    background-image: url(images/10-tap.png);
+    background-size: contain;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#door10 .tapwater[data-enabled="true"] {
+    opacity: 1;
+}
+
+
+#door10 .bathwater {
+    position: absolute;
+    top: 59%;
+    left: 7.1%;
+    aspect-ratio: 560/94;
+    width: 48.7%;
+    background-image: url(images/10-water.png);
+    background-size: contain;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transition-duration: 5s;
+}
+
+
+#door10 .bathwater[data-enabled="true"] {
+    opacity: 1;
+}
+
+#door10 .fog {
+    position: absolute;
+    top: 32.2%;
+    left: 69.2%;
+    aspect-ratio: 266/431;
+    width: 23%;
+    background-image: url(images/10-fog.png);
+    background-size: contain;
+    opacity: 0;
 }

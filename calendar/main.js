@@ -7,7 +7,7 @@ $(document).ready(function() {
             if($(this).attr('data-enabled') == 'true') {
                 playSoundFx('open');
             }else{
-                playSoundFx('locked');
+                return;
             }
         }
         goToPage(target);
@@ -42,6 +42,32 @@ $(document).ready(function() {
         if(enabled === 'true') {
             playSoundFx(target ?? null);
         }
+    });
+
+
+    let doorCode = null;
+    let doorNumber = null;
+    $(document).on('.door[data-enabled="false"]', 'click', function(event) {
+        doorNumber = $(this).find('div').text();
+        doorCode =  $(this).attr('data-code');
+        $('doorCodeInput').val('');
+        $('doorPadlock').fadeIn();
+    });
+
+    $('.unlockDoor').click(function(event) {
+        let userInput = $('doorCodeInput').val();
+        if(doorCode == userInput) {
+            playSoundFx('unlock');
+            $(`[data-door="door${doorNumber}"]`).attr('data-enabled', 'true');
+        }else{
+            playSoundFx('locked');
+        }
+
+
+        $(`.doorPadlock`).fadeOut();
+        $('doorCodeInput').val('');
+        doorCode = null;
+        doorNumber = null;
     });
 
 
@@ -260,6 +286,8 @@ function isDisconnected() {
     }, 3000); 
 }
 
+let javascriptNode = null;
+let micStream = null;
 function door4(){
     if($('#door4 .clock').hasClass('a-code') || $('#door4 .clock').hasClass('a-rotating')) { return; }
     navigator.mediaDevices.getUserMedia({ audio: true })
@@ -267,7 +295,8 @@ function door4(){
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const analyser = audioContext.createAnalyser();
         const microphone = audioContext.createMediaStreamSource(stream);
-        const javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+        javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+        micStream = stream;
 
         analyser.smoothingTimeConstant = 0.8;
         analyser.fftSize = 1024;
@@ -318,4 +347,62 @@ function door4(){
     .catch(err => {
         console.log('The following error occurred: ' + err.name)
     });
+}
+
+function door10(){
+    let fogOpacity = 0;
+    const fogElement = document.querySelector('#door10 .fog');
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        const microphone = audioContext.createMediaStreamSource(stream);
+        javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+        micStream = stream;
+
+        analyser.smoothingTimeConstant = 0.8;
+        analyser.fftSize = 1024;
+
+        microphone.connect(analyser);
+        analyser.connect(javascriptNode);
+        javascriptNode.connect(audioContext.destination);
+
+
+        javascriptNode.onaudioprocess = function() {
+            const array = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(array);
+            let values = 0;
+
+            const length = array.length;
+            for (let i = 0; i < length; i++) {
+                values += (array[i]);
+            }
+
+            const average = values / length;
+            
+            console.log(Math.round(average));
+            if (average > 25) {
+                console.log('Noise detected!');  
+                fogOpacity = fogOpacity >= 0.95 ? 1 : fogOpacity + 0.05;
+            }else{
+                fogOpacity = fogOpacity <= 0.05 ? 0 : fogOpacity - 0.01 ;
+            }
+
+            fogElement.style.opacity = fogOpacity;
+        }
+    })
+    .catch(err => {
+        console.log('The following error occurred: ' + err.name)
+    });
+}
+
+
+
+function stopMic(){
+    if(micStream){
+        micStream.getTracks().forEach(track => track.stop());
+    }
+    if(javascriptNode){
+        javascriptNode.disconnect();
+    }
 }

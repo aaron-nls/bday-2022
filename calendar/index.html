@@ -40,7 +40,7 @@
     <main>
         <page id="warning">
             <menu>
-                <button class="btn" data-page="house">Confirm</button>
+                <button class="btn" data-page="house2">Confirm</button>
             </menu>
         </page>
 
@@ -74,6 +74,10 @@
             </menu>
         </page>
 
+        <div class="doorPadlock">
+            <input class="doorCodeInput" maxlength="3" type="text" placeholder="Enter code">
+            <button class="btn" class="unlockDoor">Unlock</button>
+        </div>
         <page id="house" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-back" data-page="start"></button>
@@ -85,7 +89,7 @@
                     </button>
                 </div>
                 <div class="room room2">
-                    <button class="door" data-page="door3">
+                    <button class="door" data-page="door3"  data-code="043">
                         <div>3</div>
                         <span class="material-symbols-rounded">
                             casino
@@ -93,7 +97,7 @@
                     </button>
                 </div>
                 <div class="room room3">
-                    <button class="door"  onclick="requestGyroscopeAccess('waterCycle')" data-page="door2">
+                    <button class="door"  onclick="requestGyroscopeAccess('waterCycle')" data-page="door2"  data-code="764">
                         <div>2</div>
                         <span class="material-symbols-rounded">
                             water_drop
@@ -101,7 +105,7 @@
                     </button>
                 </div>
                 <div class="room room4">
-                    <button class="door" data-page="door4">
+                    <button class="door" data-page="door4" data-code="241">
                         <div>4</div>
                         <span class="material-symbols-rounded">
                             self_improvement
@@ -109,8 +113,8 @@
                     </button>
                 </div>
                 <div class="room room5">
-                    <button class="door" data-run="isDisconnected" data-page="door5">
-                        <div>5</div>
+                    <button class="door" data-run="isDisconnected" data-page="door5"  data-code="505">
+                        <div>8</div>
                         <span class="material-symbols-rounded">
                             bolt
                         </span>
@@ -133,20 +137,20 @@
                     </button>
                 </div>
                 <div class="room room6">
-                    <button class="door" data-page="door6">
-                        <div>6</div>
+                    <button class="door" data-page="door6"  data-code="321">
+                        <div>7</div>
                         <span class="material-symbols-rounded">
-                            bolt
+                            movie
                         </span>
                     </button>
                 </div>
                 <div class="room room-chez">
                 </div>
                 <div class="room room7">
-                    <button class="door" data-page="door7">
-                        <div>7</div>
+                    <button class="door" data-page="door7" data-code="168">
+                        <div>5</div>
                         <span class="material-symbols-rounded">
-                            bolt
+                            potted_plant
                         </span>
                     </button>
                 </div>
@@ -156,28 +160,28 @@
                     </button>
                 </div>
                 <div class="room room8">
-                    <button class="door" data-page="door8">
-                        <div>8</div>
+                    <button class="door" data-page="door8" data-code="666">
+                        <div>9</div>
                         <span class="material-symbols-rounded">
-                            bolt
+                            wall_art
                         </span>
                     </button>
                 </div>
                 <div class="room room-window">
                 </div>
                 <div class="room room9">    
-                    <button class="door" data-page="door9">
-                        <div>9</div>
+                    <button class="door" data-page="door9" data-code="624">
+                        <div>10</div>
                         <span class="material-symbols-rounded">
-                            bolt
+                            ac_unit
                         </span>
                     </button>   
                 </div>
                 <div class="room room10">
-                    <button class="door" data-page="door10">
-                        <div>10</div>
+                    <button class="door" data-run="door10" data-page="door10" data-code="801">
+                        <div>6</div>
                         <span class="material-symbols-rounded">
-                            bolt
+                            wc
                         </span>
                     </button>   
                 </div>
@@ -188,7 +192,7 @@
         <page id="door1" data-sound="1"  data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="door" data-page="house"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
                 This is my recording studio, but I haven't used it much since I lost my Christmas spirit. Maybe something in here can help you find it? I'm sure what's <em>left</em> is working...
@@ -201,7 +205,7 @@
         <page id="door2" data-sound="2" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="door" data-page="house"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
                 Now now, I don't think we'll find the Queen's Christmas spirit in here! That said, I suppose it couldn't hurt to look...
@@ -214,7 +218,7 @@
         <page id="door3" data-sound="3" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="door" data-page="house"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
                 I loved playing games! Hide and seek used to be my favourite, but I don't think I can play that anymore. I'm not sure I can even remember how to play...
@@ -240,7 +244,7 @@
         <page id="door4" data-sound="4" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="door" data-page="house"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
                 My yoga studio is where I would sit and meditate, thinking about all the presents I could gift to the towns people. It was so still, quiet and calm here...
@@ -252,7 +256,7 @@
         <page id="door5" data-sound="5" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="door" data-page="house"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
                 I've only ever gone in this room when the Christmas lights used to trip the circuit. I guess that's not a problem this year, I don't feel connected to this place anymore...
@@ -263,6 +267,21 @@
                 <div class="glow"></div>
                 <div class="torch"></div>
             </div>
+        </page>
+
+        <page id="door10" data-sound="10" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-run="stopMic" data-page="house2"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                This bathroom used to be my little oasis. I can't remember the last time I let off steam, had a bath and relaxed in here... 
+            </helper>
+
+            <a class="tap" data-id="tap" data-sound-fx="5-tap" data-enable="water"></a>
+            <div class="tapwater" data-id="water" data-enabled="false"></div>
+            <div class="bathwater" data-id="water" data-enabled="false"></div>
+            <div class="fog"></div>
         </page>
     </main>
 </body>
