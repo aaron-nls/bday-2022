@@ -238,8 +238,35 @@ page:first-child {
 .room5 {
     background-image: url(images/bg-door-5.jpg);
 }
+.room6 {
+    background-image: url(images/bg-door-6.jpg);
+}
+.room7 {
+    background-image: url(images/bg-door-7.jpg);
+}   
+.room8 {
+    background-image: url(images/bg-door-8.jpg);
+}   
+.room9 {
+    background-image: url(images/bg-door-9.jpg);
+}   
+.room10 {
+    background-image: url(images/bg-door-10.jpg);
+}   
 .room-stairs {
     background-image: url(images/bg-door-stairs.jpg);
+}  
+.room-stairs2 {
+    background-image: url(images/bg-door-stairs2.jpg);
+}
+.room-stairs3 {
+    background-image: url(images/bg-door-stairs3.jpg);
+}
+.room-window {
+    background-image: url(images/bg-floor2-window.jpg);
+}
+.room-chez {
+    background-image: url(images/bg-floor2-chez.jpg);
 }
 
 .door{
@@ -267,14 +294,27 @@ page:first-child {
     pointer-events: none;
     transition: all 0.5s ease-in-out;
     position: absolute;
-    color: #ffffffa1;
-    top: 25.8%;
-    left: 45%;
+    color: #ffc77cc4;
+    top: 54.8%;
+    left: 44%;
     text-align: center;
     width: 21px;
     font-family: 'Grenze Gotisch', sans-serif;
     font-size: 18px;
     text-shadow: 1px 1px 0px black;
+}
+
+#house2 .door div{
+    color: #ffc77cc4;
+    top: 54.8%;
+    left: 44%;
+}
+
+#house2 .door span{
+    top: 38.5%;
+    left: 41.6%;
+    color: #d3bd7f;
+    text-shadow: 1px 1px 0px #5c3b038c;
 }
 
 .door[data-enabled="true"] div{
