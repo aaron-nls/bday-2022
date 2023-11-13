@@ -137,7 +137,7 @@
                     </button>
                 </div>
                 <div class="room room6">
-                    <button class="door" data-page="door6"  data-code="321">
+                    <button class="door" data-page="door7"  data-code="321">
                         <div>7</div>
                         <span class="material-symbols-rounded">
                             movie
@@ -266,6 +266,25 @@
             <div data-drag="true" class="illuminate"> 
                 <div class="glow"></div>
                 <div class="torch"></div>
+            </div>
+        </page>
+
+        <page id="door7" data-sound="7" data-bg-audio="bg-intro">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-stop="video" data-page="house2"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                This bathroom used to be my little oasis. I can't remember the last time I let off steam, had a bath and relaxed in here... 
+            </helper>
+
+            <a class="poweron" data-sound-fx="7-projector" data-play="video" data-enable="projector"></a>
+            <div class="projector" data-id="projector" data-enabled="false"></div>
+
+            <div class="videoplayer" data-id="projector" data-enabled="false">
+                <video data-id="video" width="100%" loop controls playsinline muted>
+                    <source src="audio/7-video.mp4" type="video/mp4">
+                </video>
             </div>
         </page>
 

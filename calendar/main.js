@@ -43,6 +43,14 @@ $(document).ready(function() {
             playSoundFx(target ?? null);
         }
     });
+    $('[data-play]').click(function() {
+        var target = $(this).attr('data-play');
+        $('page:visible [data-id="'+target+'"]').get(0).play();
+    });
+    $('[data-stop]').click(function() {
+        var target = $(this).attr('data-stop');
+        $('page:visible [data-id="'+target+'"]').get(0).pause();
+    });
 
 
     let doorCode = null;
@@ -380,12 +388,10 @@ function door10(){
 
             const average = values / length;
             
-            console.log(Math.round(average));
-            if (average > 25) {
-                console.log('Noise detected!');  
-                fogOpacity = fogOpacity >= 0.95 ? 1 : fogOpacity + 0.05;
+            if (average > 30) {
+                fogOpacity = fogOpacity >= 0.98 ? 1 : fogOpacity + 0.02;
             }else{
-                fogOpacity = fogOpacity <= 0.05 ? 0 : fogOpacity - 0.01 ;
+                fogOpacity = fogOpacity <= 0.01 ? 0 : fogOpacity - 0.01 ;
             }
 
             fogElement.style.opacity = fogOpacity;

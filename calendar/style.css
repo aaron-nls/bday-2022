@@ -589,10 +589,69 @@ page:first-child {
     background: radial-gradient(circle at center,  rgba(0,0,0,0) 10px, rgba(0,0,0,1) 100px,rgba(0,0,0,1) 100%);
 }
 
+/* DOOR 7
+*/
+
+
+#door7 {
+    background-image: url(images/bg-7.jpg);
+}
+
+#door7 .poweron {
+    position: absolute;
+    top: 59%;
+    left: 46%;
+    aspect-ratio: 1/1;
+    width: 6%;
+}
+
+#door7 .projector {
+    position: absolute;
+    top: 49.6%;
+    left: 30.3%;
+    aspect-ratio: 422/233;
+    width: 39%;
+    background-image: url(images/7-projector.png);
+    background-size: contain;
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: center bottom;
+    transition: all 0.3s ease-in-out;
+}
+
+#door7 .projector[data-enabled="true"] {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#door7 .videoplayer {
+    position: absolute;
+    top: 41.7%;
+    left: 33.5%;
+    aspect-ratio: 422/233;
+    width: 33%;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+
+
+#door7 .videoplayer[data-enabled="true"]  {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#door7 .videoplayer video{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+}
 
 /* DOOR 10
 */
-
 
 #door10 {
     background-image: url(images/bg-10.jpg);
