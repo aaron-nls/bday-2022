@@ -425,12 +425,14 @@ function stopMic(){
 
 
 function requestCameraAccess() {
-    return navigator.mediaDevices.getUserMedia({ video: true });
+    return navigator.mediaDevices.getUserMedia({ 
+        audio: false, 
+        video: { facingMode: { exact: "environment" } } 
+    });
 }
 
 function measureBrightness(stream) {
     const glowElement = document.querySelector('#door7 .glow');
-    const roofElement = document.querySelector('#door7 .roof');
     return new Promise((resolve, reject) => {
         const video = document.createElement('video');
         video.srcObject = stream;
@@ -439,7 +441,7 @@ function measureBrightness(stream) {
         videoStream = stream;
 
         const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
         video.addEventListener('play', function() {
             videoInterval = setInterval(() => {
@@ -452,24 +454,27 @@ function measureBrightness(stream) {
                 }
 
                 brightness /= (imageData.length / 4);
-                brightness = (brightness - 127.5) / 127.5; // Normalize to -1 to 1
-                let opacity = (brightness - 0.5) * 2; // Calculate how much brightness is over 0.8
-                opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
-                if(opacity > 0.85) {
+                brightness = brightness / 255;; // Normalize to -1 to 1
+                // brightness = Math.max(0, Math.min(1, brightness)); // Clamp between 0 and 1
+                console.log(brightness);
+                if(brightness > 0.5) {
                     let currentPlant = document.querySelector('#door7 [data-enabled="true"]');
+
+                    if(!currentPlant) return;
+
                     let currentScale = parseFloat(getComputedStyle(currentPlant).getPropertyValue('--scale'));
 
                     if(currentScale>=1){
                         currentPlant.setAttribute('data-enabled', 'false');
+                    }else{
+                        // Increment the value
+                        currentScale += 0.025 * brightness; 
+                        // Set the new value
+                        currentPlant.style.setProperty('--scale', currentScale);
                     }
 
-                    // Increment the value
-                    currentScale += 0.05; // Increment by 0.1, adjust this value as needed
-
-                    // Set the new value
-                    currentPlant.style.setProperty('--scale', currentScale);
                 }
-                glowElement.style.opacity = opacity;
+                glowElement.style.opacity = brightness;
                 resolve(brightness);
             }, 500); // Measure brightness every 1 second
 
@@ -477,6 +482,19 @@ function measureBrightness(stream) {
         });
     }); 
 }
+//DOOR 6 MOVIES
+function makeFullscreen() {
+    let videoElement = $('page:visible video').get(0);
+    if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+    } else if (videoElement.mozRequestFullScreen) { // Firefox
+        videoElement.mozRequestFullScreen();
+    } else if (videoElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        videoElement.webkitRequestFullscreen();
+    } else if (videoElement.msRequestFullscreen) { // IE/Edge
+        videoElement.msRequestFullscreen();
+    }
+};
 
 let videoStream;
 let videoInterval;

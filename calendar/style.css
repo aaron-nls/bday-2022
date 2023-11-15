@@ -650,6 +650,44 @@ page:first-child {
     bottom: 0;
 }
 
+#door6 .videoplayer:hover .controllbar{
+    opacity: 1;
+}
+
+#door6 .controllbar{
+    height: 15px;
+    width: 90%;
+    opacity: 0;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 0 5px;
+    justify-content: space-between;
+}
+
+#door6 .controllbar span{
+    font-size: 2vh;
+    opacity: 0.5;
+}
+
+#door6 .controllbar span:last-child{
+    font-size: 1.5vh;
+    opacity: 1;
+}
+
+#door6 .controllbar div{
+    height: 2px;
+    background-color: white;
+    opacity: 0.35;
+    border-radius: 5px;
+    width: 100%;
+}
 
 /* DOOR 7
 */
@@ -683,11 +721,12 @@ page:first-child {
     background-size: contain;
     width: 90%;
     z-index: 3;
+    transition: all 0.2s ease-in-out;
 }
 
 #door7 .pot0[data-enabled="true"] {
-    top: 56%;
-    right: 33%;
+    top: 55%;
+    right: 35%;
     transform: scale(0.75);
     z-index: 1;
 }
@@ -695,7 +734,7 @@ page:first-child {
 
 #door7 .pot8 {
     position: absolute;
-    top: 80%;
+    top: 86%;
     left: 21%;
     aspect-ratio: 518/343;
     width: 56%;
@@ -717,6 +756,7 @@ page:first-child {
     background-image: url(images/7-plant-8.png);
     background-size: contain;
     width: 51%;
+    transition: all 0.2s ease-in-out;
 }
 
 #door7 .pot8[data-enabled="true"] {
@@ -751,11 +791,12 @@ page:first-child {
     background-image: url(images/7-plant-1.png);
     background-size: contain;
     width: 75%;
+    transition: all 0.5s ease-in-out;
 }
 
 #door7 .pot1[data-enabled="true"] {
     top: 55.4%;
-    left: 32%;
+    left: 34%;
     transform: scale(0.7);
     z-index: 1;
 }
@@ -771,10 +812,11 @@ page:first-child {
     background-size: contain;
     width: 90%;
     opacity: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     pointer-events: none;
     z-index: 2;
 }
+
 
 /* DOOR 10
 */
