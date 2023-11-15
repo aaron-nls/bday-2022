@@ -493,6 +493,8 @@ function makeFullscreen() {
         videoElement.webkitRequestFullscreen();
     } else if (videoElement.msRequestFullscreen) { // IE/Edge
         videoElement.msRequestFullscreen();
+    } else if (videoElement.webkitEnterFullScreen) { // iOS
+        videoElement.webkitEnterFullScreen();
     }
 };
 
