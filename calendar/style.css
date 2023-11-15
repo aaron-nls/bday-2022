@@ -671,10 +671,25 @@ page:first-child {
     transition: all 1s ease-in-out;
 }
 
+#door7 .pot0::before{
+    content: '';
+    position: absolute;
+    left: -8%;
+    bottom: 91%;
+    transform-origin: center bottom;
+    transform: scale(0);
+    aspect-ratio: 435/509;
+    background-image: url(images/7-plant-0.png);
+    background-size: contain;
+    width: 130%;
+    z-index: 2;
+}
+
 #door7 .pot0[data-enabled="true"] {
     top: 56%;
     left: 33%;
     transform: scale(0.75);
+    z-index: 1;
 }
 
 
@@ -688,12 +703,27 @@ page:first-child {
     background-size: contain;
     transform-origin: center bottom;
     transition: all 1s ease-in-out;
+    z-index: 4;
 }  
+
+#door7 .pot8::before{
+    content: '';
+    position: absolute;
+    left: 14%;
+    bottom: 90%;
+    transform-origin: center bottom;
+    transform: scale(0);
+    aspect-ratio: 422/682;
+    background-image: url(images/7-plant-8.png);
+    background-size: contain;
+    width: 79%;
+}
 
 #door7 .pot8[data-enabled="true"] {
     top: 55%;
     left: 22%;
-    transform: scale(0.6);
+    transform: scale(0.65);
+    z-index: 1;
 }
 
 #door7 .pot1 {
@@ -707,12 +737,41 @@ page:first-child {
     transform: scale(1);
     transform-origin: center bottom;
     transition: all 1s ease-in-out;
+    z-index: 3;
 }  
+
+#door7 .pot1::before{
+    content: '';
+    position: absolute;
+    left: -1%;
+    bottom: 91%;
+    transform-origin: center bottom;
+    transform: scale(0);
+    aspect-ratio: 279/495;
+    background-image: url(images/7-plant-1.png);
+    background-size: contain;
+    width: 75%;
+}
 
 #door7 .pot1[data-enabled="true"] {
     top: 55.4%;
     right: 32%;
-    transform: scale(0.65);
+    transform: scale(0.7);
+    z-index: 1;
+}
+
+#door7 .glow{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform-origin: center bottom;
+    transform: translateX(-50%);
+    aspect-ratio: 1125/1966;
+    background-image: url(images/7-glow.png);
+    background-size: contain;
+    width: 90%;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
 }
 
 /* DOOR 10

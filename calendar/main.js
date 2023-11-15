@@ -13,24 +13,34 @@ $(document).ready(function() {
         goToPage(target);
     });
     $('[data-show]').click(function() {
-        var target = $(this).attr('data-show');
-        showElement(target);
+        var target = $(this).attr('data-show').split(",");
+        target.forEach(function(item) {
+            showElement(item);
+        });
     });
     $('[data-toggle]').click(function() {
-        var target = $(this).attr('data-toggle');
-        toggleElement(target);
+        var target = $(this).attr('data-toggle').split(",");
+        target.forEach(function(item) {
+            toggleElement(item);
+        });
     });
     $('[data-hide]').click(function() {
-        var target = $(this).attr('data-hide');
-        hideElement(target);
+        var target = $(this).attr('data-hide').split(",");
+        target.forEach(function(item) {
+            hideElement(item);
+        });
     });
-    $('[data-enable]').click(function() {
-        var target = $(this).attr('data-enable');
-        enableElement(target);
+    $('[data-enable]').click(function() {        
+        var target = $(this).attr('data-enable').split(",");
+        target.forEach(function(item) {
+            enableElement(item);
+        });
     });
     $('[data-disable]').click(function() {
-        var target = $(this).attr('data-enable');
-        disableElement(target);
+        var target = $(this).attr('data-disable').split(",");
+        target.forEach(function(item) {
+            disableElement(item);
+        });
     });
     $('[data-run]').click(function() {
         var target = $(this).attr('data-run');
@@ -411,4 +421,52 @@ function stopMic(){
     if(javascriptNode){
         javascriptNode.disconnect();
     }
+}
+
+
+function requestCameraAccess() {
+    return navigator.mediaDevices.getUserMedia({ video: true });
+}
+
+function measureBrightness(stream) {
+    const glowElement = document.querySelector('#door7 .glow');
+    const roofElement = document.querySelector('#door7 .roof');
+    return new Promise((resolve, reject) => {
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.play();
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        video.addEventListener('play', function() {
+            const interval = setInterval(() => {
+                ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                let brightness = 0;
+
+                for (let i = 0; i < imageData.length; i += 4) {
+                    brightness += (0.3 * imageData[i] + 0.5 * imageData[i + 1] + 0.2 * imageData[i + 2]);
+                }
+
+                brightness /= (imageData.length / 4);
+                brightness = (brightness - 127.5) / 127.5; // Normalize to -1 to 1
+                let opacity = brightness - 0.8; // Calculate how much brightness is over 0.8
+                opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
+                console.log(opacity);
+                glowElement.style.opacity = opacity;
+                // glowElement.style.opacity = brightness;
+                resolve(brightness);
+            }, 1000); // Measure brightness every 1 second
+
+            video.addEventListener('ended', () => clearInterval(interval));
+        });
+    }); 
+}
+
+function door7(){
+    requestCameraAccess()
+    .then(measureBrightness)
+    .then(brightness => console.log(brightness))
+    .catch(error => console.error(error));
 }

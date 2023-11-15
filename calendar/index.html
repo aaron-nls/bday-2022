@@ -147,7 +147,7 @@
                 <div class="room room-chez">
                 </div>
                 <div class="room room7">
-                    <button class="door" data-page="door7" data-code="168">
+                    <button class="door" data-run="door7" data-page="door7" data-code="168">
                         <div>5</div>
                         <span class="material-symbols-rounded">
                             potted_plant
@@ -189,6 +189,7 @@
         </page>
 
 
+        <!-- DOOR 1 - RECORDING STUDIO (DAY 1) -->
         <page id="door1" data-sound="1"  data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -202,6 +203,7 @@
             <a class="play-button" data-id="play-button" data-enabled="false" data-sound-fx="1-clue"></a>
         </page>
 
+        <!-- DOOR 2 - WASHING ROOM (DAY 2) -->
         <page id="door2" data-sound="2" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -215,6 +217,7 @@
             <div id="waterElement" class="water a-rotating"></div>
         </page>
 
+        <!-- DOOR 3 - GAME ROOM (DAY 3) -->
         <page id="door3" data-sound="3" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -241,6 +244,7 @@
         </page>
 
 
+        <!-- DOOR 4 - YOGA STUDIO (DAY 4) -->
         <page id="door4" data-sound="4" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -253,6 +257,7 @@
             <div class="clock" onclick="door4()"></div>
         </page>
 
+        <!-- DOOR 5 - POWER BOX (DAY 8) -->
         <page id="door5" data-sound="5" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -269,6 +274,7 @@
             </div>
         </page>
 
+        <!-- DOOR 6 - CINEMA (DAY 7) -->
         <page id="door6" data-sound="6" data-bg-audio="bg-intro">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -289,6 +295,7 @@
         </page>
 
 
+        <!-- DOOR 7 - CONSERVATORY (DAY 5) -->
         <page id="door7" data-sound="7" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -298,13 +305,14 @@
                 I used to love gardening, but I haven't been able to keep up with it this year. Growing my Christmas trees used to light up my life. I'm not sure I can even remember how to do it...
             </helper>
 
-            <div class="pot0" data-id="pot0" data-enable="pot0" data-enabled="false"></div>
-            <div class="pot8" data-id="pot8" data-enable="pot8" data-enabled="false"></div>
-            <div class="pot1" data-id="pot1" data-enable="pot1" data-enabled="false"></div>
+            <div class="pot0" data-id="pot0" data-enable="pot0" data-disable="pot8,pot1" data-enabled="false"></div>
+            <div class="pot1" data-id="pot1" data-enable="pot1" data-disable="pot8,pot0" data-enabled="false"></div>
+            <div class="pot8" data-id="pot8" data-enable="pot8" data-disable="pot0,pot1" data-enabled="false"></div>
             <div class="glow" data-id="glow"></div>
             <div class="roof"></div>
         </page>
 
+        <!-- DOOR 10 - BATHROOM (DAY 6) -->
         <page id="door10" data-sound="10" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
