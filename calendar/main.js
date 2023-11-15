@@ -436,11 +436,13 @@ function measureBrightness(stream) {
         video.srcObject = stream;
         video.play();
 
+        videoStream = stream;
+
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
 
         video.addEventListener('play', function() {
-            const interval = setInterval(() => {
+            videoInterval = setInterval(() => {
                 ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
                 let brightness = 0;
@@ -451,22 +453,45 @@ function measureBrightness(stream) {
 
                 brightness /= (imageData.length / 4);
                 brightness = (brightness - 127.5) / 127.5; // Normalize to -1 to 1
-                let opacity = brightness - 0.8; // Calculate how much brightness is over 0.8
+                let opacity = (brightness - 0.5) * 2; // Calculate how much brightness is over 0.8
                 opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
-                console.log(opacity);
+                if(opacity > 0.85) {
+                    let currentPlant = document.querySelector('#door7 [data-enabled="true"]');
+                    let currentScale = parseFloat(getComputedStyle(currentPlant).getPropertyValue('--scale'));
+
+                    if(currentScale>=1){
+                        currentPlant.setAttribute('data-enabled', 'false');
+                    }
+
+                    // Increment the value
+                    currentScale += 0.05; // Increment by 0.1, adjust this value as needed
+
+                    // Set the new value
+                    currentPlant.style.setProperty('--scale', currentScale);
+                }
                 glowElement.style.opacity = opacity;
-                // glowElement.style.opacity = brightness;
                 resolve(brightness);
-            }, 1000); // Measure brightness every 1 second
+            }, 500); // Measure brightness every 1 second
 
             video.addEventListener('ended', () => clearInterval(interval));
         });
     }); 
 }
 
+let videoStream;
+let videoInterval;
 function door7(){
     requestCameraAccess()
     .then(measureBrightness)
     .then(brightness => console.log(brightness))
     .catch(error => console.error(error));
+}
+
+function endCamera(){
+    if(videoStream){
+        videoStream.getTracks().forEach(track => track.stop());
+    }
+    if(videoInterval){
+        clearInterval(videoInterval);
+    }
 }
