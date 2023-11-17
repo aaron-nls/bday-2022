@@ -162,10 +162,17 @@ function goToPage(page) {
     const curBackground = $(curPage).data('bg-audio');
     const curBgVolume = $(curPage).data('bg-volume');
     const curSound = $(curPage).data('sound');
+    const curFunction = $(curPage).data('enter-func');
     if(globalInterval) clearInterval(globalInterval);
     playSound(curSound ?? null);
     playBackground(curBackground ?? null, curBgVolume ?? 0.5);
+
     $(curPage).fadeIn();
+
+    if(curFunction) {
+        window[curFunction]();
+    }
+
 }
 
 function playBackground(newBgAudio, bgVolume) {
@@ -514,4 +521,11 @@ function endCamera(){
     if(videoInterval){
         clearInterval(videoInterval);
     }
+}
+
+function door8(){
+    let roomElement = document.querySelector('#door8 .rooms');
+    roomElement.scrollLeft = 0; 
+    let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
+    roomElement.scrollBy({ left: scrollSnapWidth });
 }

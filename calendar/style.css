@@ -284,7 +284,7 @@ page:first-child {
     position: absolute;
     top: 36.4%;
     left: 43.6%;
-    font-size: 26px;
+    font-size: 3vh;
     color: #d6b046;
     text-shadow: 1px 1px 0px #5c3b03a8;
 }
@@ -295,12 +295,12 @@ page:first-child {
     transition: all 0.5s ease-in-out;
     position: absolute;
     color: #ffc77cc4;
-    top: 25.8%;
-    left: 45%;
+    top: 25.2%;
+    left: 39%;
     text-align: center;
-    width: 21px;
+    width: 23%;
     font-family: 'Grenze Gotisch', sans-serif;
-    font-size: 18px;
+    font-size: 2.4vh;
     text-shadow: 1px 1px 0px black;
 }
 
@@ -331,15 +331,16 @@ page:first-child {
 
 #house2 .door div{
     color: #ffc77cc4;
-    top: 54.8%;
-    left: 44%;
+    top: 54.3%;
+    left: 37.9%;
 }
 
 #house2 .door span{
     top: 38.5%;
-    left: 41.6%;
+    left: 38.6%;
     color: #d3bd7f;
     text-shadow: 1px 1px 0px #5c3b038c;
+    font-size: 4vh;
 }
 
 #house2 .door:after{
@@ -817,6 +818,23 @@ page:first-child {
     z-index: 2;
 }
 
+
+
+/* DOOR 8
+*/
+
+#door8 .painting-0 {
+    background-image: url(images/8-painting-0.jpg);
+}
+#door8 .painting-1 {
+    background-image: url(images/8-painting-1.jpg);
+}
+#door8 .painting-2 {
+    background-image: url(images/8-painting-2.jpg);
+}
+#door8 .painting-3 {
+    background-image: url(images/8-painting-3.jpg);
+}
 
 /* DOOR 10
 */
