@@ -93,6 +93,7 @@ $(document).ready(function() {
     var draggable = null;
     $('[data-drag-x]').on('touchstart', function(event) {
         event.preventDefault();
+        if($(this).attr('data-enabled') == 'false') return;
         draggable = this;
         var clientX = event.clientX || event.touches[0].clientX;
         var rect = draggable.getBoundingClientRect();
@@ -107,6 +108,7 @@ $(document).ready(function() {
 
     $('[data-drag]').on('touchstart', function(event) {
         event.preventDefault();
+        if($(this).attr('data-enabled') == 'false') return;
         draggable = this;
         var clientX = event.clientX || event.touches[0].clientX;
         var clientY = event.clientY || event.touches[0].clientY;
@@ -155,6 +157,7 @@ let soundAudioPlayer = null;
 let soundFxAudio =  null; 
 let soundFxAudioPlayer = null;
 let globalInterval = null;
+let globalTimeout = null;
 
 function goToPage(page) {
     $('page:visible').fadeOut();
@@ -164,6 +167,7 @@ function goToPage(page) {
     const curSound = $(curPage).data('sound');
     const curFunction = $(curPage).data('enter-func');
     if(globalInterval) clearInterval(globalInterval);
+    if(globalTimeout) clearTimeout(globalTimeout);
     playSound(curSound ?? null);
     playBackground(curBackground ?? null, curBgVolume ?? 0.5);
 
@@ -434,7 +438,7 @@ function stopMic(){
 function requestCameraAccess() {
     return navigator.mediaDevices.getUserMedia({ 
         audio: false, 
-        video: { facingMode: { exact: "environment" } } 
+        video: { facingMode: { ideal: "environment" } } 
     });
 }
 
@@ -462,8 +466,6 @@ function measureBrightness(stream) {
 
                 brightness /= (imageData.length / 4);
                 brightness = brightness / 255;; // Normalize to -1 to 1
-                // brightness = Math.max(0, Math.min(1, brightness)); // Clamp between 0 and 1
-                console.log(brightness);
                 if(brightness > 0.5) {
                     let currentPlant = document.querySelector('#door7 [data-enabled="true"]');
 
@@ -528,4 +530,29 @@ function door8(){
     roomElement.scrollLeft = 0; 
     let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
     roomElement.scrollBy({ left: scrollSnapWidth });
+}
+
+function handleVisibilityChange() {
+    if (document.hidden) {
+        // The page is hidden, clear the timer
+        clearTimeout(globalTimeout);
+        disableElement('ice');
+    } else {
+        // The page is visible, start the timer
+        globalTimeout = setTimeout(function() {
+            enableElement('pallet');
+            disableElement('effects');
+        }, 60000);
+    }
+}
+
+function door9() {
+    // Listen for visibility change events
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    enableElement('ice');
+    // Start the timer
+    globalTimeout = setTimeout(function() {
+        enableElement('pallet');
+        disableElement('effects');
+    }, 60000);
 }

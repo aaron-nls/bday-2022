@@ -8,6 +8,7 @@ body{
     background-color: black;
     font-family: 'Rancho', sans-serif;
     font-size: 16px;
+    z-index: 999;
 }
 
 *{
@@ -805,13 +806,13 @@ page:first-child {
 #door7 .glow{
     position: absolute;
     left: 50%;
-    top: 30%;
+    top: 19%;
     transform-origin: center bottom;
     transform: translateX(-50%);
     aspect-ratio: 1125/1966;
     background-image: url(images/7-glow.png);
     background-size: contain;
-    width: 90%;
+    width: 100%;
     opacity: 0;
     transition: all 0.2s ease-in-out;
     pointer-events: none;
@@ -834,6 +835,141 @@ page:first-child {
 }
 #door8 .painting-3 {
     background-image: url(images/8-painting-3.jpg);
+}
+
+
+/* DOOR 9
+*/
+
+#door9 {
+    background-image: url(images/bg-9.jpg);
+}
+
+
+#door9 .envelope{
+    position: absolute;
+    left: 33%;
+    top: 76%;
+    aspect-ratio: 159/72;
+    background-image: url(images/9-envelope.png);
+    background-size: contain;
+    width: 10%;
+}
+
+#door9 .pallet{
+    position: absolute;
+    left: 25%;
+    top: 70.7%;
+    aspect-ratio: 516/217;
+    background-image: url(images/9-pallet.png);
+    background-size: contain;
+    width: 50%;
+}
+
+#door9 .effects,
+#door9 .ice{
+    position: absolute;
+    overflow: visible;
+    left: 31%;
+    bottom: 25%;
+    background-image: url(images/9-ice.png);
+    background-size: 100% auto;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    width: 37%;
+    height: 50%;
+    transform-origin: center bottom;
+    clip-path: polygon(0 5%, 0 100%, 100% 100%, 100% 4%, 92% 0, 80% 3%, 70% 1%, 60% 1%, 49% 3%, 38% 2%, 27% 0, 18% 0, 9% 2%);
+}
+
+#door9 .ice[data-enabled="true"]{
+    animation: melt 60s linear 1 forwards;
+}
+
+
+#door9 .ice::before,
+#door9 .ice::after{
+    content: '';
+    background-image: url(images/9-water.png);
+    background-size: contain;
+    aspect-ratio: 4/4;
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    bottom: 0;
+    opacity: 0;
+    animation: water 10s linear infinite;
+}
+#door9 .ice::after{
+    animation-delay: 5s;
+}
+
+#door9 .effects{
+    background: none;
+}
+
+#door9 .effects[data-enabled="true"]::before,
+#door9 .effects[data-enabled="true"]::after{
+    content: '';
+    background-image: url(images/9-steam.png);
+    background-size: contain;
+    aspect-ratio: 1/1;
+    position: absolute;
+    width: 150%;
+    left: -25%;
+    bottom: 0;
+    opacity: 0;
+    animation: steam 3s linear infinite;
+}
+
+#door9 .effects[data-enabled="true"]::after{
+    animation-delay: 1.5s;
+    transform: rotateX(180deg);
+}   
+
+@keyframes melt {
+    0% {
+      height: 50%;
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      height: 25%;
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      height: 0%;
+      opacity: 0.8;
+      transform: scale(0.5);
+    }
+}
+
+@keyframes steam {
+    0% {
+        opacity: 0;
+        bottom: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        bottom: 100%;
+    }
+}
+@keyframes water {
+    0% {
+        opacity: 0;
+        bottom: 50%;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        bottom: 0%;
+    }
 }
 
 /* DOOR 10

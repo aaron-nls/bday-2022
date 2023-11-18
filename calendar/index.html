@@ -345,6 +345,24 @@
 
         </page>
 
+
+        <!-- DOOR 9 - BATHROOM (DAY 10) -->
+        <page id="door9" data-sound="9" data-enter-func="door9" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-run="stopMic" data-page="house2"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                Brrr it's cold! As you might have guessed, this is my walk in meat freezer - or as I like to call it, the naughty list. This is where I keep the food for the annual village Christmas feast, but I'm not sure we'll do it this year. Anyway, best close the door before everything spoils!
+            </helper>
+        
+            <div class="envelope"></div>
+            <div class="pallet" data-id="pallet" data-enabled="false" data-drag-x="true"></div>
+            <div class="ice" data-id="ice" data-enabled="false"></div>
+            <div class="effects" data-id="effects" data-enabled="true"></div>
+
+        </page>
+
         <!-- DOOR 10 - BATHROOM (DAY 6) -->
         <page id="door10" data-sound="10" data-bg-audio="bg-generic">
             <toolbar>
