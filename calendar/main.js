@@ -542,7 +542,7 @@ function handleVisibilityChange() {
         globalTimeout = setTimeout(function() {
             enableElement('pallet');
             disableElement('effects');
-        }, 60000);
+        }, 300000);
     }
 }
 
@@ -554,5 +554,5 @@ function door9() {
     globalTimeout = setTimeout(function() {
         enableElement('pallet');
         disableElement('effects');
-    }, 60000);
+    }, 300000);
 }

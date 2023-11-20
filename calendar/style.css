@@ -253,7 +253,37 @@ page:first-child {
 }   
 .room10 {
     background-image: url(images/bg-door-10.jpg);
+} 
+.room11 {
+    background-image: url(images/bg-door-11.jpg);
+}
+.room12 {
+    background-image: url(images/bg-door-12.jpg);
 }   
+.room13 {
+    background-image: url(images/bg-door-13.jpg);
+}   
+.room14 {
+    background-image: url(images/bg-door-14.jpg);
+}
+.room15 {
+    background-image: url(images/bg-door-15.jpg);
+}   
+.room16 {
+    background-image: url(images/bg-door-16.jpg);
+}   
+.room17 {
+    background-image: url(images/bg-door-17.jpg);
+}   
+.room18 {
+    background-image: url(images/bg-door-18.jpg);
+}   
+.room19 {
+    background-image: url(images/bg-door-19.jpg);
+}   
+.room20 {
+    background-image: url(images/bg-door-20.jpg);
+}     
 .room-stairs {
     background-image: url(images/bg-door-stairs.jpg);
 }  
@@ -263,12 +293,19 @@ page:first-child {
 .room-stairs3 {
     background-image: url(images/bg-door-stairs3.jpg);
 }
+.room-stairs4 {
+    background-image: url(images/bg-door-stairs4.jpg);
+}
+.room-stairs5 {
+    background-image: url(images/bg-door-stairs5.jpg);
+}
 .room-window {
     background-image: url(images/bg-floor2-window.jpg);
 }
 .room-chez {
     background-image: url(images/bg-floor2-chez.jpg);
 }
+
 
 .door{
     position: absolute;
@@ -279,6 +316,11 @@ page:first-child {
     left: 28%;
     top: 33%;
     background-color: transparent;
+}
+
+.door-rotate {
+    transform: rotateY(180deg);
+    width: 42.5%;
 }
 
 .door  span{
@@ -342,6 +384,20 @@ page:first-child {
     color: #d3bd7f;
     text-shadow: 1px 1px 0px #5c3b038c;
     font-size: 4vh;
+}
+#house3 .door div{
+    color: #ffc77cc4;
+    top: -22.8%;
+    left: 35.9%;
+    font-size: 2.1vh;
+}
+
+#house3 .door span{
+    top: 5.5%;
+    left: 42.6%;
+    color: #d3bd7f;
+    text-shadow: 1px 1px 0px #5c3b038c;
+    font-size: 2vh;
 }
 
 #house2 .door:after{
@@ -883,7 +939,7 @@ page:first-child {
 }
 
 #door9 .ice[data-enabled="true"]{
-    animation: melt 60s linear 1 forwards;
+    animation: melt 300s linear 1 forwards;
 }
 
 
