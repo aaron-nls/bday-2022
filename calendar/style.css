@@ -385,6 +385,15 @@ page:first-child {
     text-shadow: 1px 1px 0px #5c3b038c;
     font-size: 4vh;
 }
+
+#house2 .door:after{
+    background-image: url(images/padlock2.jpg);
+    top: 52.8%;
+    left: 6.5%;
+    aspect-ratio: 76/86;
+    width: 15%;
+}
+
 #house3 .door div{
     color: #ffc77cc4;
     top: -22.8%;
@@ -393,16 +402,22 @@ page:first-child {
 }
 
 #house3 .door span{
-    top: 5.5%;
-    left: 42.6%;
+    top: 2.8%;
+    left: 40.9%;
     color: #d3bd7f;
     text-shadow: 1px 1px 0px #5c3b038c;
-    font-size: 2vh;
+    font-size: 2.4vh;
+    background: black;
+    border-radius: 100%;
+    padding: 2px 2px 0;
+    border-top: 2px solid #d08827;
 }
 
-#house2 .door:after{
-    background-image: url(images/padlock2.jpg);
-    top: 52.8%;
+#house3 .door.door-odd{left: 28.3%;}
+
+#house3 .door:after{
+    background-image: url(images/padlock3.jpg);
+    top: 2.8%;
     left: 6.5%;
     aspect-ratio: 76/86;
     width: 15%;
@@ -1087,4 +1102,128 @@ page:first-child {
     background-image: url(images/10-fog.png);
     background-size: contain;
     opacity: 0;
+}
+
+
+/* DOOR 11
+*/
+
+#door11 {
+    background-image: url(images/bg-11.jpg);
+}
+
+#door11 .keyboard{
+    position: absolute;
+    top: 76%;
+    left: 13%;
+    width: 83%;
+    height: 8%;
+}
+
+#door11 .key{
+    width: 12%;
+    position: absolute;
+    height: 40%;
+    text-indent: -99999px;
+}
+
+
+#door11 .key:nth-child(1){
+    left: 6%;
+    top: 11%;
+}
+#door11 .key:nth-child(2){
+    left: 20%;
+    top: 11%;
+}
+
+#door11 .key:nth-child(3){
+    left: 33.5%;
+    top: 11%;
+}
+
+#door11 .key:nth-child(4){
+    left: 47%;
+    top: 11%;
+}   
+
+#door11 .key:nth-child(5){
+    left: 62%;
+    top: 11%;
+}
+
+#door11 .key:nth-child(6){
+    left: 76%;
+    top: 11%;
+    width: 18%;
+}
+
+#door11 .key:nth-child(7){
+    left: 1%;
+    top: 60%;
+    width: 9%;
+}
+
+#door11 .key:nth-child(8){
+    left: 11%;
+    top: 60%;
+}
+
+#door11 .key:nth-child(9){
+    left: 24%;
+    top: 60%;
+}   
+
+#door11 .key:nth-child(10){
+    left: 37%;
+    top: 60%;
+}   
+
+#door11 .key:nth-child(11){
+    left: 51%;
+    top: 60%;
+}
+
+#door11 .key:nth-child(12){
+    left: 65%;
+    top: 60%;
+}
+
+#door11 .key:nth-child(13){
+    left: 79%;
+    top: 60%;
+    width: 18%;
+}
+
+#door11 .key:nth-child(14){
+    left: 36%;
+    top: 60%;
+}   
+
+#door11 .key:nth-child(15){
+    left: 48%;
+    top: 60%;
+}
+
+
+#door11 .screen{
+    position: absolute;
+    width: 32%;
+    left: 34%;
+    height: 9%;
+    top: 52%;
+    padding: 1.2vh;
+    font-size: 2.8vh;
+    letter-spacing: 0.5vh;
+}
+
+.door11code{ display: none;}
+
+@media print {
+    main {
+        display: none;
+    }
+
+    .door11code{ display: block; font-size: 128px;}
+    .door11code span{ display: block; font-size: 128px;}
 }

@@ -42,9 +42,9 @@ $(document).ready(function() {
             disableElement(item);
         });
     });
-    $('[data-run]').click(function() {
+    $('[data-run]').click(function(e) {
         var target = $(this).attr('data-run');
-        window[target]();
+        window[target](e);
     });
     $('[data-sound-fx]').click(function() {
         var target = $(this).attr('data-sound-fx');
@@ -532,6 +532,14 @@ function door8(){
     roomElement.scrollBy({ left: scrollSnapWidth });
 }
 
+
+function house3(){
+    let roomElement = document.querySelector('#house3 .rooms');
+    roomElement.scrollLeft = 0; 
+    let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
+    roomElement.scrollBy({ left: scrollSnapWidth * 5 });
+}
+
 function handleVisibilityChange() {
     if (document.hidden) {
         // The page is hidden, clear the timer
@@ -555,4 +563,21 @@ function door9() {
         enableElement('pallet');
         disableElement('effects');
     }, 300000);
+}
+
+function addKey(e){
+    var keyPressed = e.target.innerText;
+    console.log(keyPressed)
+
+    if(keyPressed == ''){
+        $('#door11 .screen').empty();
+        return;
+    }
+
+    $('#door11 .screen').append(keyPressed);
+}
+
+function printPage(){
+    if($('#door11 .screen').text() != 'spirit') return;
+    window.print();
 }

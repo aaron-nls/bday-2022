@@ -188,48 +188,48 @@
             </div>
         </page>
 
-        <page id="house3" data-bg-audio="bg-generic">
+        <page id="house3" data-enter-func="house3" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
             <div class="rooms">
                 <div class="room room11">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door door-odd" data-page="door13"  data-code="321">
+                        <div>13</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            apartment
                         </span>
                     </button>
                 </div>
                 <div class="room room12">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door" data-page="door20"  data-code="321">
+                        <div>20</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            balcony
                         </span>
                     </button>
                 </div>
                 <div class="room room13">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door door-odd" data-page="door19"  data-code="321">
+                        <div>19</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            local_cafe
                         </span>
                     </button>
                 </div>
                 <div class="room room14">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door" data-page="door14"  data-code="321">
+                        <div>14</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            star
                         </span>
                     </button>
                 </div>
                 <div class="room room15">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door door-odd" data-page="door11"  data-code="321">
+                        <div>11</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            mail
                         </span>
                     </button>
                 </div>
@@ -238,42 +238,42 @@
                     </button>
                 </div>
                 <div class="room room16">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door door-odd" data-page="door16"  data-code="321">
+                        <div>16</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            single_bed
                         </span>
                     </button>
                 </div>
                 <div class="room room17">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door" data-page="door17"  data-code="321">
+                        <div>17</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            book_2
                         </span>
                     </button>
                 </div>
                 <div class="room room18">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door door-odd" data-page="door15"  data-code="321">
+                        <div>15</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            styler
                         </span>
                     </button>
                 </div>
                 <div class="room room19">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door" data-page="door18"  data-code="321">
+                        <div>18</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            laptop_mac
                         </span>
                     </button>
                 </div>
                 <div class="room room20">
-                    <button class="door" data-page="door6"  data-code="321">
-                        <div>7</div>
+                    <button class="door door-odd" data-page="door12"  data-code="321">
+                        <div>12</div>
                         <span class="material-symbols-rounded">
-                            movie
+                            music_note
                         </span>
                     </button>
                 </div>
@@ -421,7 +421,7 @@
         <page id="door8" data-sound="8" data-enter-func="door8" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="open" data-run="stopMic" data-page="house2"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house2"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
                 I love art. I often find myself staring at the paintings, wondering what the artist was thinking when they painted them. Anyway, better not get lost in the art, we need to start looking elsewhere...
@@ -441,11 +441,11 @@
         </page>
 
 
-        <!-- DOOR 9 - BATHROOM (DAY 10) -->
+        <!-- DOOR 9 - ICE ROOM (DAY 10) -->
         <page id="door9" data-sound="9" data-enter-func="door9" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="open" data-run="stopMic" data-page="house2"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house2"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
                 Brrr it's cold! As you might have guessed, this is my walk in meat freezer - or as I like to call it, the naughty list. This is where I keep the food for the annual village Christmas feast, but I'm not sure we'll do it this year. Anyway, best close the door before everything spoils!
@@ -473,6 +473,41 @@
             <div class="bathwater" data-id="water" data-enabled="false"></div>
             <div class="fog"></div>
         </page>
+
+        <!-- DOOR 11 - Writing room (DAY 11) -->
+        <page id="door11" data-sound="11" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                This bathroom used to be my little oasis. I can't remember the last time I let off steam, had a bath and relaxed in here... 
+            </helper>
+
+            <div class="screen"></div>
+            <div class="keyboard">
+                <a data-id="keys" class="key" data-run="addKey">s</a>
+                <a data-id="keya" class="key" data-run="addKey">a</a>
+                <a data-id="keyh" class="key" data-run="addKey">h</a>
+                <a data-id="keyv" class="key" data-run="addKey">v</a>
+                <a data-id="keyt" class="key" data-run="addKey">t</a>
+                <a data-id="keyclear" class="key" data-run="addKey"></a>
+                <a data-id="keym" class="key" data-run="addKey">m</a>
+                <a data-id="keyp" class="key" data-run="addKey">p</a>
+                <a data-id="keyn" class="key" data-run="addKey">n</a>
+                <a data-id="keyi" class="key" data-run="addKey">i</a>
+                <a data-id="keyr" class="key" data-run="addKey">r</a>
+                <a data-id="keye" class="key" data-run="addKey">e</a>
+                <a data-id="keyprint" class="key" data-run="printPage"></a>
+            </div>
+        </page>
     </main>
+
+    <div class="door11code">
+        875
+        <span class="material-symbols-rounded">
+            music_note
+        </span>
+    </div>
 </body>
 </html>
