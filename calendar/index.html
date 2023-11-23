@@ -61,8 +61,17 @@
             </menu>
         </page>
         <page id="intro3" data-sound="story-3" data-bg-audio="bg-intro">
+
+            <toolbar>
+                <button class="btn-icon btn-skip" data-page="start" ></button>
+            </toolbar>  
             <menu>
-                <button class="btn" data-page="start"  data-sound-fx="sparkle">Begin your adventure</button>
+                <button class="btn" data-page="intro4"  data-sound-fx="sparkle">Next</button>
+            </menu>
+        </page>
+        <page id="intro4" data-sound="story-4" data-bg-audio="bg-intro">
+            <menu>
+                <button class="btn" data-page="start" >Begin your adventure</button>
             </menu>
         </page>
 
@@ -75,8 +84,8 @@
         </page>
 
         <div class="doorPadlock">
-            <input class="doorCodeInput" maxlength="3" type="text" placeholder="Enter code">
-            <button class="btn" class="unlockDoor">Unlock</button>
+            <input class="doorCodeInput" maxlength="3" type="text" placeholder="000">
+            <button class="btn unlockDoor">Unlock</button>
         </div>
         <page id="house" data-bg-audio="bg-generic">
             <toolbar>
@@ -113,7 +122,7 @@
                     </button>
                 </div>
                 <div class="room room5">
-                    <button class="door" data-run="isDisconnected" data-page="door5"  data-code="505">
+                    <button class="door" data-page="door5"  data-code="505">
                         <div>8</div>
                         <span class="material-symbols-rounded">
                             bolt
@@ -147,7 +156,7 @@
                 <div class="room room-chez">
                 </div>
                 <div class="room room7">
-                    <button class="door" data-run="door7" data-page="door7" data-code="168">
+                    <button class="door" data-page="door7" data-code="168">
                         <div>5</div>
                         <span class="material-symbols-rounded">
                             potted_plant
@@ -178,7 +187,7 @@
                     </button>   
                 </div>
                 <div class="room room10">
-                    <button class="door" data-run="door10" data-page="door10" data-code="801">
+                    <button class="door" data-page="door10" data-code="801">
                         <div>6</div>
                         <span class="material-symbols-rounded">
                             wc
@@ -188,7 +197,7 @@
             </div>
         </page>
 
-        <page id="house3" data-enter-func="house3" data-bg-audio="bg-generic">
+        <page id="house3" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
@@ -197,7 +206,7 @@
                     <button class="door door-odd" data-page="door13"  data-code="321">
                         <div>13</div>
                         <span class="material-symbols-rounded">
-                            apartment
+                            desk
                         </span>
                     </button>
                 </div>
@@ -270,7 +279,7 @@
                     </button>
                 </div>
                 <div class="room room20">
-                    <button class="door door-odd" data-page="door12"  data-code="321">
+                    <button class="door door-odd" data-page="door12"  data-code="875">
                         <div>12</div>
                         <span class="material-symbols-rounded">
                             music_note
@@ -353,7 +362,7 @@
         </page>
 
         <!-- DOOR 5 - POWER BOX (DAY 8) -->
-        <page id="door5" data-sound="5" data-bg-audio="bg-generic">
+        <page id="door5" data-enter-func="isDisconnected data-sound="5" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
@@ -400,7 +409,7 @@
 
 
         <!-- DOOR 7 - CONSERVATORY (DAY 5) -->
-        <page id="door7" data-sound="7" data-bg-audio="bg-generic">
+        <page id="door7" data-enter-func="door7" data-sound="7" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="endCamera" data-page="house2"></button>
@@ -459,7 +468,7 @@
         </page>
 
         <!-- DOOR 10 - BATHROOM (DAY 6) -->
-        <page id="door10" data-sound="10" data-bg-audio="bg-generic">
+        <page id="door10" data-enter-func="door10" data-sound="10" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="stopMic" data-page="house2"></button>
@@ -501,8 +510,27 @@
                 <a data-id="keyprint" class="key" data-run="printPage"></a>
             </div>
         </page>
-    </main>
 
+
+        <!-- DOOR 12 - MUSIC ROOM (DAY 12) -->
+        <page id="door12" data-sound="12" data-bg-audio="bg-generic" data-bg-volume="0">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                Brrr it's cold! As you might have guessed, this is my walk in meat freezer - or as I like to call it, the naughty list. This is where I keep the food for the annual village Christmas feast, but I'm not sure we'll do it this year. Anyway, best close the door before everything spoils!
+            </helper>
+        
+            <a class="recordplayer"></a>
+            <a class="radio"></a>
+            <a class="cdplayer"></a>
+            <a class="maracas" data-sound-fx="12-maracas"></a>
+            <a class="tambourine" data-sound-fx="12-tambourine"></a>
+            <a class="cello" data-sound-fx="12-cello"></a>
+            <a class="violin" data-sound-fx="12-violin"></a>
+        </page>
+    </main>
     <div class="door11code">
         875
         <span class="material-symbols-rounded">

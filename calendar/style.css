@@ -93,7 +93,8 @@ menu {
     bottom: 0;
     right: 0;
     width: 100%;
-    padding: 15px 20px;
+    padding: 10vh 2vh;
+    margin: 0;
     z-index: 99;
 }
 
@@ -186,6 +187,32 @@ page:first-child {
 }
 
 
+#intro4 {
+    background-image: url(images/bg-intro-4.jpg);
+    background-position: center bottom;
+    background-size: 100% auto;
+    animation: intro4 12s linear 1 forwards;
+}
+
+@keyframes intro4 {
+    0% {
+        background-position: left bottom;
+        background-size: 300% auto;
+    }
+    33% {
+        background-position: center bottom;
+        background-size: 100% auto;
+    }
+    50% {
+        background-position: center bottom;
+        background-size: 100% auto;
+    }
+    100% {
+        background-position: center top;
+    }
+}
+
+
 #start {
     background-image: url(images/bg-start.jpg);
     padding: 20px;
@@ -193,13 +220,13 @@ page:first-child {
 }
 
 #start menu{
-    bottom: 48%;
+    bottom: 38%;
 }
 
 #start img{
     position: absolute;
     top: 19%;
-    left: 4.5%;
+    left: 0.5%;
     width: 90vw;
 }
 
@@ -333,7 +360,7 @@ page:first-child {
 }
 
 .door div{
-    opacity: 0;
+    /* opacity: 0; */
     pointer-events: none;
     transition: all 0.5s ease-in-out;
     position: absolute;
@@ -351,7 +378,7 @@ page:first-child {
     opacity: 1;
 }
 
-.door:after{
+.door[data-page^='door']:after{
     content: '';
     pointer-events: none;
     transition: all 0.5s ease-in-out;
@@ -417,10 +444,16 @@ page:first-child {
 
 #house3 .door:after{
     background-image: url(images/padlock3.jpg);
-    top: 2.8%;
-    left: 6.5%;
-    aspect-ratio: 76/86;
-    width: 15%;
+    top: 61.8%;
+    left: 40.6%;
+    aspect-ratio: 77/114;
+    width: 14.6%;
+    transform: rotateY(180deg);
+}
+#house3 .door.door.door-odd:after{
+    left: 39.7%;
+    transform: none;
+    width: 14.9%;
 }
 
 @keyframes rotating {
@@ -481,10 +514,30 @@ page:first-child {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: gray;
-    border: 2px solid gold;
+    background: gray url(images/bg-padlock.jpeg) no-repeat center;
+    background-size: cover;
+    border: 2px solid #282828;
     flex-direction: column;
     text-align: center;
+    z-index: 9999999;
+    border-radius: 2vh;
+    box-shadow: 0 0 10vh;
+}
+
+.doorCodeInput{
+    font-size: 7.2vh;
+    letter-spacing: 4.5vh;
+    width: 100%;
+    box-shadow: inset 0 0 10px 5px #000000de;
+    border-radius: 1.5vh;
+    -webkit-appearance: none;
+    padding: 0 0 0 4.1vh;
+    font-family: monospace;
+     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: linear-gradient(to right, #ffffff 0%,#ffffff 30%,#424242 33%,#ffffff 36%,#ffffff 63%,#3a3a3a 66%,#ffffff 69%,#ffffff 100%);
+    outline: 1px solid #ffffff6b;
+    margin-bottom: 2vh;
+    overflow: hidden;
 }
 
 
@@ -1215,6 +1268,8 @@ page:first-child {
     padding: 1.2vh;
     font-size: 2.8vh;
     letter-spacing: 0.5vh;
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 .door11code{ display: none;}
@@ -1224,6 +1279,70 @@ page:first-child {
         display: none;
     }
 
-    .door11code{ display: block; font-size: 128px;}
-    .door11code span{ display: block; font-size: 128px;}
+    html, body { 
+        position: static;
+        background-color: white;
+    }
+
+    .door11code{ display: inline; font-size: 228px; position: static; color: red;}
+    .door11code span{ display: inline; font-size: 228px;}
+}
+
+
+/* DOOR 12
+*/
+
+#door12 {
+    background-image: url(images/bg-12.jpg);
+}
+
+#door12 .violin{
+    position: absolute;
+    top: 77%;
+    left: 68%;
+    width: 16%;
+    height: 11%;
+}
+
+#door12 .cello{
+    position: absolute;
+    top: 41%;
+    left: 0%;
+    width: 14%;
+    height: 29%;
+}
+#door12 .cdplayer{
+    position: absolute;
+    top: 54%;
+    left: 25%;
+    width: 16%;
+    height: 8%;
+}
+#door12 .radio{
+    position: absolute;
+    top: 45%;
+    left: 69%;
+    width: 16%;
+    height: 7%;
+}
+#door12 .tambourine{
+    position: absolute;
+    top: 78%;
+    left: 13%;
+    width: 19%;
+    height: 6%;
+}
+#door12 .maracas{
+    position: absolute;
+    top: 60%;
+    left: 85%;
+    width: 13%;
+    height: 6%;
+}
+#door12 .recordplayer{
+    position: absolute;
+    top: 40%;
+    left: 13%;
+    width: 32%;
+    height: 8%;
 }

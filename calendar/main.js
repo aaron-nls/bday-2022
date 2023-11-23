@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    startGame();
     $('.door').attr('data-enabled', 'true');
     $('button[data-page]').click(function() {
         var target = $(this).attr('data-page');
@@ -65,27 +66,38 @@ $(document).ready(function() {
 
     let doorCode = null;
     let doorNumber = null;
-    $(document).on('.door[data-enabled="false"]', 'click', function(event) {
+    $('.door[data-page^="door"]').click(function(event) {
+        if($(this).attr('data-enabled') == 'true') return;
         doorNumber = $(this).find('div').text();
         doorCode =  $(this).attr('data-code');
-        $('doorCodeInput').val('');
-        $('doorPadlock').fadeIn();
+
+        $('.doorCodeInput').val('');
+        $('.doorPadlock').fadeIn();
+        bgAudioPlayer.volume = 0.2;
     });
 
     $('.unlockDoor').click(function(event) {
-        let userInput = $('doorCodeInput').val();
-        if(doorCode == userInput) {
-            playSoundFx('unlock');
-            $(`[data-door="door${doorNumber}"]`).attr('data-enabled', 'true');
-        }else{
-            playSoundFx('locked');
-        }
+        let userInput = $('.doorCodeInput').val();
+        $('.doorPadlock').fadeOut(function() {  
+            if(doorCode == userInput && (doorNumber-1) <= adventDay) {
+                playSoundFx('unlock');
+                $(`[data-door="door${doorNumber}"]`).attr('data-enabled', 'true');
 
+                // Save doorNumber in localStorage
+                localStorage.setItem('unlockedDays', doorNumber);
 
-        $(`.doorPadlock`).fadeOut();
-        $('doorCodeInput').val('');
-        doorCode = null;
-        doorNumber = null;
+            }else if(doorCode == userInput && (doorNumber-1) > adventDay) {
+                playSoundFx('notyet');
+            }else{
+                playSoundFx('locked');
+            }
+
+            $('.doorCodeInput').val('');
+            doorCode = null;
+            doorNumber = null;
+            bgAudioPlayer.volume = 0.5;
+        });
+
     });
 
 
@@ -149,7 +161,8 @@ $(document).ready(function() {
 
 });
 
-
+let adventDay = 0;
+let unlockedDays = 0;
 let bgAudio = null;
 let bgAudioPlayer = null;
 let soundAudio =  null; 
@@ -231,6 +244,27 @@ function playSoundFx(newSoundFxAudio) {
         soundFxAudio = null;
         if(soundAudioFxPlayer) soundAudioFxPlayer.pause();
     }
+}
+
+
+function startGame(){
+    let roomElement = document.querySelector('#house3 .rooms');
+    roomElement.scrollLeft = 0; 
+    let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
+    roomElement.scrollBy({ left: scrollSnapWidth * 5 });
+
+    $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+      function(json) {
+        let ipParts = json.ip.split('.');
+        let lastThreeNumbers = ipParts[ipParts.length - 1];
+        $('.room13 button').attr('data-code', lastThreeNumbers);
+        console.log(lastThreeNumbers);
+      }
+    );
+
+    adventDay = new Date().getDate();
+    unlockedDays = localStorage.getItem('unlockedDays') ?? 0;
+    
 }
 
 function showElement(element) {
@@ -533,13 +567,6 @@ function door8(){
 }
 
 
-function house3(){
-    let roomElement = document.querySelector('#house3 .rooms');
-    roomElement.scrollLeft = 0; 
-    let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
-    roomElement.scrollBy({ left: scrollSnapWidth * 5 });
-}
-
 function handleVisibilityChange() {
     if (document.hidden) {
         // The page is hidden, clear the timer
@@ -567,7 +594,6 @@ function door9() {
 
 function addKey(e){
     var keyPressed = e.target.innerText;
-    console.log(keyPressed)
 
     if(keyPressed == ''){
         $('#door11 .screen').empty();
@@ -581,3 +607,30 @@ function printPage(){
     if($('#door11 .screen').text() != 'spirit') return;
     window.print();
 }
+
+let recordPlayerAudio = null;
+let radioAudio = null;
+let cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
+
+$('#door12 .recordplayer').on('touchstart', function() {
+    console.log('play');
+    if(!recordPlayerAudio){
+        recordPlayerAudio = new Audio('audio/12-record.mp3');
+    }
+    recordPlayerAudio.play();
+});
+
+$('#door12 .radio').on('touchstart', function() {
+    alert('radio')
+    if(!radioAudio){
+        radioAudio = new Audio('audio/12-radio.mp3');
+    }
+    radioAudio.play();
+});
+
+$('#door12 .cdplayer').on('touchstart', function() {
+    if(!cdPlayerAudio){
+        cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
+    }
+    cdPlayerAudio.play();
+});
