@@ -191,7 +191,7 @@ page:first-child {
     background-image: url(images/bg-intro-4.jpg);
     background-position: center bottom;
     background-size: 100% auto;
-    animation: intro4 12s linear 1 forwards;
+    animation: intro4 12s ease-in-out 1 forwards;
 }
 
 @keyframes intro4 {
@@ -226,7 +226,7 @@ page:first-child {
 #start img{
     position: absolute;
     top: 19%;
-    left: 0.5%;
+    left: 3.5%;
     width: 90vw;
 }
 

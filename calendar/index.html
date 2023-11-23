@@ -40,7 +40,7 @@
     <main>
         <page id="warning">
             <menu>
-                <button class="btn" data-page="house2">Confirm</button>
+                <button class="btn" data-page="house3">Confirm</button>
             </menu>
         </page>
 
@@ -71,14 +71,14 @@
         </page>
         <page id="intro4" data-sound="story-4" data-bg-audio="bg-intro">
             <menu>
-                <button class="btn" data-page="start" >Begin your adventure</button>
+                <button class="btn animate__animated animate__fadeIn animate__delay-5s" data-page="start" >Begin your adventure</button>
             </menu>
         </page>
 
         <page id="start" data-sound="start" data-bg-audio="bg-intro" data-bg-volume="1">
             <img class="animate__animated animate__jackInTheBox" src="images/logo.png" alt="Countdown to Christmas">
             <menu class="row">
-                <button class="btn btn-green"  data-sound-fx="sparkle" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house" >Start</button>
+                <button class="btn btn-green" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house" >Start</button>
                 <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="intro" >Play Intro</button>
             </menu>
         </page>
@@ -362,7 +362,7 @@
         </page>
 
         <!-- DOOR 5 - POWER BOX (DAY 8) -->
-        <page id="door5" data-enter-func="isDisconnected data-sound="5" data-bg-audio="bg-generic">
+        <page id="door5" data-enter-func="isDisconnected" data-sound="5" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
@@ -513,7 +513,7 @@
 
 
         <!-- DOOR 12 - MUSIC ROOM (DAY 12) -->
-        <page id="door12" data-sound="12" data-bg-audio="bg-generic" data-bg-volume="0">
+        <page id="door12" data-sound="12" data-enter-func="door12" data-bg-audio="bg-generic" data-bg-volume="0">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>

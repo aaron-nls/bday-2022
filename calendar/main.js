@@ -608,29 +608,31 @@ function printPage(){
     window.print();
 }
 
-let recordPlayerAudio = null;
-let radioAudio = null;
-let cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
 
-$('#door12 .recordplayer').on('touchstart', function() {
-    console.log('play');
-    if(!recordPlayerAudio){
-        recordPlayerAudio = new Audio('audio/12-record.mp3');
-    }
-    recordPlayerAudio.play();
-});
+function door12(){
+ 
+    let recordPlayerAudio = null;
+    let radioAudio = null;
+    let cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
 
-$('#door12 .radio').on('touchstart', function() {
-    alert('radio')
-    if(!radioAudio){
-        radioAudio = new Audio('audio/12-radio.mp3');
-    }
-    radioAudio.play();
-});
+    $('#door12 .recordplayer').on('touchstart', function() {
+        if(!recordPlayerAudio){
+            recordPlayerAudio = new Audio('audio/12-record.mp3');
+        }
+        recordPlayerAudio.play();
+    });
 
-$('#door12 .cdplayer').on('touchstart', function() {
-    if(!cdPlayerAudio){
-        cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
-    }
-    cdPlayerAudio.play();
-});
+    $('#door12 .radio').on('touchstart', function() {
+        if(!radioAudio){
+            radioAudio = new Audio('audio/12-radio.mp3');
+        }
+        radioAudio.play();
+    });
+
+    $('#door12 .cdplayer').on('touchstart', function() {
+        if(!cdPlayerAudio){
+            cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
+        }
+        cdPlayerAudio.play();
+    });
+}
