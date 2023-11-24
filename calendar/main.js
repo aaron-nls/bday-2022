@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     startGame();
-    $('.door').attr('data-enabled', 'true');
+
     $('button[data-page]').click(function() {
         var target = $(this).attr('data-page');
         if(target.includes('door')) {
@@ -81,7 +81,7 @@ $(document).ready(function() {
         $('.doorPadlock').fadeOut(function() {  
             if(doorCode == userInput && (doorNumber-1) <= adventDay) {
                 playSoundFx('unlock');
-                $(`[data-door="door${doorNumber}"]`).attr('data-enabled', 'true');
+                $(`[data-page="door${doorNumber}"]`).attr('data-enabled', 'true');
 
                 // Save doorNumber in localStorage
                 localStorage.setItem('unlockedDays', doorNumber);
@@ -248,6 +248,8 @@ function playSoundFx(newSoundFxAudio) {
 
 
 function startGame(){
+
+    $('.door').attr('data-enabled', 'true');
     let roomElement = document.querySelector('#house3 .rooms');
     roomElement.scrollLeft = 0; 
     let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
@@ -258,13 +260,15 @@ function startGame(){
         let ipParts = json.ip.split('.');
         let lastThreeNumbers = ipParts[ipParts.length - 1];
         $('.room13 button').attr('data-code', lastThreeNumbers);
-        console.log(lastThreeNumbers);
       }
     );
 
     adventDay = new Date().getDate();
     unlockedDays = localStorage.getItem('unlockedDays') ?? 0;
     
+    for(let i=0; i<unlockedDays; i++){
+        $(`[data-page="door${i+1}"]`).attr('data-enabled', 'true');
+    }
 }
 
 function showElement(element) {
