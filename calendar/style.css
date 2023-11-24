@@ -1349,4 +1349,5 @@ page:first-child {
 
 #door12 > * {
     user-select: none;
+    -webkit-user-select: none;
 }

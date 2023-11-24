@@ -644,17 +644,14 @@ function door12(){
     });
 
     $('#door12 .recordplayer').on('touchstart', function() {
-        recordPlayerAudio.play();
         playRecord = true;
     });
 
     $('#door12 .radio').on('touchstart', function() {
-        radioAudio.play();
         playRadio = true;
     });
 
     $('#door12 .cdplayer').on('touchstart', function() {
-        cdPlayerAudio.play();
         playCd = true;
     });
 }
