@@ -1346,3 +1346,7 @@ page:first-child {
     width: 32%;
     height: 8%;
 }
+
+#door12 > * {
+    user-select: none;
+}
