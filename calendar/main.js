@@ -615,28 +615,46 @@ function printPage(){
 
 function door12(){
  
-    let recordPlayerAudio = null;
-    let radioAudio = null;
+    let recordPlayerAudio = new Audio('audio/12-record.mp3');
+    let radioAudio = new Audio('audio/12-radio.mp3');
     let cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
 
-    $('#door12 .recordplayer').on('touchstart', function() {
-        if(!recordPlayerAudio){
-            recordPlayerAudio = new Audio('audio/12-record.mp3');
+    let playRadio = false;
+    let playRecord = false;
+    let playCd = false;
+
+    $('#door12 .touchend').on('touchend', function() {
+        radioAudio.currentTime = 0;
+        recordPlayerAudio.currentTime = 0;
+        cdPlayerAudio.currentTime = 0;
+
+    
+        if(playRadio) {
+            radioAudio.play();
         }
+        if(playRecord) {
+            recordPlayerAudio.play();
+        }
+        if(playCd) {
+            cdPlayerAudio.play();
+        }
+        playCd = false;
+        playRadio = false;
+        playRecord = false;
+    });
+
+    $('#door12 .recordplayer').on('touchstart', function() {
         recordPlayerAudio.play();
+        playRecord = true;
     });
 
     $('#door12 .radio').on('touchstart', function() {
-        if(!radioAudio){
-            radioAudio = new Audio('audio/12-radio.mp3');
-        }
         radioAudio.play();
+        playRadio = true;
     });
 
     $('#door12 .cdplayer').on('touchstart', function() {
-        if(!cdPlayerAudio){
-            cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
-        }
         cdPlayerAudio.play();
+        playCd = true;
     });
 }
