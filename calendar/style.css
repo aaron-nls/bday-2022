@@ -1351,3 +1351,97 @@ page:first-child {
     user-select: none;
     -webkit-user-select: none;
 }
+
+
+/* DOOR 13
+*/
+
+#door13 {
+    background-image: url(images/bg-13.jpg);
+}   
+
+#door13 .record{
+    position: absolute;
+    top: 9.5%;
+    left: 51%;
+    width: 25%;
+    aspect-ratio: 1/1;
+    transition: 0.5s transform ease-in-out;
+    transform: rotate(var(--rotate));
+    background-image: url(images/13-record.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#door13 .record-1.fallen{
+    top: 16%;
+    z-index: 1;
+}
+
+#door13 .record-2{
+    top: 21.5%;
+    left: 36%;
+}
+#door13 .record-3{
+    top: 21.5%;
+    left: 65%;
+}
+#door13 .record-4{
+    top: 34%;
+    left: 36%;
+}
+#door13 .record-5{
+    top: 34%;
+    left: 65%;
+}
+
+
+/* DOOR 17
+*/
+
+#door17 {
+    background-image: url(images/bg-17.jpg);
+}   
+
+#door17 .book1{
+    position: absolute;
+    top: 19%;
+    left: 15%;
+    width: 11%;
+    height: 2%;
+}
+#door17 .book2{
+    position: absolute;
+    top: 67%;
+    left: 11%;
+    width: 30%;
+    height: 6%;
+    transform: rotate(-9deg);
+}
+#door17 .book3{
+    position: absolute;
+    top: 74%;
+    left: 25%;
+    width: 44%;
+    height: 9%;
+    transform: rotate(-18deg);
+}
+#door17 .book4{
+    position: absolute;
+    top: 67%;
+    left: 56%;
+    width: 37%;
+    height: 6%;
+}
+
+#door17 helper a{
+   text-decoration: none;
+   color: #402805 !important;
+}
+
+/* DOOR 18
+*/
+
+#door18 {
+    background-image: url(images/bg-18.jpg);
+}   

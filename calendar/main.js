@@ -655,3 +655,29 @@ function door12(){
         playCd = true;
     });
 }
+
+function door13(){
+    $('.record').click(function(e){
+        let rotation = parseInt(this.style.getPropertyValue('--rotate')) || 0;
+
+        if(rotation == '220'){
+            if(!$('.record').hasClass('fallen')){
+                playSoundFx('open');
+                $(this).addClass('fallen'); 
+            }
+            return;
+        } 
+
+        this.style.setProperty('--rotate', (rotation + 90) + 'deg');  
+    });
+}
+
+function door17(){
+    document.addEventListener('copy', (event) => {
+        event.preventDefault();
+        const pagelink = `The answer you need is 7`;
+        navigator.clipboard.writeText(pagelink)
+        .then(() => console.log('Copied to clipboard'))
+        .catch(err => console.error('Error copying text: ', err));
+    });
+}

@@ -227,7 +227,7 @@
                     </button>
                 </div>
                 <div class="room room14">
-                    <button class="door" data-page="door14"  data-code="321">
+                    <button class="door" data-page="door14"  data-code="147">
                         <div>14</div>
                         <span class="material-symbols-rounded">
                             star
@@ -271,7 +271,7 @@
                     </button>
                 </div>
                 <div class="room room19">
-                    <button class="door" data-page="door18"  data-code="321">
+                    <button class="door" data-page="door18"  data-code="739">
                         <div>18</div>
                         <span class="material-symbols-rounded">
                             laptop_mac
@@ -519,7 +519,7 @@
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
-                Brrr it's cold! As you might have guessed, this is my walk in meat freezer - or as I like to call it, the naughty list. This is where I keep the food for the annual village Christmas feast, but I'm not sure we'll do it this year. Anyway, best close the door before everything spoils!
+                This is no time for playing
             </helper>
         
             <a class="recordplayer touchend"></a>
@@ -529,6 +529,72 @@
             <a class="tambourine" data-sound-fx="12-tambourine"></a>
             <a class="cello" data-sound-fx="12-cello"></a>
             <a class="violin" data-sound-fx="12-violin"></a>
+        </page>
+
+        <!-- DOOR 13 - OFFICE (DAY 13) -->  
+        <page id="door13" data-sound="13" data-enter-func="door13" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                This is my study I think. I needed somewhere to hide my multiple awards, I actually find them kind of embarrasing, I can't even remember when I got them. Anyway, it's best you focus on finding my Christmas Spirit...
+            </helper>
+
+            <div class="record record-1" style="--rotate:40deg"></div>
+            <div class="record record-2"  style="--rotate:-25deg"></div>
+            <div class="record record-3"  style="--rotate:10deg"></div>
+            <div class="record record-4" style="--rotate:0deg"></div>
+            <div class="record record-5" style="--rotate:0deg"></div>
+        </page>
+
+
+        <!-- DOOR 17 - LIBRARY (DAY 17) -->  
+        <page id="door17" data-sound="17" data-enter-func="door17" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                I'm getting quite bored of this. What kind of spirit ghost guide are you? Hurry up and look around these dusty books and find my Christmas Spirit!
+            </helper>
+
+            <div class="book1" data-sound-fx="paper" data-toggle="book1"></div>
+            <div class="book2" data-sound-fx="paper" data-toggle="book2"></div>
+            <div class="book3" data-sound-fx="paper" data-toggle="book3"></div>
+            <div class="book4" data-sound-fx="paper" data-toggle="book4"></div>
+
+
+            <helper data-id="book1" data-hide="book1">
+                <h1><span class="material-symbols-rounded">
+                    laptop_windows
+                </span></h1>
+            </helper>
+            <helper data-id="book2">
+                <p>Once upon a time, the Queen's was lost but she copied these very words and sent them to her friend D - "All is not what it seems". Once sent, her problems were in the pasted and a solution was found.</p>
+
+                <button data-hide="book2" class="btn">Close</button>
+            </helper>
+            <helper data-id="book3" data-hide="book3">
+                <h2>Address Book</h2> <br/><Br/>
+                1. D - <a href="mailto:countdowntochristmasss@gmail.com?subject=Help me!&body=I need help D!">d.p@arton.org.uk</a><br/>
+                2. Santa - sata@hotmail.co.uk<br/>
+                3. Aaron - aarono@outlook.com</br>
+            </helper>
+            <helper data-id="book4" data-hide="book4">
+                The magical Angel D, was old and wise. She was the closest confidant of the Queen. Whenever she <a href="tel:9">called</a>, D would always give her the answer the Queen needed.
+            </helper>
+        </page>
+
+        <!-- DOOR 18 - WORK ROOM (DAY 18) -->
+        <page id="door18" data-sound="18">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+               I'm very confused by all this, this isn't like any case I've worked on before. Why is the entire house locked? Why are we looking in all these rooms? And where is that blooming Christmas spirit?!
+            </helper>
         </page>
     </main>
     <div class="door11code">
