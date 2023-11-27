@@ -472,6 +472,21 @@ function stopMic(){
     }
 }
 
+//DOOR 6 MOVIES
+function makeFullscreen() {
+    let videoElement = $('page:visible video').get(0);
+    if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+    } else if (videoElement.mozRequestFullScreen) { // Firefox
+        videoElement.mozRequestFullScreen();
+    } else if (videoElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        videoElement.webkitRequestFullscreen();
+    } else if (videoElement.msRequestFullscreen) { // IE/Edge
+        videoElement.msRequestFullscreen();
+    } else if (videoElement.webkitEnterFullScreen) { // iOS
+        videoElement.webkitEnterFullScreen();
+    }
+};
 
 function requestCameraAccess() {
     return navigator.mediaDevices.getUserMedia({ 
@@ -529,21 +544,6 @@ function measureBrightness(stream) {
         });
     }); 
 }
-//DOOR 6 MOVIES
-function makeFullscreen() {
-    let videoElement = $('page:visible video').get(0);
-    if (videoElement.requestFullscreen) {
-        videoElement.requestFullscreen();
-    } else if (videoElement.mozRequestFullScreen) { // Firefox
-        videoElement.mozRequestFullScreen();
-    } else if (videoElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
-        videoElement.webkitRequestFullscreen();
-    } else if (videoElement.msRequestFullscreen) { // IE/Edge
-        videoElement.msRequestFullscreen();
-    } else if (videoElement.webkitEnterFullScreen) { // iOS
-        videoElement.webkitEnterFullScreen();
-    }
-};
 
 let videoStream;
 let videoInterval;
@@ -670,6 +670,51 @@ function door13(){
 
         this.style.setProperty('--rotate', (rotation + 90) + 'deg');  
     });
+}
+
+
+function measureDarkness(stream) {
+    const glowElement = document.querySelector('#door16 .lightsout');
+    return new Promise((resolve, reject) => {
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.play();
+
+        videoStream = stream;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+        video.addEventListener('play', function() {
+            videoInterval = setInterval(() => {
+                ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                let brightness = 0;
+
+                for (let i = 0; i < imageData.length; i += 4) {
+                    brightness += (0.3 * imageData[i] + 0.5 * imageData[i + 1] + 0.2 * imageData[i + 2]);
+                }
+
+                brightness /= (imageData.length / 4);
+                brightness = brightness / 255;; // Normalize to -1 to 1
+                if(brightness < 0.10) {
+                    glowElement.style.opacity = 1 - (brightness * 10);
+                }else{
+                    glowElement.style.opacity = 0;
+                }
+                resolve(brightness);
+            }, 500); // Measure brightness every 1 second
+
+            video.addEventListener('ended', () => clearInterval(interval));
+        });
+    }); 
+}
+
+function door16(){
+    requestCameraAccess()
+    .then(measureDarkness)
+    .then(brightness => console.log(brightness))
+    .catch(error => console.error(error));
 }
 
 function door17(){

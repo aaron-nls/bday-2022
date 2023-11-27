@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Countdown to Christmas</title>
+    <title>⏰ to 🎄</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -13,8 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700&family=Rancho&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js" integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" integrity="sha512-qveKnGrvOChbSzAdtSs8p69eoLegyh+1hwOMbmpCViIwj7rn4oJjdmMvWOuyQlTOZgTlZA0N2PXA7iA8/2TUYA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="main.js"></script>
-    <meta name="apple-mobile-web-app-title" content="Countdown 🎄">
+    <meta name="apple-mobile-web-app-title" content="⏰ to 🎄">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -255,7 +257,7 @@
                     </button>
                 </div>
                 <div class="room room17">
-                    <button class="door" data-page="door17"  data-code="321">
+                    <button class="door" data-page="door17"  data-code="096">
                         <div>17</div>
                         <span class="material-symbols-rounded">
                             book_2
@@ -546,6 +548,20 @@
             <div class="record record-3"  style="--rotate:10deg"></div>
             <div class="record record-4" style="--rotate:0deg"></div>
             <div class="record record-5" style="--rotate:0deg"></div>
+        </page>
+
+
+        <!-- DOOR 16 - Bedroom (DAY 16) -->
+        <page id="door16" data-enter-func="door16" data-sound="16" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-run="endCamera" data-page="house3"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                And this is where the magic happens. My bedroom - the place where I recharge. I love nothing more than starring into the stars and see what constellations I can make out. Hopefully you can find my Christmas Spirit in here...
+            </helper>
+           
+            <div class="lightsout"></div>
         </page>
 
 

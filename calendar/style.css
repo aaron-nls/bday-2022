@@ -144,7 +144,7 @@ main{
 
 page {
     display: none;
-    position: absolute ;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -154,6 +154,7 @@ page {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    /* opacity: 0; */
 }
 
 .btn-fake {
@@ -1395,6 +1396,22 @@ page:first-child {
     left: 65%;
 }
 
+/* DOOR 16
+*/
+
+#door16 {
+    background-image: url(images/bg-16.jpg);
+}   
+
+#door16 .lightsout {
+    background-image: url(images/16-lightsout.jpg);
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    opacity: 0;
+}   
 
 /* DOOR 17
 */
