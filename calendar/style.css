@@ -143,7 +143,7 @@ main{
 }
 
 page {
-    display: none;
+    /* display: none; */
     position: absolute;
     top: 0;
     left: 0;
@@ -163,13 +163,26 @@ page {
     display: block;
 }
 
-page:first-child {
-    display: block;
-}
 
+#homescreen {
+    background-image: url(images/bg-homescreen.jpg);
+}
 
 #warning {
     background-image: url(images/bg-warning.jpg);
+}
+
+
+#warning .btn[data-page="intro"]{
+    display: none
+}
+
+body[data-unlockedday="1"] #warning .btn[data-page="intro"]{
+    display: inline-flex;
+}
+
+body[data-unlockedday="1"] #warning .btn[data-page="start"]{
+    display: none;
 }
 
 
@@ -218,6 +231,39 @@ page:first-child {
     background-image: url(images/bg-start.jpg);
     padding: 20px;
     gap: 50px;
+}
+
+body[data-adventday="10"] #start,
+body[data-adventday="11"] #start,
+body[data-adventday="12"] #start,
+body[data-adventday="13"] #start,
+body[data-adventday="14"] #start{
+    background-image: url(images/bg-start-10.jpg);
+}
+
+body[data-adventday="15"] #start,
+body[data-adventday="16"] #start,
+body[data-adventday="17"] #start,
+body[data-adventday="18"] #start,
+body[data-adventday="19"] #start{
+    background-image: url(images/bg-start-15.jpg);
+}
+
+body[data-adventday="20"] #start,
+body[data-adventday="21"] #start,
+body[data-adventday="22"] #start,
+body[data-adventday="23"] #start,
+body[data-adventday="24"] #start{
+    background-image: url(images/bg-start-20.jpg);
+}
+
+body[data-adventday="24"] #start,
+body[data-adventday="25"] #start,
+body[data-adventday="26"] #start,
+body[data-adventday="27"] #start,
+body[data-adventday="28"] #start,
+body[data-adventday="29"] #start{
+    background-image: url(images/bg-start-24.jpg);
 }
 
 #start menu{
@@ -983,12 +1029,13 @@ page:first-child {
 
 #door9 .pallet{
     position: absolute;
-    left: 25%;
+    left: 50%;
     top: 70.7%;
     aspect-ratio: 516/217;
     background-image: url(images/9-pallet.png);
     background-size: contain;
     width: 50%;
+    margin-left: -25%;
 }
 
 #door9 .effects,
@@ -1008,7 +1055,7 @@ page:first-child {
 }
 
 #door9 .ice[data-enabled="true"]{
-    animation: melt 300s linear 1 forwards;
+    animation: melt 180s linear 1 forwards;
 }
 
 
@@ -1367,7 +1414,7 @@ page:first-child {
     left: 51%;
     width: 25%;
     aspect-ratio: 1/1;
-    transition: 0.5s transform ease-in-out;
+    transition: 0.5s all ease-in-out;
     transform: rotate(var(--rotate));
     background-image: url(images/13-record.png);
     background-size: contain;
@@ -1461,4 +1508,11 @@ page:first-child {
 
 #door18 {
     background-image: url(images/bg-18.jpg);
+}   
+
+/* DOOR 19
+*/
+
+#door19 {
+    background-image: url(images/bg-19.jpg);
 }   

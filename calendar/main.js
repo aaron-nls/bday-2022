@@ -249,6 +249,13 @@ function playSoundFx(newSoundFxAudio) {
 
 function startGame(){
 
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        goToPage('warning')
+    } else {
+        goToPage('homescreen')
+    }
+
+
     $('.door').attr('data-enabled', 'true');
     let roomElement = document.querySelector('#house3 .rooms');
     roomElement.scrollLeft = 0; 
@@ -264,8 +271,11 @@ function startGame(){
     );
 
     adventDay = new Date().getDate();
-    unlockedDays = localStorage.getItem('unlockedDays') ?? 0;
+    unlockedDays = localStorage.getItem('unlockedDays') ?? 1;
     
+    $('body').attr('data-adventday', adventDay);
+    $('body').attr('data-unlockedday', adventDay);
+
     for(let i=0; i<unlockedDays; i++){
         $(`[data-page="door${i+1}"]`).attr('data-enabled', 'true');
     }
@@ -578,10 +588,11 @@ function handleVisibilityChange() {
         disableElement('ice');
     } else {
         // The page is visible, start the timer
+        enableElement('ice');
         globalTimeout = setTimeout(function() {
             enableElement('pallet');
             disableElement('effects');
-        }, 300000);
+        }, 180000);
     }
 }
 
@@ -593,7 +604,7 @@ function door9() {
     globalTimeout = setTimeout(function() {
         enableElement('pallet');
         disableElement('effects');
-    }, 300000);
+    }, 180000);
 }
 
 function addKey(e){
@@ -661,14 +672,17 @@ function door13(){
         let rotation = parseInt(this.style.getPropertyValue('--rotate')) || 0;
 
         if(rotation == '220'){
-            if(!$('.record').hasClass('fallen')){
-                playSoundFx('open');
-                $(this).addClass('fallen'); 
-            }
             return;
         } 
 
         this.style.setProperty('--rotate', (rotation + 90) + 'deg');  
+
+        if(rotation + 90 == '220'){
+            if(!$('.record').hasClass('fallen')){
+                playSoundFx('open');
+                $(this).addClass('fallen'); 
+            }
+        }
     });
 }
 

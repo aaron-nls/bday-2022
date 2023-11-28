@@ -40,9 +40,12 @@
 </head>
 <body>
     <main>
+        <page id="homescreen">
+        </page>
         <page id="warning">
             <menu>
-                <button class="btn" data-page="house3">Confirm</button>
+                <button class="btn" data-page="start">Confirm</button>
+                <button class="btn" data-page="intro">Confirm</button>
             </menu>
         </page>
 
@@ -598,12 +601,12 @@
                 3. Aaron - aaron@outlook.com</br>
             </helper>
             <helper data-id="book4" data-hide="book4">
-                The magical Angel D, was old and wise. She was the closest confidant of the Queen. Whenever she <em></em><a href="tel:9">called</a></em>, D would always give her the answer the Queen needed.
+                The magical Angel D, was old and wise. She was the closest confidant of the Queen. Whenever she <em><a href="tel:9">called</a></em>, D would always give her the answer the Queen needed.
             </helper>
         </page>
 
         <!-- DOOR 18 - WORK ROOM (DAY 18) -->
-        <page id="door18" data-sound="18">
+        <page id="door18" data-sound="18" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
@@ -612,6 +615,23 @@
                I'm very confused by all this, this isn't like any case I've worked on before. Why is the entire house locked? Why are we looking in all these rooms? And where is that blooming Christmas spirit?!
             </helper>
         </page>
+
+
+        <!-- DOOR 19 - KITCHEN (DAY 19) -->
+        <page id="door19" data-enter-func="door19" data-sound="19" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                And this is where the magic happens. My bedroom - the place where I recharge. I love nothing more than starring into the stars and see what constellations I can make out. Hopefully you can find my Christmas Spirit in here...
+            </helper>
+           
+            <div class="knob"></div>
+            <div class="fire"></div>
+            <div class="paper"></div>
+        </page>
+
     </main>
     <div class="door11code">
         875
