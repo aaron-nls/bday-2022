@@ -249,7 +249,7 @@ function playSoundFx(newSoundFxAudio) {
 
 function startGame(){
 
-    if (!window.matchMedia('(display-mode: standalone)').matches) {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning')
     } else {
         goToPage('homescreen')
