@@ -132,6 +132,18 @@ helper{
     font-size: 1.5rem;
     color: #402805;
 }
+helper.oranges{
+    background-image: url(images/helper-orange.jpg);
+    background-position: right bottom;
+}
+helper.wine{
+    background-image: url(images/helper-wine.jpg);
+    background-position: right bottom;
+}
+helper.cinnamon{
+    background-image: url(images/helper-cinnamon.jpg);
+    background-position: right bottom;
+}
 
 main{
     width: auto;
@@ -143,7 +155,7 @@ main{
 }
 
 page {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -154,7 +166,6 @@ page {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    /* opacity: 0; */
 }
 
 .btn-fake {
@@ -407,7 +418,7 @@ body[data-adventday="29"] #start{
 }
 
 .door div{
-    /* opacity: 0; */
+    opacity: 0;
     pointer-events: none;
     transition: all 0.5s ease-in-out;
     position: absolute;
@@ -1516,3 +1527,101 @@ body[data-adventday="29"] #start{
 #door19 {
     background-image: url(images/bg-19.jpg);
 }   
+
+#door19 .knob{
+    position: absolute;
+    top: 47.7%;
+    left: 56.6%;
+    width: 7%;
+    height: 3%;
+}
+
+#door19 .note{
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 19% 100%, 18% 81%, 15% 67%, 9% 65%, 9% 57%, 9% 50%, 4% 46%, 9% 38%, 6% 30%, 1% 14%);
+}
+
+#door19 .fire{
+    position: absolute;
+    background-image: url(images/19-fire.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 27.4%;
+    left: 42%;
+    width: 25%;
+    height: 16%;
+    opacity: 0;
+    transform-origin: center bottom;
+}
+
+#door19 .fire[data-enabled="true"]{
+    opacity: 1;
+    animation: 15s fire 1 forwards;
+}
+
+#door19 .sign{
+    position: absolute;
+    top: 31%;
+    left: 50%;
+    width: 7%;
+    height: 3%;
+    transform: scale(1.3);
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    transition-delay: 10s;
+}
+
+#door19 .sign[data-enabled="true"]{
+    opacity: 1;
+}
+
+#door19 .paper{
+    position: absolute;
+    top: 59.6%;
+    left: 81%;
+    width: 11%;
+    height: 6%;
+}
+
+@keyframes fire {
+    0% {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    40% {
+        transform: scaleY(0.05);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    55% {
+        transform: scaleY(1.1);
+        opacity: 0.9;
+    }
+    60% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    65% {
+        transform: scaleY(1.1);
+        opacity: 0.9;
+    }
+    70% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    75% {
+        transform: scaleY(1.1);
+        opacity: 1;
+    }
+    80% {
+        transform: scaleY(0.9);
+        opacity: 1;
+    }
+    100% {
+        transform: scaleY(0.5);
+        opacity: 0;
+    }
+}

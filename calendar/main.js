@@ -161,8 +161,8 @@ $(document).ready(function() {
 
 });
 
-let adventDay = 0;
-let unlockedDays = 0;
+let adventDay = 1;
+let unlockedDays = 1;
 let bgAudio = null;
 let bgAudioPlayer = null;
 let soundAudio =  null; 
@@ -249,14 +249,14 @@ function playSoundFx(newSoundFxAudio) {
 
 function startGame(){
 
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning')
     } else {
         goToPage('homescreen')
     }
 
 
-    $('.door').attr('data-enabled', 'true');
+    $('.door').attr('data-enabled', 'false');
     let roomElement = document.querySelector('#house3 .rooms');
     roomElement.scrollLeft = 0; 
     let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
