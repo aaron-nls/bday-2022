@@ -637,7 +637,8 @@ function door12(){
     let recordPlayerAudio = new Audio('audio/12-record.mp3');
     let radioAudio = new Audio('audio/12-radio.mp3');
     let cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
-let allPlayerAudio = new Audio('audio/12-all.mp3');
+    let allPlayerAudio = new Audio('audio/12-all.mp3');
+
     let playRadio = false;
     let playRecord = false;
     let playCd = false;
@@ -648,8 +649,6 @@ let allPlayerAudio = new Audio('audio/12-all.mp3');
         cdPlayerAudio.currentTime = 0;
 
         if(playRadio && playRecord && playCd) {
-            playSoundFx('12-all');
-            alert('all together');
             allPlayerAudio.play();
         }else{
             if(playRadio) {
