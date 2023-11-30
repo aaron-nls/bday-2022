@@ -368,7 +368,19 @@ body[data-adventday="29"] #start{
 }   
 .room20 {
     background-image: url(images/bg-door-20.jpg);
+}    
+.room21 {
+    background-image: url(images/bg-door-21.jpg);
 }     
+.room22 {
+    background-image: url(images/bg-door-22.jpg);
+}   
+.room23 {
+    background-image: url(images/bg-door-23.jpg);
+}   
+.room24 {
+    background-image: url(images/bg-door-24.jpg);
+} 
 .room-stairs {
     background-image: url(images/bg-door-stairs.jpg);
 }  
@@ -512,6 +524,47 @@ body[data-adventday="29"] #start{
     left: 39.7%;
     transform: none;
     width: 14.9%;
+}
+
+#house4 .exit{
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 21%;
+    background: none;
+    border: none;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+#house4 .door {
+    height: 40%;
+}
+
+#house4 .door div{
+    color: #f7db93;
+    top: 30%;
+    left: 36.3%;
+    font-size: 1.7vh;
+}
+
+#house4 .door span{
+    top: 51.5%;
+    left: 41.3%;
+    color: #92572d;
+    text-shadow: 1px 1px 0px #6a522954;
+    font-size: 3vh;
+}
+
+#house4 .door:after{
+    background-image: url(images/padlock4.png);
+    top: 53.4%;
+    left: 72.5%;
+    aspect-ratio: 74/155;
+    width: 14.5%;
 }
 
 @keyframes rotating {

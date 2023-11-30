@@ -271,7 +271,7 @@ function startGame(){
     }
 
 
-    $('.door').attr('data-enabled', 'true');
+    $('.door').attr('data-enabled', 'false');
 
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
       function(json) {
