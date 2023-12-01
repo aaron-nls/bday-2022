@@ -187,7 +187,8 @@ function goToPage(page, scrollNumber) {
     if(globalTimeout) clearTimeout(globalTimeout);
     playSound(curSound ?? null);
     playBackground(curBackground ?? null, curBgVolume ?? 0.5);
-
+    
+    $('.doorPadlock').fadeOut();
     $(curPage).fadeIn();
 
     if(scrollNumber){
