@@ -109,7 +109,7 @@
                     </button>
                 </div>
                 <div class="room room3">
-                    <button class="door"  onclick="requestGyroscopeAccess('waterCycle')" data-page="door2"  data-code="764">
+                    <button class="door" data-page="door2"  data-code="764">
                         <div>2</div>
                         <span class="material-symbols-rounded">
                             water_drop
@@ -354,7 +354,7 @@
         </page>
 
         <!-- DOOR 2 - WASHING ROOM (DAY 2) -->
-        <page id="door2" data-sound="2" data-bg-audio="bg-generic">
+        <page id="door2" data-sound="2" data-enter-func="day2" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>

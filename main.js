@@ -330,6 +330,10 @@ function windowFocus() {
     }, false);
 }
 
+function day2(){
+      requestGyroscopeAccess('waterCycle');
+}
+
 var hasGyro = false;
 var waterElement = document.querySelector('#door2 .water');
 async function waterCycle(event) {
