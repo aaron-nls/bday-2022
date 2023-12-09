@@ -1507,6 +1507,13 @@ body[data-adventday="29"] #start{
     left: 65%;
 }
 
+/* DOOR 14
+*/
+
+#door14 {
+    background-image: url(images/bg-14.jpg);
+}
+
 /* DOOR 15
 */
 
