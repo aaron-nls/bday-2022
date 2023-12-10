@@ -4,6 +4,7 @@ $(document).ready(function() {
 
     $('button[data-page]').click(function() {
         var target = $(this).attr('data-page');
+        var scrollNumber = $(this).attr('data-scroll') ?? null;
         if(target.includes('door')) {
             if($(this).attr('data-enabled') == 'true') {
                 playSoundFx('open');
@@ -11,7 +12,7 @@ $(document).ready(function() {
                 return;
             }
         }
-        goToPage(target);
+        goToPage(target, scrollNumber);
     });
     $('[data-show]').click(function() {
         var target = $(this).attr('data-show').split(",");
@@ -82,7 +83,10 @@ $(document).ready(function() {
             if(doorCode == userInput && (doorNumber-1) <= adventDay) {
                 playSoundFx('unlock');
                 $(`[data-page="door${doorNumber}"]`).attr('data-enabled', 'true');
-
+                console.log(doorNumber);
+                console.log(adventDay);
+                console.log(userInput);
+                console.log(doorCode);
                 // Save doorNumber in localStorage
                 localStorage.setItem('unlockedDays', doorNumber);
 
@@ -172,7 +176,7 @@ let soundFxAudioPlayer = null;
 let globalInterval = null;
 let globalTimeout = null;
 
-function goToPage(page) {
+function goToPage(page, scrollNumber) {
     $('page:visible').fadeOut();
     const curPage = $('page[id="' + page + '"]');
     const curBackground = $(curPage).data('bg-audio');
@@ -183,13 +187,25 @@ function goToPage(page) {
     if(globalTimeout) clearTimeout(globalTimeout);
     playSound(curSound ?? null);
     playBackground(curBackground ?? null, curBgVolume ?? 0.5);
-
+    
+    $('.doorPadlock').fadeOut();
     $(curPage).fadeIn();
+
+    if(scrollNumber){
+        scrollTo(page, scrollNumber);
+    }
 
     if(curFunction) {
         window[curFunction]();
     }
 
+}
+
+function scrollTo(page, scrollNumber) {
+    let mainElement = document.querySelector('main');
+    let roomElement = document.querySelector('page[id="' + page + '"] .rooms');
+    roomElement.scrollLeft = 0; 
+    roomElement.scrollBy({ left: mainElement.offsetWidth * scrollNumber });
 }
 
 function playBackground(newBgAudio, bgVolume) {
@@ -249,18 +265,14 @@ function playSoundFx(newSoundFxAudio) {
 
 function startGame(){
 
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning')
     } else {
         goToPage('homescreen')
     }
 
 
-    $('.door').attr('data-enabled', 'false');
-    let roomElement = document.querySelector('#house3 .rooms');
-    roomElement.scrollLeft = 0; 
-    let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
-    roomElement.scrollBy({ left: scrollSnapWidth * 5 });
+    //$('.door').attr('data-enabled', 'false');
 
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
       function(json) {
@@ -317,6 +329,10 @@ function windowFocus() {
         hideElement('paper-button');
         hideElement('note');
     }, false);
+}
+
+function day2(){
+      requestGyroscopeAccess('waterCycle');
 }
 
 var hasGyro = false;
@@ -426,9 +442,9 @@ function door4(){
     });
 }
 
-function door10(){
+function door6(){
     let fogOpacity = 0;
-    const fogElement = document.querySelector('#door10 .fog');
+    const fogElement = document.querySelector('#door6 .fog');
     navigator.mediaDevices.getUserMedia({ audio: true })
     .then(stream => {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -482,7 +498,7 @@ function stopMic(){
     }
 }
 
-//DOOR 6 MOVIES
+//DOOR 7 MOVIES
 function makeFullscreen() {
     let videoElement = $('page:visible video').get(0);
     if (videoElement.requestFullscreen) {
@@ -506,7 +522,7 @@ function requestCameraAccess() {
 }
 
 function measureBrightness(stream) {
-    const glowElement = document.querySelector('#door7 .glow');
+    const glowElement = document.querySelector('#door5 .glow');
     return new Promise((resolve, reject) => {
         const video = document.createElement('video');
         video.srcObject = stream;
@@ -530,7 +546,7 @@ function measureBrightness(stream) {
                 brightness /= (imageData.length / 4);
                 brightness = brightness / 255;; // Normalize to -1 to 1
                 if(brightness > 0.5) {
-                    let currentPlant = document.querySelector('#door7 [data-enabled="true"]');
+                    let currentPlant = document.querySelector('#door5 [data-enabled="true"]');
 
                     if(!currentPlant) return;
 
@@ -557,7 +573,7 @@ function measureBrightness(stream) {
 
 let videoStream;
 let videoInterval;
-function door7(){
+function door5(){
     requestCameraAccess()
     .then(measureBrightness)
     .then(brightness => console.log(brightness))
@@ -573,11 +589,8 @@ function endCamera(){
     }
 }
 
-function door8(){
-    let roomElement = document.querySelector('#door8 .rooms');
-    roomElement.scrollLeft = 0; 
-    let scrollSnapWidth = roomElement.scrollWidth / roomElement.childElementCount;
-    roomElement.scrollBy({ left: scrollSnapWidth });
+function door9(){
+    scrollTo('door9', 1);
 }
 
 
@@ -592,11 +605,11 @@ function handleVisibilityChange() {
         globalTimeout = setTimeout(function() {
             enableElement('pallet');
             disableElement('effects');
-        }, 180000);
+        }, 175000);
     }
 }
 
-function door9() {
+function door10() {
     // Listen for visibility change events
     document.addEventListener('visibilitychange', handleVisibilityChange);
     enableElement('ice');
@@ -604,7 +617,7 @@ function door9() {
     globalTimeout = setTimeout(function() {
         enableElement('pallet');
         disableElement('effects');
-    }, 180000);
+    }, 175000);
 }
 
 function addKey(e){
@@ -629,6 +642,7 @@ function door12(){
     let recordPlayerAudio = new Audio('audio/12-record.mp3');
     let radioAudio = new Audio('audio/12-radio.mp3');
     let cdPlayerAudio = new Audio('audio/12-cdplayer.mp3');
+    let allPlayerAudio = new Audio('audio/12-all.mp3');
 
     let playRadio = false;
     let playRecord = false;
@@ -639,16 +653,20 @@ function door12(){
         recordPlayerAudio.currentTime = 0;
         cdPlayerAudio.currentTime = 0;
 
+        if(playRadio && playRecord && playCd) {
+            allPlayerAudio.play();
+        }else{
+            if(playRadio) {
+                radioAudio.play();
+            }
+            if(playRecord) {
+                recordPlayerAudio.play();
+            }
+            if(playCd) {
+                cdPlayerAudio.play();
+            }
+        }
     
-        if(playRadio) {
-            radioAudio.play();
-        }
-        if(playRecord) {
-            recordPlayerAudio.play();
-        }
-        if(playCd) {
-            cdPlayerAudio.play();
-        }
         playCd = false;
         playRadio = false;
         playRecord = false;
@@ -724,6 +742,51 @@ function measureDarkness(stream) {
     }); 
 }
 
+
+function door15() {
+    let clothesElements = document.querySelectorAll('.clothes');
+let rail = document.querySelector('.rail');
+
+clothesElements.forEach((clothes) => {
+    let shiftX;
+
+    function startDrag(event) {
+        event.preventDefault();
+        let clientX = event.touches ? event.touches[0].clientX : event.clientX;
+        shiftX = clientX - clothes.getBoundingClientRect().left;
+        document.addEventListener('mousemove', moveDrag);
+        document.addEventListener('touchmove', moveDrag);
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
+    }
+
+    function moveDrag(event) {
+        let clientX = event.touches ? event.touches[0].clientX : event.clientX;
+        let newLeft = clientX - shiftX - rail.getBoundingClientRect().left;
+
+        // The pointer is outside of .rail => lock the new position within the bounds
+        if (newLeft < 0) newLeft = 0;
+        let rightEdge = rail.offsetWidth - clothes.offsetWidth;
+        if (newLeft > rightEdge) newLeft = rightEdge;
+
+        clothes.style.left = newLeft + 'px';
+    }
+
+    function stopDrag() {
+        document.removeEventListener('mousemove', moveDrag);
+        document.removeEventListener('touchmove', moveDrag);
+        document.removeEventListener('mouseup', stopDrag);
+        document.removeEventListener('touchend', stopDrag);
+    }
+
+    clothes.addEventListener('mousedown', startDrag);
+    clothes.addEventListener('touchstart', startDrag);
+    clothes.ondragstart = function() {
+        return false;
+    };
+});
+}
+
 function door16(){
     requestCameraAccess()
     .then(measureDarkness)
@@ -739,4 +802,35 @@ function door17(){
         .then(() => console.log('Copied to clipboard'))
         .catch(err => console.error('Error copying text: ', err));
     });
+}
+
+function door14(){
+    // JavaScript
+    let sky = document.querySelector('#door14 .sky');
+    let startDistance = 0;
+    let step = 0;
+
+    sky.addEventListener('touchstart', function(event) {
+        if (event.touches.length === 2) {
+            event.preventDefault();
+            startDistance = getDistance(event.touches[0], event.touches[1]);
+        }
+    }, false);
+
+    sky.addEventListener('touchmove', function(event) {
+        if (event.touches.length === 2) {
+            event.preventDefault();
+            let endDistance = getDistance(event.touches[0], event.touches[1]);
+            step += (endDistance - startDistance) * 0.01;
+            step = Math.min(Math.max(step, 0), 6);
+            sky.style.setProperty('--step', step);
+            startDistance = endDistance;
+        }
+    }, false);
+
+    function getDistance(touch1, touch2) {
+        let xDiff = touch2.clientX - touch1.clientX;
+        let yDiff = touch2.clientY - touch1.clientY;
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
 }
