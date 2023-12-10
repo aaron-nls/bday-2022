@@ -595,7 +595,7 @@
 
 
         <!-- DOOR 14 - OBSERVATORY (DAY 14) -->
-        <page id="door14" data-sound="14" data-bg-audio="bg-generic">
+        <page id="door14" data-sound="14" data-enter-func="door14" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
@@ -604,14 +604,20 @@
                Ahh the stars! I hate it when people call me a star. I'm not a star, I'm just a real human of course. They should follow the constellations instead of me...
             </helper>
 
-            <div class="rail">
-                <div class="clothes clothes1"></div>
-                <div class="clothes clothes2"></div>
-                <div class="clothes clothes3"></div>
-                <div class="clothes clothes4"></div>
-                <div class="clothes clothes5"></div>
-                <div class="clothes clothes6"></div>
-                <div class="clothes clothes7"></div>
+            <div class="telescopeEnabler" data-enable="telescope,sky"></div>
+
+            <div class="sky"  data-id="sky" data-enabled="false" style="--step:0">
+                <img src="images/14-sky-7.png" style="--scale: -2; --opacity: -1.5; --atStep:7;">
+                <img src="images/14-sky-6.png" style="--scale: -1.5; --opacity: -1; --atStep:6;">
+                <img src="images/14-sky-5.png" style="--scale: -1; --opacity: -0.5; --atStep:5;">
+                <img src="images/14-sky-4.png" style="--scale: -0.5; --opacity: 0; --atStep:4;">
+                <img src="images/14-sky-3.png" style="--scale: 0; --opacity: 0.5; --atStep:3;">
+                <img src="images/14-sky-2.png" style="--scale: 0.5; --opacity: 1; --atStep:2;">
+                <img src="images/14-sky-1.png" style="--scale: 1; --opacity: 1; --atStep:1;">
+            </div>
+
+            <div class="telescope" data-id="telescope" data-enabled="false">
+                <button class="btn" data-disable="sky,telescope">Leave</button>
             </div>
         </page>
 

@@ -803,3 +803,34 @@ function door17(){
         .catch(err => console.error('Error copying text: ', err));
     });
 }
+
+function door14(){
+    // JavaScript
+    let sky = document.querySelector('#door14 .sky');
+    let startDistance = 0;
+    let step = 0;
+
+    sky.addEventListener('touchstart', function(event) {
+        if (event.touches.length === 2) {
+            event.preventDefault();
+            startDistance = getDistance(event.touches[0], event.touches[1]);
+        }
+    }, false);
+
+    sky.addEventListener('touchmove', function(event) {
+        if (event.touches.length === 2) {
+            event.preventDefault();
+            let endDistance = getDistance(event.touches[0], event.touches[1]);
+            step += (endDistance - startDistance) * 0.01;
+            step = Math.min(Math.max(step, 0), 6);
+            sky.style.setProperty('--step', step);
+            startDistance = endDistance;
+        }
+    }, false);
+
+    function getDistance(touch1, touch2) {
+        let xDiff = touch2.clientX - touch1.clientX;
+        let yDiff = touch2.clientY - touch1.clientY;
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
+}
