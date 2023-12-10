@@ -272,7 +272,7 @@ function startGame(){
     }
 
 
-    //$('.door').attr('data-enabled', 'false');
+    $('.door').attr('data-enabled', 'true');
 
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
       function(json) {
