@@ -1569,7 +1569,7 @@ body[data-adventday="29"] #start{
 
 #door14 .telescope[data-enabled="true"] {
     opacity: 1;
-    pointer-events: all;
+    pointer-events: none;
 }
 
 #door14 .telescope .btn {
@@ -1577,6 +1577,7 @@ body[data-adventday="29"] #start{
     left: 50%;
     top: 85%;
     transform: translateX(-50%);
+    pointer-events:all;
 }
 
 /* DOOR 15
