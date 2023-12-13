@@ -265,10 +265,11 @@ function playSoundFx(newSoundFxAudio) {
 
 function startGame(){
 
-    if (!window.matchMedia('(display-mode: standalone)').matches) {
-        goToPage('warning')
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        goToPage('warning');
     } else {
-        goToPage('homescreen')
+        goToPage('warning');
+        //goToPage('homescreen');
     }
 
 
@@ -837,6 +838,7 @@ function door14(){
 
 function door20(){
     let kisses = [false, false, false, false];
+    $('body').addClass('lockscreen');
     $('#door20 .kiss > div').on('touchstart', function() {
 
         kisses[$(this).index()] = true;
@@ -859,4 +861,8 @@ console.log(kisses);
             kisses[index] = false;
          }
     });
+}
+
+function removeScreenLock(){
+    $('body').removeClass('lockscreen');
 }
