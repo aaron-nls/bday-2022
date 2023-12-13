@@ -834,3 +834,28 @@ function door14(){
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
 }
+
+function door20(){
+    let kisses = null;
+    $('#door20 .kiss > div').on('touchstart', function() {
+
+        kisses[$(this).index()] = true;
+
+        if(kisses.length == 4) {
+           playSoundFx('20-kiss');
+        }
+    });
+
+
+    $('#door20 .kiss > div').on('touchend', function() {
+        if(kisses.length == 4) {
+            playSoundFx('20-fly');
+            enableElement('shootingstars');
+            kisses = [];
+            $('#door20 .robin').hide();
+         }else{
+            let index = $(this).index();
+            kisses.splice(index, 1);
+         }
+    });
+}
