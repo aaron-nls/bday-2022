@@ -843,7 +843,7 @@ function door20(){
 
         kisses[$(this).index()] = true;
 console.log(kisses);
-        if(kisses == [true, true, true, true]) {
+        if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
             console.log('all true');
            playSoundFx('20-kiss');
         }
@@ -851,7 +851,7 @@ console.log(kisses);
 
 
     $('#door20 .kiss > div').on('touchend', function() {
-        if(kisses == [true, true, true, true]) {
+        if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
             playSoundFx('20-fly');
             enableElement('shootingstars');
             kisses = [];
