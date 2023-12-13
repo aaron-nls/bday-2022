@@ -1856,6 +1856,16 @@ body[data-adventday="29"] #start{
 
 #door20 {
     background-image: url(images/bg-20.jpg);
+    pointer-events: none;
+}
+
+#door20 > * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#door20 button{
+    pointer-events: all;
 }
 
 #door20 .kiss{
@@ -1872,6 +1882,7 @@ body[data-adventday="29"] #start{
     height: 45%;
     background: rgb(255 28 28 / 15%);
     border-radius: 46%;
+    pointer-events: all;
  }
  #door20 .kiss .kiss1{
     left: 0%;
@@ -1902,6 +1913,7 @@ body[data-adventday="29"] #start{
     background-image: url(images/20-bird.png);
     background-size: cover;
     background-repeat: repeat;
+    pointer-events: all;
 }
 
 #door20 .shootingstars {
