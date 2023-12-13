@@ -1905,11 +1905,16 @@ body[data-adventday="29"] #start{
 }
 
 #door20 .shootingstars {
+    display: none;
     position: absolute;
     top: 6%;
     left: 0%;
     width: 100%;
     height: 25%;
+}
+
+#door20 .shootingstars[data-enabled="true"] {
+    display: block;
 }
 
 #door20 .shootingstars > div{
