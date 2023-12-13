@@ -836,26 +836,27 @@ function door14(){
 }
 
 function door20(){
-    let kisses = null;
+    let kisses = [false, false, false, false];
     $('#door20 .kiss > div').on('touchstart', function() {
 
         kisses[$(this).index()] = true;
-
-        if(kisses.length == 4) {
+console.log(kisses);
+        if(kisses == [true, true, true, true]) {
+            console.log('all true');
            playSoundFx('20-kiss');
         }
     });
 
 
     $('#door20 .kiss > div').on('touchend', function() {
-        if(kisses.length == 4) {
+        if(kisses == [true, true, true, true]) {
             playSoundFx('20-fly');
             enableElement('shootingstars');
             kisses = [];
             $('#door20 .robin').hide();
          }else{
             let index = $(this).index();
-            kisses.splice(index, 1);
+            kisses[index] = false;
          }
     });
 }
