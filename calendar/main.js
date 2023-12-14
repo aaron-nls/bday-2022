@@ -840,7 +840,7 @@ function door20(){
     let kisses = [false, false, false, false];
     $('body').addClass('lockscreen');
     $('#door20 .kiss > div').on('touchstart', function() {
-
+        $(this).css('background', 'green');
         kisses[$(this).index()] = true;
 console.log(kisses);
         if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
@@ -858,6 +858,7 @@ console.log(kisses);
             $('#door20 .robin').hide();
          }else{
             let index = $(this).index();
+            $(this).css('background', 'transparent');
             kisses[index] = false;
          }
     });
