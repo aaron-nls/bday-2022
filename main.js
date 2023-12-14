@@ -266,9 +266,9 @@ function playSoundFx(newSoundFxAudio) {
 function startGame(){
 
     if (window.matchMedia('(display-mode: standalone)').matches) {
-        goToPage('warning')
+        goToPage('warning');
     } else {
-        goToPage('homescreen')
+        goToPage('homescreen');
     }
 
 
@@ -833,4 +833,33 @@ function door14(){
         let yDiff = touch2.clientY - touch1.clientY;
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
+}
+
+function door20(){
+    let kisses = [false, false];
+    let kissSound = new Audio('audio/20-kiss.mp3');
+    $('body').addClass('lockscreen');
+    $('#door20 .kiss > div').on('touchstart', function() {
+        kisses[$(this).index()] = true;
+        if(kisses[0] == true && kisses[1] == true) {
+           kissSound.play();
+        }
+    });
+
+    $('#door20 .kiss > div').on('touchend', function() {
+        if(kisses[0] == true && kisses[1] == true) {
+            playSoundFx('20-fly');
+            kisses = [];
+            $('#door20 .kiss').hide();
+            $('#door20 .robin').hide();
+            enableElement('shootingstars');
+         }else{
+            let index = $(this).index();
+            kisses[index] = false;
+         }
+    });
+}
+
+function removeScreenLock(){
+    $('body').removeClass('lockscreen');
 }

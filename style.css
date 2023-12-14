@@ -1577,7 +1577,7 @@ body[data-adventday="29"] #start{
     left: 50%;
     top: 85%;
     transform: translateX(-50%);
-    pointer-events:all;
+    pointer-events: all;
 }
 
 /* DOOR 15
@@ -1849,4 +1849,211 @@ body[data-adventday="29"] #start{
         transform: scaleY(0.5);
         opacity: 0;
     }
+}
+
+/* DOOR 20
+*/  
+
+#door20 {
+    background-image: url(images/bg-20.jpg);
+    pointer-events: none;
+}
+
+#door20 > * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#door20 button{
+    pointer-events: all;
+}
+
+#door20 .kiss{
+    position: absolute;
+    top: 42%;
+    left: 20%;
+    width: 60%;
+    height: 19%;
+}
+
+#door20 .kiss > div{
+    position: absolute;
+    width: 100%;
+    height: 48%;
+    border-radius: 25px;
+    pointer-events: all;
+ }
+ #door20 .kiss .kiss1{
+    left: 0%;
+    top: 0%;
+ }
+
+#door20 .kiss .kiss2{
+    right: 0%;
+    bottom: 0%;
+}
+
+#door20 .kiss .kiss3{
+    left: 0%;
+    bottom: 0%;
+}
+
+#door20 .kiss .kiss4{
+    right: 0%;
+    bottom: 0%;
+}
+
+#door20 .robin {
+    position: absolute;
+    top: 41.4%;
+    right: 0%;
+    width: 13%;
+    aspect-ratio: 163/196;
+    background-image: url(images/20-bird.png);
+    background-size: cover;
+    background-repeat: repeat;
+    pointer-events: all;
+}
+
+#door20 .shootingstars {
+    display: none;
+    position: absolute;
+    top: 6%;
+    left: 0%;
+    width: 100%;
+    height: 25%;
+}
+
+#door20 .shootingstars[data-enabled="true"] {
+    display: block;
+}
+
+
+#door20 .shootingstars > .sparkle {
+    top: 56.1%;
+    right: 41.9%;
+    position: absolute;
+    aspect-ratio: 1/1;
+    width: 0%;
+    border-radius: 100%;
+    box-shadow: 0 0 10px 5px #fff;
+    transform: scale(0.5);
+    animation: sparkle 15s linear infinite forwards;
+}
+
+#door20 .shootingstars > div{
+    position: absolute;
+    top: 12%;
+    right: 18%;
+    width: 15%;
+    aspect-ratio: 178/78;
+    background-image: url(images/20-shootingstar.png);
+    mix-blend-mode: screen;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: shootingstar 15s linear infinite forwards;
+}
+
+#door20 .shootingstars > div.shootingstar1 {
+    top: 31%;
+    right: 18%;
+}
+
+#door20 .shootingstars > div.shootingstar2 {
+    top: 17%;
+    right: 21%;
+}
+
+#door20 .shootingstars > div.shootingstar3 {
+    top: 27%;
+    right: 26%;
+}
+
+#door20 .shootingstars > div.shootingstar4 {
+    top: 42%;
+    right: 13%;
+    animation-delay: 5s;
+}
+
+#door20 .shootingstars > div.shootingstar5 {
+    top: 25%;
+    right: 17%;
+    animation-delay: 5s;
+}
+
+#door20 .shootingstars > div.shootingstar6 {
+    top: 16%;
+    right: 13%;
+    animation-delay: 5s;
+}
+
+#door20 .shootingstars > div.shootingstar7 {
+    top: 25%;
+    right: 9%;
+    animation-delay: 5s;
+}
+
+#door20 .shootingstars > div.shootingstar8 {
+    top: 40%;
+    right: 12%;
+    animation-delay: 10s;
+}
+
+@keyframes shootingstar {
+    0% {
+      transform: translate(0%, 0%);
+      opacity: 0;
+    }
+    2% {
+        opacity: 1;
+    }
+
+    28% {
+        opacity: 1;
+    }
+
+    33% {
+        transform:translate(-200%, 200%);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+        transform:translate(-200%, 200%);
+    }
+}   
+@keyframes sparkle {
+    0% {
+      transform: scale(0.5);
+    }
+
+    5% {
+        transform: scale(2);
+    }
+
+    10% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.7);
+    }
+
+    20% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(0.5);
+    }
+}   
+
+.lockscreen{
+    position: fixed;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    overflow: hidden;
 }
