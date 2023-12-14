@@ -837,13 +837,13 @@ function door14(){
 }
 
 function door20(){
-    let kisses = [false, false, false, false];
+    let kisses = [false, false];
     $('body').addClass('lockscreen');
     $('#door20 .kiss > div').on('touchstart', function() {
         $(this).css('background', 'green');
         kisses[$(this).index()] = true;
 console.log(kisses);
-        if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
+        if(kisses[0] == true && kisses[1] == true) {
             console.log('all true');
            playSoundFx('20-kiss');
         }
@@ -868,7 +868,7 @@ console.log(kisses);
 
 
     $('#door20 .kiss > div').on('touchend', function() {
-        if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
+        if(kisses[0] == true && kisses[1] == true) {
             playSoundFx('20-fly');
             enableElement('shootingstars');
             kisses = [];
