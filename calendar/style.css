@@ -2057,3 +2057,118 @@ body[data-adventday="29"] #start{
     touch-action: none;
     overflow: hidden;
 }
+
+/* DOOR 21
+*/
+
+#door21 {
+    background-image: url(images/bg-21.jpg);
+}
+
+#door21 .wrapping{
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#door21 .wrapping1{
+    top: 53.5%;
+    left: 39%;
+    width: 17%;
+    aspect-ratio: 194/20;
+    background-image: url(images/21-roll1.png);
+}
+
+#door21 .wrapping2{
+    top: 60%;
+    left: 0;
+    width: 10%;
+    aspect-ratio: 116/240;
+    background-image: url(images/21-roll2.png);
+}
+
+#door21 .wrapping3{
+    top: 62.5%;
+    left: 36.5%;
+    width: 33.7%;
+    aspect-ratio: 380/37;
+    background-image: url(images/21-roll3.png);
+}
+
+#door21 .roller {
+    position: absolute;
+    top: 74%;
+    left: 13%;
+    width: 74%;
+    height: 27%;
+    overflow: hidden;
+    display: none;
+}
+
+#door21 .roller::after {
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%,rgba(0,0,0,0.25) 60%,rgb(0 0 0 / 52%) 80%, rgba(0,0,0,0) 100%);
+    height: 16%;
+    content: '';
+    top: 0;
+    pointer-events: none;
+}
+
+#door21 .roller[data-enabled="true"] {
+    display: block;
+}
+
+#door21 .paper {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#door21 .roller1 .paper {
+    background-image: url(images/21-paper-1.jpg);
+}
+
+#door21 .roller2 .paper {
+    background-image: url(images/21-paper-2.jpg);
+}
+
+#door21 .roller3 .paper {
+    background-image: url(images/21-paper-3.jpg);
+}
+
+#door21 .roller1 .paper.answer {
+    background-image: url(images/21-paper-1-answer.jpg);
+}
+
+#door21 .roller2 .paper.answer {
+    background-image: url(images/21-paper-2-answer.jpg);
+}
+
+#door21 .roller3 .paper.answer {
+    background-image: url(images/21-paper-3-answer.jpg);
+}
+
+#door21 .rollScroll {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+#door21 .rollScroll::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none;
+}
+
+#door21 .rollScroll::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+#door21 .rollScroll::-webkit-scrollbar-track {
+    background: transparent;
+}   
+
