@@ -268,8 +268,7 @@ function startGame(){
     if (window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning');
     } else {
-        goToPage('warning');
-        //goToPage('homescreen');
+        goToPage('homescreen');
     }
 
 
@@ -838,44 +837,24 @@ function door14(){
 
 function door20(){
     let kisses = [false, false];
+    let kissSound = new Audio('audio/20-kiss.mp3');
     $('body').addClass('lockscreen');
     $('#door20 .kiss > div').on('touchstart', function() {
-        $(this).css('background', 'green');
         kisses[$(this).index()] = true;
-console.log(kisses);
         if(kisses[0] == true && kisses[1] == true) {
-            console.log('all true');
-           playSoundFx('20-kiss');
+           kissSound.play();
         }
     });
-
-    // $('#door20 .kiss > div').on('touchmove', function(event) {
-    //     let touches = event.touches;
-    //     for (let i = 0; i < touches.length; i++) {
-    //         let touch = touches[i];
-    //         let element = document.elementFromPoint(touch.clientX, touch.clientY);
-    //         if ($(element).closest('.kiss > div').length) {
-    //             console.log(element);
-    //             $(this).css('background', 'green');
-    //             kisses[$(this).index()] = true;
-    //             if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
-    //                 console.log('all true');
-    //                 playSoundFx('20-kiss');
-    //             }
-    //         }
-    //     }
-    // });
-
 
     $('#door20 .kiss > div').on('touchend', function() {
         if(kisses[0] == true && kisses[1] == true) {
             playSoundFx('20-fly');
-            enableElement('shootingstars');
             kisses = [];
+            $('#door20 .kiss').hide();
             $('#door20 .robin').hide();
+            enableElement('shootingstars');
          }else{
             let index = $(this).index();
-            $(this).css('background', 'transparent');
             kisses[index] = false;
          }
     });
