@@ -1878,10 +1878,10 @@ body[data-adventday="29"] #start{
 
 #door20 .kiss > div{
     position: absolute;
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 44%;
     background: rgb(255 28 28 / 15%);
-    border-radius: 0;
+    border-radius: 25px;
     outline: 1px solid red;
     pointer-events: all;
  }
@@ -1892,7 +1892,7 @@ body[data-adventday="29"] #start{
 
 #door20 .kiss .kiss2{
     right: 0%;
-    top: 0%;
+    bottom: 0%;
 }
 
 #door20 .kiss .kiss3{

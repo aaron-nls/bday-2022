@@ -849,6 +849,23 @@ console.log(kisses);
         }
     });
 
+    // $('#door20 .kiss > div').on('touchmove', function(event) {
+    //     let touches = event.touches;
+    //     for (let i = 0; i < touches.length; i++) {
+    //         let touch = touches[i];
+    //         let element = document.elementFromPoint(touch.clientX, touch.clientY);
+    //         if ($(element).closest('.kiss > div').length) {
+    //             console.log(element);
+    //             $(this).css('background', 'green');
+    //             kisses[$(this).index()] = true;
+    //             if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
+    //                 console.log('all true');
+    //                 playSoundFx('20-kiss');
+    //             }
+    //         }
+    //     }
+    // });
+
 
     $('#door20 .kiss > div').on('touchend', function() {
         if(kisses[0] == true && kisses[1] == true && kisses[2] == true && kisses[3] == true) {
