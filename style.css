@@ -2057,3 +2057,333 @@ body[data-adventday="29"] #start{
     touch-action: none;
     overflow: hidden;
 }
+
+/* DOOR 21
+*/
+
+#door21 {
+    background-image: url(images/bg-21.jpg);
+}
+
+#door21 .wrapping{
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#door21 .wrapping1{
+    top: 53.5%;
+    left: 39%;
+    width: 17%;
+    aspect-ratio: 194/20;
+    background-image: url(images/21-roll1.png);
+}
+
+#door21 .wrapping2{
+    top: 60%;
+    left: 0;
+    width: 10%;
+    aspect-ratio: 116/240;
+    background-image: url(images/21-roll2.png);
+}
+
+#door21 .wrapping3{
+    top: 62.5%;
+    left: 36.5%;
+    width: 33.7%;
+    aspect-ratio: 380/37;
+    background-image: url(images/21-roll3.png);
+}
+
+#door21 .roller {
+    position: absolute;
+    top: 74%;
+    left: 13%;
+    width: 74%;
+    height: 27%;
+    overflow: hidden;
+    display: none;
+}
+
+#door21 .roller::after {
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%,rgba(0,0,0,0.25) 60%,rgb(0 0 0 / 52%) 80%, rgba(0,0,0,0) 100%);
+    height: 16%;
+    content: '';
+    top: 0;
+    pointer-events: none;
+}
+
+#door21 .roller[data-enabled="true"] {
+    display: block;
+}
+
+#door21 .paper {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#door21 .roller1 .paper {
+    background-image: url(images/21-paper-1.jpg);
+}
+
+#door21 .roller2 .paper {
+    background-image: url(images/21-paper-2.jpg);
+}
+
+#door21 .roller3 .paper {
+    background-image: url(images/21-paper-3.jpg);
+}
+
+#door21 .roller1 .paper.answer {
+    background-image: url(images/21-paper-1-answer.jpg);
+}
+
+#door21 .roller2 .paper.answer {
+    background-image: url(images/21-paper-2-answer.jpg);
+}
+
+#door21 .roller3 .paper.answer {
+    background-image: url(images/21-paper-3-answer.jpg);
+}
+
+#door21 .rollScroll {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    overscroll-behavior: contain
+}
+
+#door21 .rollScroll::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none;
+}
+
+#door21 .rollScroll::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+#door21 .rollScroll::-webkit-scrollbar-track {
+    background: transparent;
+}   
+
+#door21 .rollScroll .spacer {
+    pointer-events: none;
+    height: 80%;
+    width: 100%;
+}
+
+
+
+/* DOOR 22
+*/
+
+#door22 {
+    background-image: url(images/bg-22.jpg);
+}
+
+
+#door22 .discoball{
+    top: -5%;
+    left: 36%;
+    width: 36%;
+    aspect-ratio: 329/343;
+    background-image: url(images/22-disco-ball.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+
+#door22 .discoball[data-enabled="true"]{
+    opacity: 1;
+    top: 7%;
+}
+
+#door22 .discolights{
+    top: 18%;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-image: url(images/22-disco.png);
+    background-size: 300px auto;
+    background-repeat: repeat-x;
+    animation: discolights 4s linear infinite;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+#door22 .discolights[data-enabled="true"]{
+    opacity: 1;
+    top: 18%;
+}
+
+@keyframes discolights {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+        background-position: 300px 0%;
+    }
+}
+
+
+#door22 .discobutton{
+    top: 56%;
+    right: 9%;
+    width: 10%;
+    aspect-ratio: 1/1;
+    position: absolute;
+}
+
+#door22 .recipebutton{
+    top: 76%;
+    left: 5%;
+    width: 34%;
+    aspect-ratio: 2/1;
+    position: absolute;
+}
+
+#door22 helper[data-id="recipes"] img{
+    max-height: 15%;
+    margin-top: -10%;
+    margin-bottom: 5%;
+}
+
+#door22 .bottle{
+    position: absolute;
+    width: 8%;
+    aspect-ratio: 89/254;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+#door22 .red{
+    background-image: url(images/22-red.png);
+    top: 24%;
+    left: 33%;
+    aspect-ratio: 107/255;
+    width: 9.5%;
+}
+#door22 .green{
+    background-image: url(images/22-green.png);
+    top: 39.3%;
+    left: 15%;
+}
+#door22 .blue{
+    background-image: url(images/22-blue.png);
+    top: 24%;
+    left: 15%;
+}
+#door22 .yellow{
+    background-image: url(images/22-yellow.png);
+    top: 39.6%;
+    left: 32%;
+}
+
+#door22 .bottle[data-enabled="true"]{
+    transform: rotate(90deg);
+    z-index: 4;
+    top: 45%;
+    left: 47%;
+}
+
+#door22 .drink{
+    position: absolute;
+    bottom: 37%;
+    left: 6.2%;
+    width: 10%;
+    height: 3%;
+    opacity: 0.5;
+    background-color: #8BC34A;
+    z-index: 2;
+    transition: all 0.5s ease-in-out;
+    clip-path: polygon(50% 0%, 100% 0, 50% 100%, 0 0);
+    transform-origin: center bottom;
+    transform: scale(0);
+}
+
+
+#door22 .drink2{
+    background-color: #bc2543;
+    left: 21.2%;
+}
+#door22 .drink3{
+    background-color: #3b3737;
+    left: 36.6%;
+}
+
+#door22 .drink.flawed{
+    background-color: #703d17;
+    animation: flawed 3s 1 forwards;
+    animation-delay: 1s;
+}
+
+
+#door22 .drink.poured{
+    animation: poured 2s 1 forwards;
+    animation-delay: 1s;
+}
+
+@keyframes poured {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes flawed {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+#door22 .shaker{
+    position: absolute;
+    top: 58%;
+    left: 56%;
+    width: 13%;
+    aspect-ratio: 161/262;
+    background-image: url(images/22-shaker.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.5s ease-in-out;
+}
+
+#door22 .shaker.pouring{
+    transform: rotate(-90deg);
+    top: 50%;
+    left: 15%;
+    z-index: 3;
+}
+
+#door22 .shaker.pouring.pour2{
+    left: 31%;
+}
+
+#door22 .shaker.pouring.pour3{
+    left: 46%;
+}

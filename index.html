@@ -321,7 +321,7 @@
                     </button>
                 </div>
                 <div class="room room23">
-                    <button class="door door-odd" data-page="door22"  data-code="875">
+                    <button class="door door-odd" data-page="door22"  data-code="980">
                         <div>22</div>
                         <span class="material-symbols-rounded">
                             local_bar
@@ -772,6 +772,107 @@
                 <div class="kiss1"></div>
                 <div class="kiss2"></div>
             </div>
+        </page>
+
+        <!-- DOOR 21 - WRAPPING ROOM (DAY 21) -->
+        <page id="door21" data-sound="21" data-enter-func="door21" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+               Eurgh a wrapping room! I hate wrapping presents! These patterns are making my eye sensors overload, I need to stay back and blur my vision. Hurry up and find my Spirit human...
+            </helper>
+
+            <div class="wrapping wrapping1" data-id="roll1" data-hide="roll1" data-sound-fx="21-load" data-run="resetWrapping" data-show="roll2,roll3" data-enable="roller1" data-disable="roller2,roller3"></div>
+            <div class="wrapping wrapping2" data-id="roll2" data-hide="roll2" data-sound-fx="21-load" data-run="resetWrapping" data-show="roll1,roll3" data-enable="roller2" data-disable="roller1,roller3"></div>
+            <div class="wrapping wrapping3" data-id="roll3" data-hide="roll3" data-sound-fx="21-load" data-run="resetWrapping" data-show="roll1,roll2" data-enable="roller3" data-disable="roller2,roller1"></div>
+
+            <div class="roller roller1" data-id="roller1" data-sound-fx="21-roll" data-enabled="false">
+                <div class="rollScroll">
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper answer"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="spacer"></div>
+                </div>
+            </div>
+            <div class="roller roller2" data-id="roller2" data-sound-fx="21-roll" data-enabled="false">
+                <div class="rollScroll">
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper answer"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="spacer"></div>
+                </div>
+            </div>
+            <div class="roller roller3" data-id="roller3" data-sound-fx="21-roll" data-enabled="false">
+                <div class="rollScroll">
+                    <div class="paper"></div>
+                    <div class="paper answer"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="paper"></div>
+                    <div class="spacer"></div>
+                </div>
+            </div>
+        </page>
+
+
+        <!-- DOOR 22 - BAR (DAY 22) -->
+        <page id="door22" data-sound="22" data-enter-func="door22" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+               What time is it? 5 minutes passed you finding the Christmas Spirit! We've almost searched every room in this house and still nothing...
+            </helper>
+
+            <div class="discoball" data-id="discoball" data-enabled="false"></div>
+            <div class="discolights" data-id="discolights" data-enabled="false"></div>
+
+            <div class="discobutton" data-run="toggleDisco"></div>
+            
+            <div class="bottle blue" data-id="blue" onclick="bottle('blue')"  data-enabled="false"></div>
+            <div class="bottle red" data-id="red" onclick="bottle('red')" data-enabled="false"></div>
+            <div class="bottle green" data-id="green" onclick="bottle('green')"  data-enabled="false"></div>
+            <div class="bottle yellow" data-id="yellow" onclick="bottle('yellow')"  data-enabled="false"></div>
+
+            <div class="drink drink1"></div>
+            <div class="drink drink2"></div>
+            <div class="drink drink3"></div>
+
+            <div class="shaker"></div>
+
+            <div class="recipebutton" data-toggle="recipes"></div>
+            <helper data-id="recipes" data-hide="recipes">
+                <h3>1. Slippery Tipple</h3>
+                <img src="images/22-recipe-green.png" />
+                <h3>2. Festive Blush</h3>
+                <img src="images/22-recipe-red.png" />
+                <h3>3. Mariah's Mingle</h3>
+                <img src="images/22-recipe-black.png" />
+            </helper>
+
+
         </page>
 
 

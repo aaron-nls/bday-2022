@@ -269,6 +269,7 @@ function startGame(){
         goToPage('warning');
     } else {
         goToPage('homescreen');
+        // goToPage('warning');
     }
 
 
@@ -838,6 +839,7 @@ function door14(){
 function door20(){
     let kisses = [false, false];
     let kissSound = new Audio('audio/20-kiss.mp3');
+    let flySound = new Audio('audio/20-fly.mp3');
     $('body').addClass('lockscreen');
     $('#door20 .kiss > div').on('touchstart', function() {
         kisses[$(this).index()] = true;
@@ -848,7 +850,7 @@ function door20(){
 
     $('#door20 .kiss > div').on('touchend', function() {
         if(kisses[0] == true && kisses[1] == true) {
-            playSoundFx('20-fly');
+            flySound.play();
             kisses = [];
             $('#door20 .kiss').hide();
             $('#door20 .robin').hide();
@@ -862,4 +864,98 @@ function door20(){
 
 function removeScreenLock(){
     $('body').removeClass('lockscreen');
+}
+
+function resetWrapping(){
+    $('.rollScroll').each(function() {
+        $(this).scrollTop($(this)[0].scrollHeight);
+    });
+}
+
+function door21(){
+    resetWrapping();
+    let rollSound = new Audio('audio/21-roll.mp3');
+    $('.rollScroll').on('scroll', function() {
+        rollSound.play();
+    });
+}
+
+
+let drinkOrder = [];
+function door22(){
+    
+}
+
+function toggleDisco(){
+    let currentTime = new Date();
+    let hours = currentTime.getHours().toString();
+    let minutes = currentTime.getMinutes().toString();
+    let fail = new Audio('audio/22-fail.mp3');
+    let discoMusic = new Audio('audio/22-disco.mp3');
+
+    if(hours.includes('5') || minutes.includes('5')){
+        enableElement('discoball');
+        enableElement('discolights');
+        discoMusic.play();
+
+        setTimeout(function() {
+            disableElement('discoball');
+            disableElement('discolights');
+            discoMusic.pause();
+        }, 6000);
+    }else{
+        disableElement('discoball');
+        disableElement('discolights');
+        fail.play();
+    }
+}
+
+let drinks = [];
+function bottle(color){
+    if(drinks.length == 3) return;
+    let pourSound = new Audio('audio/22-pour.mp3');
+    let fail = new Audio('audio/22-fail.mp3');
+    let requiredColors = [];
+    drinkOrder.push(color);
+
+    enableElement(color);
+    pourSound.play();
+
+
+    setTimeout(function() {
+        disableElement(color);
+        console.log(drinkOrder);
+        if(drinkOrder.length > 3) {
+            
+            $('page:visible .drink').removeClass('flawed');
+            $('page:visible .shaker').removeClass('pouring pour1 pour2 pour3');
+            if(drinks.length == 0){
+             requiredColors = ['green', 'green', 'yellow', 'blue'];
+            }else if(drinks.length == 1 ){
+                requiredColors = ['red', 'blue', 'red', 'yellow'];
+            }else if(drinks.length == 2 ){
+                requiredColors = ['red', 'blue', 'green', 'yellow'];
+            }
+
+            if (drinkOrder.every(color => requiredColors.includes(color))) {
+                console.log('success: ' + (drinks.length + 1));
+                $('page:visible .shaker').addClass('pouring pour' + (drinks.length+1));
+                $('page:visible .drink.drink' + (drinks.length+1)).addClass('poured');
+                pourSound.play();
+                drinks.push(true);
+            }else{
+                $('page:visible .shaker').addClass('pouring pour' + (drinks.length+1));
+                $('page:visible .drink.drink' + (drinks.length+1)).addClass('flawed');
+                fail.play();
+            }
+            drinkOrder = [];
+
+            setTimeout(function() {
+                $('page:visible .shaker').removeClass('pouring pour1 pour2 pour3');
+            }, 2000);
+        }
+    }, 2000);
+
+
+
 }
