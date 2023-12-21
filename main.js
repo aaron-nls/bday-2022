@@ -279,7 +279,7 @@ function startGame(){
       function(json) {
         let ipParts = json.ip.split('.');
         let lastThreeNumbers = ipParts[ipParts.length - 1];
-        $('.room13 button').attr('data-code', lastThreeNumbers);
+      //  $('.room13 button').attr('data-code', lastThreeNumbers);
       }
     );
 
