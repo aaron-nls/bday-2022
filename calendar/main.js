@@ -972,6 +972,7 @@ function door23(){
     let dumbells = document.querySelectorAll('#door23 .dumbell');
     let isDragging = false;
     let startY, startTop, weight;
+    $('body').addClass('lockscreen');
 
     dumbells.forEach(dumbell => {
         console.log(dumbell);
@@ -998,7 +999,11 @@ function door23(){
             weight = 0;
             dumbell.style.transition = 'transform 0.5s'; 
             dumbell.style.transform = 'translateY(0)';
-            setTimeout(() => dumbell.style.transition = '', 500); 
+            setTimeout(function() {
+                dumbell.style.transition = '';
+                let audio = new Audio('audio/23-thud.mp3');
+                audio.play();
+            }, 500); 
         });
     });
 }

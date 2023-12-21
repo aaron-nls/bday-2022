@@ -2465,6 +2465,17 @@ body[data-adventday="29"] #start{
 
 #door23 {
     background-image: url(images/bg-23.jpg);
+    pointer-events: none;
+}
+
+#door23 > * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#door23 button,
+#door23 helper{
+    pointer-events: all;
 }
 
 #door23 .dumbell{
