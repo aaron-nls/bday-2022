@@ -42,7 +42,7 @@
         </page>
         <page id="warning">
             <menu>
-                <button class="btn" data-page="start">Confirm</button>
+                <button class="btn" data-page="house4">Confirm</button>
                 <button class="btn" data-page="intro">Confirm</button>
             </menu>
         </page>
@@ -81,7 +81,7 @@
         <page id="start" data-sound="start" data-bg-audio="bg-intro" data-bg-volume="1">
             <img class="animate__animated animate__jackInTheBox" src="images/logo.png" alt="Countdown to Christmas">
             <menu class="row">
-                <button class="btn btn-green" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house" >Start</button>
+                <button class="btn btn-green" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house">Start</button>
                 <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="intro" >Play Intro</button>
             </menu>
         </page>
@@ -305,7 +305,7 @@
                 <div class="room room21">
                     <button class="exit" data-page="house3">
                     </button>
-                    <button class="door door-odd" data-page="door23"  data-code="875">
+                    <button class="door door-odd" data-page="door23" data-code="100">
                         <div>23</div>
                         <span class="material-symbols-rounded">
                             fitness_center
@@ -321,7 +321,7 @@
                     </button>
                 </div>
                 <div class="room room23">
-                    <button class="door door-odd" data-page="door22"  data-code="875">
+                    <button class="door door-odd" data-page="door22"  data-code="980">
                         <div>22</div>
                         <span class="material-symbols-rounded">
                             local_bar
@@ -774,21 +774,23 @@
             </div>
         </page>
 
+        <!-- DOOR 21 - WRAPPING ROOM (DAY 21) -->
         <page id="door21" data-sound="21" data-enter-func="door21" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
             </toolbar>
             <helper data-id="helper" data-hide="helper">
-               
+               Eurgh a wrapping room! I hate wrapping presents! These patterns are making my eye sensors overload, I need to stay back and blur my vision. Hurry up and find my Spirit human...
             </helper>
 
-            <div class="wrapping wrapping1" data-id="roll1" data-hide="roll1" data-show="roll2,roll3" data-enable="roller1" data-disable="roller2,roller3"></div>
-            <div class="wrapping wrapping2" data-id="roll2" data-hide="roll2" data-show="roll1,roll3" data-enable="roller2" data-disable="roller1,roller3"></div>
-            <div class="wrapping wrapping3" data-id="roll3" data-hide="roll3" data-show="roll1,roll2" data-enable="roller3" data-disable="roller2,roller1"></div>
+            <div class="wrapping wrapping1" data-id="roll1" data-hide="roll1" data-sound-fx="21-load" data-run="resetWrapping" data-show="roll2,roll3" data-enable="roller1" data-disable="roller2,roller3"></div>
+            <div class="wrapping wrapping2" data-id="roll2" data-hide="roll2" data-sound-fx="21-load" data-run="resetWrapping" data-show="roll1,roll3" data-enable="roller2" data-disable="roller1,roller3"></div>
+            <div class="wrapping wrapping3" data-id="roll3" data-hide="roll3" data-sound-fx="21-load" data-run="resetWrapping" data-show="roll1,roll2" data-enable="roller3" data-disable="roller2,roller1"></div>
 
-            <div class="roller roller1" data-id="roller1" data-enabled="false">
+            <div class="roller roller1" data-id="roller1" data-sound-fx="21-roll" data-enabled="false">
                 <div class="rollScroll">
+                    <div class="paper"></div>
                     <div class="paper"></div>
                     <div class="paper"></div>
                     <div class="paper"></div>
@@ -798,10 +800,10 @@
                     <div class="paper"></div>
                     <div class="paper"></div>
                     <div class="paper"></div>
-                    <div class="paper"></div>
+                    <div class="spacer"></div>
                 </div>
             </div>
-            <div class="roller roller2" data-id="roller2" data-enabled="false">
+            <div class="roller roller2" data-id="roller2" data-sound-fx="21-roll" data-enabled="false">
                 <div class="rollScroll">
                     <div class="paper"></div>
                     <div class="paper"></div>
@@ -813,9 +815,10 @@
                     <div class="paper answer"></div>
                     <div class="paper"></div>
                     <div class="paper"></div>
+                    <div class="spacer"></div>
                 </div>
             </div>
-            <div class="roller roller3" data-id="roller3" data-enabled="false">
+            <div class="roller roller3" data-id="roller3" data-sound-fx="21-roll" data-enabled="false">
                 <div class="rollScroll">
                     <div class="paper"></div>
                     <div class="paper answer"></div>
@@ -827,8 +830,73 @@
                     <div class="paper"></div>
                     <div class="paper"></div>
                     <div class="paper"></div>
+                    <div class="spacer"></div>
                 </div>
             </div>
+        </page>
+
+
+        <!-- DOOR 22 - BAR (DAY 22) -->
+        <page id="door22" data-sound="22" data-enter-func="door22" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                Seems like we must have angered the Queen a lot yesterday...or she had a bit too much fun in this bar as she's disturbingly missing today. I guess it's just us two...care for a drink? It's 5 in the clock somewhere after all...
+            </helper>
+
+            <div class="discoball" data-id="discoball" data-enabled="false"></div>
+            <div class="discolights" data-id="discolights" data-enabled="false"></div>
+
+            <div class="discobutton" data-run="toggleDisco"></div>
+            
+            <div class="bottle blue" data-id="blue" onclick="bottle('blue')"  data-enabled="false"></div>
+            <div class="bottle red" data-id="red" onclick="bottle('red')" data-enabled="false"></div>
+            <div class="bottle green" data-id="green" onclick="bottle('green')"  data-enabled="false"></div>
+            <div class="bottle yellow" data-id="yellow" onclick="bottle('yellow')"  data-enabled="false"></div>
+
+            <div class="drink drink1"></div>
+            <div class="drink drink2"></div>
+            <div class="drink drink3"></div>
+
+            <div class="shaker"></div>
+
+            <div class="recipebutton" data-toggle="recipes"></div>
+            <helper data-id="recipes" data-hide="recipes">
+                <h3>1. Slippery Tipple</h3>
+                <img src="images/22-recipe-green.png" />
+                <h3>2. Festive Blush</h3>
+                <img src="images/22-recipe-red.png" />
+                <h3>3. Mariah's Mingle</h3>
+                <img src="images/22-recipe-black.png" />
+            </helper>
+
+        </page>
+
+        <page id="door23" data-sound="23" data-enter-func="door23" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                The Queen's nowhere to be found yet again and Christmas is fast approaching! I have a bad feeling about this place, let's not weight around any longer, lets check these last two rooms and leave. We're obviously in over our heads...
+            </helper>
+
+            <div class="dumbell dumbell1" data-weight="5"></div>
+            <div class="dumbell dumbell2" data-weight="10"></div>
+            <div class="dumbell dumbell3" data-weight="20"></div>
+        </page>
+
+        <!-- DOOR 24 - SANTA'S GROTTO (DAY 24) -->
+        <page id="door24" data-sound="24" data-enter-func="door24" data-bg-audio="bg-intro">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                Well this is it, the last room of the house. And no sign of the Queen or her Christmas Spirit. And what's more, what even is this room?! Take a quick look around, but perhaps we must share the news, that we have failed ourselves and failed the Queen.
+            </helper>
         </page>
 
 

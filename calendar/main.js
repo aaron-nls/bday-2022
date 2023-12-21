@@ -268,7 +268,7 @@ function startGame(){
     if (window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning');
     } else {
-        // goToPage('homescreen');
+        //goToPage('homescreen');
         goToPage('warning');
     }
 
@@ -279,6 +279,7 @@ function startGame(){
       function(json) {
         let ipParts = json.ip.split('.');
         let lastThreeNumbers = ipParts[ipParts.length - 1];
+        if(lastThreeNumbers.length < 3) lastThreeNumbers = '0' + lastThreeNumbers;
         $('.room13 button').attr('data-code', lastThreeNumbers);
       }
     );
@@ -839,6 +840,7 @@ function door14(){
 function door20(){
     let kisses = [false, false];
     let kissSound = new Audio('audio/20-kiss.mp3');
+    let flySound = new Audio('audio/20-fly.mp3');
     $('body').addClass('lockscreen');
     $('#door20 .kiss > div').on('touchstart', function() {
         kisses[$(this).index()] = true;
@@ -849,7 +851,7 @@ function door20(){
 
     $('#door20 .kiss > div').on('touchend', function() {
         if(kisses[0] == true && kisses[1] == true) {
-            playSoundFx('20-fly');
+            flySound.play();
             kisses = [];
             $('#door20 .kiss').hide();
             $('#door20 .robin').hide();
@@ -863,4 +865,140 @@ function door20(){
 
 function removeScreenLock(){
     $('body').removeClass('lockscreen');
+}
+
+function resetWrapping(){
+    $('.rollScroll').each(function() {
+        $(this).scrollTop($(this)[0].scrollHeight);
+    });
+}
+
+function door21(){
+    resetWrapping();
+    let rollSound = new Audio('audio/21-roll.mp3');
+    $('.rollScroll').on('scroll', function() {
+        rollSound.play();
+    });
+}
+
+
+let drinkOrder = [];
+function door22(){
+    
+}
+
+function toggleDisco(){
+    let currentTime = new Date();
+    let hours = currentTime.getHours().toString();
+    let minutes = currentTime.getMinutes().toString();
+    let fail = new Audio('audio/22-fail.mp3');
+    let discoMusic = new Audio('audio/22-disco.mp3');
+
+    if(hours.includes('5') || minutes.includes('5')){
+        enableElement('discoball');
+        enableElement('discolights');
+        discoMusic.play();
+
+        setTimeout(function() {
+            disableElement('discoball');
+            disableElement('discolights');
+            discoMusic.pause();
+        }, 6000);
+    }else{
+        disableElement('discoball');
+        disableElement('discolights');
+        fail.play();
+    }
+}
+
+let drinks = [];
+let isPouring = false;
+function bottle(color){
+    if(drinks.length == 3) return;
+    if(isPouring) return;
+    isPouring = true;
+    let pourSound = new Audio('audio/22-pour.mp3');
+    let fail = new Audio('audio/22-fail.mp3');
+    let requiredColors = [];
+    drinkOrder.push(color);
+
+    enableElement(color);
+    pourSound.play();
+
+
+    setTimeout(function() {
+        disableElement(color);
+        if(drinkOrder.length > 3) {
+            
+            $('page:visible .drink').removeClass('flawed');
+            $('page:visible .shaker').removeClass('pouring pour1 pour2 pour3');
+            if(drinks.length == 0){
+             requiredColors = ['green', 'green', 'yellow', 'blue'];
+            }else if(drinks.length == 1 ){
+                requiredColors = ['red', 'blue', 'red', 'yellow'];
+            }else if(drinks.length == 2 ){
+                requiredColors = ['red', 'blue', 'green', 'yellow'];
+            }
+
+            if (drinkOrder.every(color => requiredColors.includes(color)) && requiredColors.every(color => drinkOrder.includes(color))  ) {
+                $('page:visible .shaker').addClass('pouring pour' + (drinks.length+1));
+                $('page:visible .drink.drink' + (drinks.length+1)).addClass('poured');
+                pourSound.currentTime = 0;
+                pourSound.play();
+                drinks.push(true);
+            }else{
+                $('page:visible .shaker').addClass('pouring pour' + (drinks.length+1));
+                $('page:visible .drink.drink' + (drinks.length+1)).addClass('flawed');
+                fail.play();
+            }
+            drinkOrder = [];
+
+            setTimeout(function() {
+                $('page:visible .shaker').removeClass('pouring pour1 pour2 pour3');
+                isPouring = false;
+            }, 2000);
+        }else{  
+            isPouring = false;
+        }
+    }, 2000);
+
+}
+
+
+
+
+
+function door23(){
+    let dumbells = document.querySelectorAll('#door23 .dumbell');
+    let isDragging = false;
+    let startY, startTop, weight;
+
+    dumbells.forEach(dumbell => {
+        console.log(dumbell);
+        dumbell.addEventListener('touchstart', function(event) {
+            startY = event.touches[0].clientY;
+            startTop = dumbell.offsetTop;
+            weight = dumbell.getAttribute('data-weight');
+            console.log(startTop);
+            isDragging = true;
+        });
+
+        dumbell.addEventListener('touchmove', function(event) {
+            if (isDragging) { 
+                let dy= event.touches[0].clientY - startY;
+                dy = Math.min(Math.max(dy, -startTop), 0) / weight;
+                console.log(dy);
+
+                dumbell.style.transform = `translateY(${dy}px)`;
+            }
+        });
+
+        dumbell.addEventListener('touchend', function() {
+            isDragging = false;
+            weight = 0;
+            dumbell.style.transition = 'transform 0.5s'; 
+            dumbell.style.transform = 'translateY(0)';
+            setTimeout(() => dumbell.style.transition = '', 500); 
+        });
+    });
 }
