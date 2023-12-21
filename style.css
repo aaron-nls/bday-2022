@@ -2303,6 +2303,58 @@ body[data-adventday="29"] #start{
     left: 47%;
 }
 
+
+#door22 .bottle::after{
+    content: '';
+    position: absolute;
+    top: -2%;
+    left: 50%;
+    width: 0%;
+    height: 5%;
+    background-color: white;
+    border-radius: 3px;
+}
+
+#door22 .bottle.yellow::after{
+    background: rgb(255,227,126);
+    background: linear-gradient(90deg, rgba(255,227,126,1) 0%, rgba(246,210,121,0) 100%);
+}
+
+#door22 .bottle.red::after{
+    background: rgb(255,62,62);
+    background: linear-gradient(90deg, rgba(255,62,62,1) 0%, rgba(246,121,121,0) 100%);
+}
+
+#door22 .bottle.green::after{
+    background: rgb(123,212,122);
+    background: linear-gradient(90deg, rgba(123,212,122,1) 0%, rgba(154,246,121,0) 100%);
+}
+
+#door22 .bottle.blue::after{
+    background: rgb(75,177,255);
+    background: linear-gradient(90deg, rgba(75,177,255,1) 0%, rgba(121,230,246,0) 100%);
+}
+
+#door22 .bottle[data-enabled="true"]::after{
+    animation: liquid 2s linear 1 forwards;
+}
+
+@keyframes liquid {
+    0% {
+      width: 0%;
+    }
+    30% {
+        width: 195%;
+    }
+
+    75%{
+        width: 195%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
 #door22 .drink{
     position: absolute;
     bottom: 37%;
@@ -2373,11 +2425,29 @@ body[data-adventday="29"] #start{
     transition: all 0.5s ease-in-out;
 }
 
+
+#door22 .shaker::after{
+    content: '';
+    position: absolute;
+    top: -2%;
+    right: 50%;
+    width: 0%;
+    height: 5%;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 35%, rgba(255,255,255,1) 100%);
+    border-radius: 3px;
+}
+
+
 #door22 .shaker.pouring{
     transform: rotate(-90deg);
     top: 50%;
     left: 15%;
     z-index: 3;
+}
+
+#door22 .shaker.pouring::after{
+    animation: liquid 2s linear 1 forwards;
 }
 
 #door22 .shaker.pouring.pour2{

@@ -279,7 +279,7 @@ function startGame(){
       function(json) {
         let ipParts = json.ip.split('.');
         let lastThreeNumbers = ipParts[ipParts.length - 1];
-      //  $('.room13 button').attr('data-code', lastThreeNumbers);
+        $('.room13 button').attr('data-code', lastThreeNumbers);
       }
     );
 
@@ -911,8 +911,11 @@ function toggleDisco(){
 }
 
 let drinks = [];
+let isPouring = false;
 function bottle(color){
     if(drinks.length == 3) return;
+    if(isPouring) return;
+    isPouring = true;
     let pourSound = new Audio('audio/22-pour.mp3');
     let fail = new Audio('audio/22-fail.mp3');
     let requiredColors = [];
@@ -924,7 +927,6 @@ function bottle(color){
 
     setTimeout(function() {
         disableElement(color);
-        console.log(drinkOrder);
         if(drinkOrder.length > 3) {
             
             $('page:visible .drink').removeClass('flawed');
@@ -937,10 +939,10 @@ function bottle(color){
                 requiredColors = ['red', 'blue', 'green', 'yellow'];
             }
 
-            if (drinkOrder.every(color => requiredColors.includes(color))) {
-                console.log('success: ' + (drinks.length + 1));
+            if (drinkOrder.every(color => requiredColors.includes(color)) && requiredColors.every(color => drinkOrder.includes(color))  ) {
                 $('page:visible .shaker').addClass('pouring pour' + (drinks.length+1));
                 $('page:visible .drink.drink' + (drinks.length+1)).addClass('poured');
+                pourSound.currentTime = 0;
                 pourSound.play();
                 drinks.push(true);
             }else{
@@ -952,7 +954,10 @@ function bottle(color){
 
             setTimeout(function() {
                 $('page:visible .shaker').removeClass('pouring pour1 pour2 pour3');
+                isPouring = false;
             }, 2000);
+        }else{  
+            isPouring = false;
         }
     }, 2000);
 
