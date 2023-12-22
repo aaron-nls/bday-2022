@@ -971,7 +971,7 @@ function bottle(color){
 function door23(){
     let dumbells = document.querySelectorAll('#door23 .dumbell');
     let isDragging = false;
-    let startY, startTop, weight, stopDrag;
+    let startY, startTop, weight, stopDrag, lastTouch;
     let dragAmount = 0;
     $('body').addClass('lockscreen');
 
@@ -983,6 +983,7 @@ function door23(){
             let curWeight = dumbell.getAttribute('data-weight');
             if(curWeight !== weight){
                 startTop = dumbell.offsetTop;
+                lastTouch = 0;
                 dragAmount = 0;
                 weight = dumbell.getAttribute('data-weight');
             }
@@ -995,12 +996,14 @@ function door23(){
         dumbell.addEventListener('touchmove', function(event) {
             if (isDragging) { 
                 stopDrag && clearTimeout(stopDrag);
-                let deltaY = event.touches[0].clientY - startY;
+                let deltaY = event.touches[0].clientY - startY; 
                 deltaY = Math.min(Math.max(deltaY, -startTop), 0) / (weight);
 
-                if(deltaY < 0) {
+                if(deltaY < 0 && lastTouch > deltaY) {
                     dragAmount += deltaY;
                 }
+
+                lastTouch = deltaY;
 
                 dumbell.style.transform = `translateY(${dragAmount}px)`;
             }
@@ -1011,6 +1014,7 @@ function door23(){
                 isDragging = false;
                 dragAmount = 0
                 weight = 0;
+                lastTouch = 0;
                 dumbell.style.transition = 'transform 0.5s'; 
                 dumbell.style.transform = 'translateY(0)';
                 setTimeout(function() {
