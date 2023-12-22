@@ -279,6 +279,7 @@ function startGame(){
       function(json) {
         let ipParts = json.ip.split('.');
         let lastThreeNumbers = ipParts[ipParts.length - 1];
+        if(lastThreeNumbers.length < 3) lastThreeNumbers = '0' + lastThreeNumbers;
         $('.room13 button').attr('data-code', lastThreeNumbers);
       }
     );
@@ -961,6 +962,67 @@ function bottle(color){
         }
     }, 2000);
 
+}
 
 
+
+
+
+function door23(){
+    let dumbells = document.querySelectorAll('#door23 .dumbell');
+    let isDragging = false;
+    let startY, startTop, weight, stopDrag, lastTouch;
+    let dragAmount = 0;
+    $('body').addClass('lockscreen');
+
+    dumbells.forEach(dumbell => {
+        console.log(dumbell);
+        dumbell.addEventListener('touchstart', function(event) {
+            startY = event.touches[0].clientY;
+            isDragging = true;
+            let curWeight = dumbell.getAttribute('data-weight');
+            if(curWeight !== weight){
+                startTop = dumbell.offsetTop;
+                lastTouch = 0;
+                dragAmount = 0;
+                weight = dumbell.getAttribute('data-weight');
+            }
+            
+            if(stopDrag){
+                clearTimeout(stopDrag);
+            }
+        });
+
+        dumbell.addEventListener('touchmove', function(event) {
+            if (isDragging) { 
+                stopDrag && clearTimeout(stopDrag);
+                let deltaY = event.touches[0].clientY - startY; 
+                deltaY = Math.min(Math.max(deltaY, -startTop), 0) / (weight);
+
+                if(deltaY < 0 && lastTouch > deltaY) {
+                    dragAmount += deltaY;
+                }
+
+                lastTouch = deltaY;
+
+                dumbell.style.transform = `translateY(${dragAmount}px)`;
+            }
+        });
+
+        dumbell.addEventListener('touchend', function() {
+            stopDrag = setTimeout(function() {
+                isDragging = false;
+                dragAmount = 0
+                weight = 0;
+                lastTouch = 0;
+                dumbell.style.transition = 'transform 0.5s'; 
+                dumbell.style.transform = 'translateY(0)';
+                setTimeout(function() {
+                    dumbell.style.transition = '';
+                    let audio = new Audio('audio/23-thud.mp3');
+                    audio.play();
+                }, 500); 
+            }, 300); 
+        });
+    });
 }

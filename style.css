@@ -2457,3 +2457,43 @@ body[data-adventday="29"] #start{
 #door22 .shaker.pouring.pour3{
     left: 46%;
 }
+
+
+
+/* DOOR 23
+*/
+
+#door23 {
+    background-image: url(images/bg-23.jpg);
+    pointer-events: none;
+}
+
+#door23 > * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#door23 button,
+#door23 helper{
+    pointer-events: all;
+}
+
+#door23 .dumbell{
+    position: absolute;
+    bottom: 7%;
+    left: 8%;
+    width: 18%;
+    aspect-ratio: 256/373;
+    background-image: url(images/23-dumbell.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: all;
+}
+#door23 .dumbell2{
+    left: 37%;
+    width: 22%;
+}
+#door23 .dumbell3{
+    left: 68%;
+    width: 25%;
+}
