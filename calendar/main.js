@@ -986,7 +986,7 @@ function door23(){
                 dragAmount = 0;
                 weight = dumbell.getAttribute('data-weight');
             }
-            console.log(dragAmount);
+            
             if(stopDrag){
                 clearTimeout(stopDrag);
             }
@@ -998,9 +998,7 @@ function door23(){
                 let deltaY = event.touches[0].clientY - startY;
                 deltaY = Math.min(Math.max(deltaY, -startTop), 0) / (weight);
 
-                console.log(dragAmount);
                 if(deltaY < 0) {
-                    console.log(dragAmount +  ' + ' + deltaY + ' = ' + (dragAmount + deltaY));
                     dragAmount += deltaY;
                 }
 
@@ -1020,7 +1018,7 @@ function door23(){
                     let audio = new Audio('audio/23-thud.mp3');
                     audio.play();
                 }, 500); 
-            }, 250); 
+            }, 300); 
         });
     });
 }
