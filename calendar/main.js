@@ -971,7 +971,7 @@ function bottle(color){
 function door23(){
     let dumbells = document.querySelectorAll('#door23 .dumbell');
     let isDragging = false;
-    let startY, startTop, weight;
+    let startY, startTop, weight, stopDrag, dragAmount;
     $('body').addClass('lockscreen');
 
     dumbells.forEach(dumbell => {
@@ -982,28 +982,38 @@ function door23(){
             weight = dumbell.getAttribute('data-weight');
             console.log(startTop);
             isDragging = true;
+            dragAmount = 0;
+            stopDrag && clearTimeout(stopDrag);
         });
 
         dumbell.addEventListener('touchmove', function(event) {
             if (isDragging) { 
-                let dy= event.touches[0].clientY - startY;
-                dy = Math.min(Math.max(dy, -startTop), 0) / weight;
-                console.log(dy);
+                stopDrag && clearTimeout(stopDrag);
+                let deltaY = event.touches[0].clientY - startY;
+                deltaY = Math.min(Math.max(deltaY, -startTop), 0) / weight;
 
-                dumbell.style.transform = `translateY(${dy}px)`;
+                if(deltaY < 0) {
+                    dragAmount = deltaY;
+                }
+                console.log(dragAmount);
+
+                dumbell.style.transform = `translateY(${dragAmount}px)`;
             }
         });
 
         dumbell.addEventListener('touchend', function() {
-            isDragging = false;
-            weight = 0;
-            dumbell.style.transition = 'transform 0.5s'; 
-            dumbell.style.transform = 'translateY(0)';
-            setTimeout(function() {
-                dumbell.style.transition = '';
-                let audio = new Audio('audio/23-thud.mp3');
-                audio.play();
-            }, 500); 
+            stopDrag = setTimeout(function() {
+                isDragging = false;
+                dragAmount = 0
+                weight = 0;
+                dumbell.style.transition = 'transform 0.5s'; 
+                dumbell.style.transform = 'translateY(0)';
+                setTimeout(function() {
+                    dumbell.style.transition = '';
+                    let audio = new Audio('audio/23-thud.mp3');
+                    audio.play();
+                }, 500); 
+            }, 250); 
         });
     });
 }
