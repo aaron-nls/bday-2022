@@ -971,31 +971,38 @@ function bottle(color){
 function door23(){
     let dumbells = document.querySelectorAll('#door23 .dumbell');
     let isDragging = false;
-    let startY, startTop, weight, stopDrag, dragAmount;
+    let startY, startTop, weight, stopDrag;
+    let dragAmount = 0;
     $('body').addClass('lockscreen');
 
     dumbells.forEach(dumbell => {
         console.log(dumbell);
         dumbell.addEventListener('touchstart', function(event) {
             startY = event.touches[0].clientY;
-            startTop = dumbell.offsetTop;
-            weight = dumbell.getAttribute('data-weight');
-            console.log(startTop);
             isDragging = true;
-            dragAmount = 0;
-            stopDrag && clearTimeout(stopDrag);
+            let curWeight = dumbell.getAttribute('data-weight');
+            if(curWeight !== weight){
+                startTop = dumbell.offsetTop;
+                dragAmount = 0;
+                weight = dumbell.getAttribute('data-weight');
+            }
+            console.log(dragAmount);
+            if(stopDrag){
+                clearTimeout(stopDrag);
+            }
         });
 
         dumbell.addEventListener('touchmove', function(event) {
             if (isDragging) { 
                 stopDrag && clearTimeout(stopDrag);
                 let deltaY = event.touches[0].clientY - startY;
-                deltaY = Math.min(Math.max(deltaY, -startTop), 0) / weight;
+                deltaY = Math.min(Math.max(deltaY, -startTop), 0) / (weight);
 
-                if(deltaY < 0) {
-                    dragAmount = deltaY;
-                }
                 console.log(dragAmount);
+                if(deltaY < 0) {
+                    console.log(dragAmount +  ' + ' + deltaY + ' = ' + (dragAmount + deltaY));
+                    dragAmount += deltaY;
+                }
 
                 dumbell.style.transform = `translateY(${dragAmount}px)`;
             }
