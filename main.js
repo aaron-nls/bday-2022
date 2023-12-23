@@ -209,11 +209,15 @@ function scrollTo(page, scrollNumber) {
 }
 
 function playBackground(newBgAudio, bgVolume) {
+    if(adventDay==24){
+        newBgAudio = 'bg-peril';
+    }
     if(newBgAudio && newBgAudio !== bgAudio) {
         bgAudio = newBgAudio;
         if(bgAudioPlayer) {
             bgAudioPlayer.pause();
         }
+
         bgAudioPlayer = new Audio('audio/' + bgAudio + '.mp3');
         bgAudioPlayer.play();
         bgAudioPlayer.loop = true;
@@ -1025,4 +1029,16 @@ function door23(){
             }, 300); 
         });
     });
+}
+
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Look to the sky outside...',
+            text: '...then follow the FOOTPRINTS up!',
+            url: 'https://aaron-nls.github.io/location.html',
+        })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    }   
 }

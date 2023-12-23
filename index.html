@@ -180,6 +180,11 @@
                     </button>
                 </div>
                 <div class="room room-window">
+                    <button class="door door-roof" data-page="door25" data-code="999">
+                        <div>25</div>
+                        <span>
+                        </span>
+                    </button>   
                 </div>
                 <div class="room room9">    
                     <button class="door door-rotate" data-page="door10" data-code="642">
@@ -329,7 +334,7 @@
                     </button>
                 </div>
                 <div class="room room24">
-                    <button class="door door-odd" data-page="door24"  data-code="875">
+                    <button class="door door-odd" data-page="door24"  data-code="547">
                         <div>24</div>
                         <span class="material-symbols-rounded">
                             question_mark
@@ -897,6 +902,183 @@
             <helper data-id="helper" data-hide="helper">
                 Well this is it, the last room of the house. And no sign of the Queen or her Christmas Spirit. And what's more, what even is this room?! Take a quick look around, but perhaps we must share the news, that we have failed ourselves and failed the Queen.
             </helper>
+
+            <div class="mobilebutton" data-enable="mobile"></div>
+
+            <div class="mobile" data-id="mobile" data-enabled="false">
+                <div class="mobilescreen messages" data-id="messages" data-enabled="true">
+                    <div class="messagescroll">
+
+
+                        <div class="message" data-disable="messages" data-enable="message1">
+                            <span>
+                                <span>Towns People</span>
+                                <span>24/12/23</span>
+                            </span>
+                            <p>Hello?!</p>
+                        </div>
+                        <div class="message" data-disable="messages" data-enable="message2">
+                            <span>
+                                <span>D. Parton</span>
+                                <span>23/12/23</span>
+                            </span>
+                            <p>If you don't tell me where you...</p>
+                        </div>
+
+                        <div class="message" data-disable="messages" data-enable="message3">
+                            <span>
+                                <span>Papa Johns</span>
+                                <span>30/11/23</span>
+                            </span>
+                            <p>Thank you for your order...</p>
+                        </div>
+                        
+                        <div class="message" data-disable="messages" data-enable="message4">
+                            <span>
+                                <span>Elon Musk</span>
+                                <span>27/11/23</span>
+                            </span>
+                            <p>Sorry, it's not for sale...</p>
+                        </div>
+                        
+                        <div class="message" data-disable="messages" data-enable="message5">
+                            <span>
+                                <span>Truth Social</span>
+                                <span>15/11/23</span>
+                            </span>
+                            <p>Your one-time passcode is 187...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mobilescreen message" data-id="message1" data-enabled="false">
+                    <a class="backbutton" data-disable="message1" data-enable="messages"></a>
+                    <div class="title">
+                        Towns people
+                    </div>
+                    <div class="messagepane">
+                        <div class="messageblock left">
+                            <p>Thank you for the music Queen 💖</p>
+                            <p>It was proper stunning</p>
+                        </div>
+                        <div class="messageblock right">
+                            <p>No probs hun</p>
+                            <p>Thanks for my number one....again! lol</p>
+                        </div>
+                        <div class="messageblock left">
+                            <p>Should we start decorating the village?</p>
+                        </div>
+                        <div class="messageblock right">
+                            <p>Notttt yetttt...</p>
+                            <p>Let's wait for December to start</p>
+                            <p>I'll get back to you with a date</p>
+                        </div>
+                        <div class="messageblock left">
+                            <p>Sounds like a plan bbz xoxo</p>
+                            <p>You thought of a date yet?</p>
+                            <p>Can't wait for the town to be festive again, let me know when you're free 😘</p>
+                            <p>Hey u k hun?</p>
+                            <p>We're all quite worried about you, no one's seen you in a while</p>
+                            <p>Helllooooo?</p>
+                            <p>Are you ok?</p>
+                            <p>We're going to visit the Castle and check in on you soon...we're all worried 😢</p>
+                            <p>Hello?</p>
+                        </div>
+                    </div>
+                    <div class="send">Send</div>
+                </div>
+
+
+                <div class="mobilescreen message" data-id="message2" data-enabled="false">
+                    <a class="backbutton" data-disable="message2" data-enable="messages"></a>
+                    <div class="title">
+                        D. Parton
+                    </div>
+                    <div class="messagepane">
+                        <div class="messageblock left">
+                            <p>Howdy darling</p>
+                            <p>I got a missed call from you, you all good?</p>
+                        </div>
+                        <div class="messageblock right">
+                            <p>I've been seeing weird things around my castle</p>
+                            <p>I think something may be after me</p>
+                        </div>
+                        <div class="messageblock left">
+                            <p>I'm sure it's nothing honey</p>
+                            <p>Just some of the towns folk playing pranks</p>
+                            <p>After all, it's almost time for Christmas on the Square!</p>
+                        </div>
+                        <div class="messageblock right">
+                            <p>I think something is going on</p>
+                            <p>I'm scared, I'm going to lock up and hide.</p>
+                            <p>All is not what it seems...</p>
+                        </div>
+                        <div class="messageblock left">
+                            <p>Message received, Share your location with me and I'll pop over 👼</p>
+                        </div>
+                        <div class="messageblock right">
+                            <p>Ok, I'll send you my location</p>
+                            <p>But please hurry, I'm scared</p>
+                        </div>
+                        <div class="messageblock left">
+                            <p>Are you going to send them?</p>
+                            <p>M?</p>
+                            <p>I'm on my way, find some way to share your location...</p>
+                        </div>
+                    </div>
+                    <div class="texter">Here's my <span>Location</span></div>
+                    <div class="send share" data-run="sharePage">Share</div>
+                </div>
+
+                <div class="mobilescreen message" data-id="message3" data-enabled="false">
+                    <a class="backbutton" data-disable="message3" data-enable="messages"></a>
+                    <div class="title">
+                        Papa Johns
+                    </div>
+                    <div class="messagepane">
+                        <div class="messageblock left">
+                            <p>Thank you for your order! Your XXL Pepperoni Passion, Ben & Jerry's Christmas Chunk, Potato wedges, Cheesey Garlic Bread, 2L Coca-Cola Bottle, is being prepared. Thank you for your order.</p>
+                        </div>
+                    </div>
+                    <div class="send">Send</div>
+                </div>
+
+                <div class="mobilescreen message" data-id="message4" data-enabled="false">
+                    <a class="backbutton" data-disable="message4" data-enable="messages"></a>
+                    <div class="title">
+                        Elon Musk
+                    </div>
+                    <div class="messagepane">
+                        <div class="messageblock left">
+                            <p>Hey Mariah</p>
+                            <p>iM tryen 2 do that AI stuff like the other cool kids, could I borrow ur xmas spirit so I can make it lern what xmas is?</p>
+                        </div>
+                        <div class="messageblock right">
+                            <p>Piss off edge lord</p>
+                            <p>And it's queen to you 👸🏻</p>
+                        </div>
+                    </div>
+                    <div class="send">Send</div>
+                </div>
+
+                <div class="mobilescreen message" data-id="message5" data-enabled="false">
+                    <a class="backbutton" data-disable="message5" data-enable="messages"></a>
+                    <div class="title">
+                        Truth Social
+                    </div>
+                    <div class="messagepane">
+                        <div class="messageblock left">
+                            <p>Your one-time passcode is 187-096. Don't share it with the libtards, illuminati, big pharma or snowflakes.</p>
+                        </div>
+                        <div class="messageblock right">
+                            <p>UNSUBSCRIBE</p>
+                        </div>
+                    </div>
+                    <div class="send">Send</div>
+                </div>
+
+                <div class="closephone" data-id="closephone" data-disable="mobile">
+            </div>
         </page>
 
 
