@@ -1042,3 +1042,22 @@ function sharePage() {
         .catch((error) => console.log('Error sharing', error));
     }   
 }
+
+function pickIce() {
+    if($('#door25 .icedoor').attr('data-enabled')=='false') return;
+    let icedoor = document.querySelector('#door25 .icedoor');
+    let scale = icedoor.dataset.scale ?? 1;
+    scale -= 0.005;
+    icedoor.dataset.scale = scale;
+    icedoor.style.transform = `scale(${scale})`;
+
+    let audio = new Audio('audio/25-icechip.mp3');
+    audio.play();
+
+    if(scale <= 0.5) {
+        $('#door25 .icedoor').fadeOut();
+        bgAudioPlayer.pause();
+        $('#door25 .finalvideo').fadeIn();
+        $('#door25 .finalvideo').get(0).play();
+    }
+}

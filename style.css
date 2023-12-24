@@ -2690,6 +2690,13 @@ body[data-adventday="29"] #start{
     color: #3e5ab8;
 }
 
+/* DOOR 25
+*/
+
+#door25 {
+    background-image: url(images/bg-25.jpg);
+}
+
 .door-roof{
     display: none;
     height: 9%;
@@ -2710,6 +2717,40 @@ body[data-adventday="29"] #start{
     background-size: contain;
     background-repeat: no-repeat;
 }   
+
+#door25 .icedoor{
+    position: absolute;
+    top: 37%;
+    left: 31%;
+    width: 39%;
+    aspect-ratio: 464/642;
+    background-image: url(images/25-ice.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scale(1);
+}
+
+#door25 .pickaxe{
+    position: absolute;
+    top: 57.4%;
+    left: 13.6%;
+    width: 8.2%;
+    aspect-ratio: 89/150;
+    background-image: url(images/25-axe.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#door25 .finalvideo {
+    background-color: black;
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 
 
 body[data-unlockedday="24"] .door-roof,

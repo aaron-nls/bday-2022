@@ -1077,10 +1077,28 @@
                     <div class="send">Send</div>
                 </div>
 
-                <div class="closephone" data-id="closephone" data-disable="mobile">
+                <div class="closephone" data-id="closephone" data-disable="mobile"></div>
             </div>
         </page>
 
+        <!-- DOOR 25 - SANTA'S GROTTO (DAY 25) -->  
+        <page id="door25" data-sound="25" data-bg-audio="bg-generic">
+            <toolbar>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-hide="note" data-toggle="helper"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
+            </toolbar>
+            <helper data-id="helper" data-hide="helper">
+                A secret room! This where the real queen must be hiding - but it looks like the door is frozen shut. We need to help the queen now!
+            </helper>
+
+            <div class="pickaxe" data-id="pickaxe" data-enable="icedoor" data-hide="pickaxe" data-sound-fx="25-pickaxe"></div>
+
+            <div class="icedoor" data-id="icedoor" data-enabled="false" onclick="pickIce()"></div>
+
+            <video class="finalvideo">
+                <source src="audio/25.mp4" type="video/mp4">
+            </video>
+        </page>
 
     </main>
     <div class="door11code">
