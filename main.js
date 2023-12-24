@@ -1036,7 +1036,7 @@ function sharePage() {
         navigator.share({
             title: 'Look to the sky outside...',
             text: '...then follow the FOOTPRINTS up!',
-            url: 'https://aaron-nls.github.io/location.html',
+            url: 'https://abrosis.github.io/location.html',
         })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
