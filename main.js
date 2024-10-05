@@ -9,7 +9,7 @@ $(document).ready(function() {
             if($(this).attr('data-enabled') == 'true') {
                 playSoundFx('open');
             }else{
-                return;
+               // return;
             }
         }
         goToPage(target, scrollNumber);
@@ -272,8 +272,8 @@ function startGame(){
     if (window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning');
     } else {
-        goToPage('homescreen');
-        // goToPage('warning');
+        // goToPage('homescreen');
+        goToPage('warning');
     }
 
 
