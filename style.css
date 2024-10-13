@@ -82,6 +82,23 @@ h2{
     content: '\f5a0';
 }
 
+.btn-hint {
+    margin-right: auto;
+}
+
+.btn-hint:after {
+    content: '\eb8b';
+}
+
+.btn-close {
+    box-shadow: none;
+    background: linear-gradient(to bottom, #ea3348 0%,#a90329 49%,#6d0019 49%,#8c0015 49%,#8f0222 100%);
+}
+.btn-close:after {
+    content: '\e5cd';
+    color: white;
+}
+
 
 menu {
     display: flex;
@@ -115,7 +132,7 @@ toolbar {
     padding: 15px 20px;
     z-index: 99;
 }
-
+hints,
 helper{
     display: none;
     z-index: 99999;
@@ -145,6 +162,23 @@ helper.cinnamon{
     background-position: right bottom;
 }
 
+hints {
+    overflow: auto;
+}
+
+helper header,
+hints header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+helper header h2,
+hints header h2{
+    margin: 0;
+}
+
 main{
     width: auto;
     margin: 0 auto;
@@ -167,7 +201,7 @@ page {
     background-repeat: no-repeat;
 }
 
-@media (min-width: 450px) {
+@media (min-width: 430px) {
     main,
     page {
         aspect-ratio: 390/844;
@@ -182,6 +216,28 @@ page {
     display: block;
 }
 
+details {
+    border: 1px solid #402805;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+
+summary {
+    list-style: none;
+    background: linear-gradient(to bottom,  #f2c6a4 0%,#c18017 50%,#b77101 51%,#e8b15f 100%);
+    padding: 5px 10px;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details p{
+    padding: 10px;
+    margin: 0;
+}
 
 #homescreen {
     background-image: url(images/bg-homescreen.jpg);
@@ -669,10 +725,10 @@ body[data-adventday="29"] #start{
 
 #door1 .on-button {
     position: absolute;    
-    top: 14%;
-    left: 11%;
-    aspect-ratio: 111/179;
-    width: 10%;
+    top: 18%;
+    left: 1%;
+    aspect-ratio: 111 / 179;
+    width: 8%;
     background-image: url(images/1-on.png);
     background-size: contain;
 }
@@ -681,13 +737,14 @@ body[data-adventday="29"] #start{
 }
 
 #door1 .play-button {
-    position: absolute;   
-    bottom: 30%;
-    left: 29%;
-    aspect-ratio: 194/194;
-    width: 15%;
+    position: absolute;
+    bottom: 43.5%;
+    left: 15%;
+    width: 10.5%;
+    height: 5%;
     background-image: url(images/1-playbutton.png);
-    background-size: contain;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 #door1 .play-button[data-enabled="true"] {
     filter: drop-shadow(0px 0px 15px red) contrast(2.5);
@@ -714,13 +771,23 @@ body[data-adventday="29"] #start{
 
 #door2 .water{
     background-image: url(images/2-water.png);
-    background-size: contain;
-    aspect-ratio: 1/1;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotate(0deg);
+}
+
+#door2 .waterCover{
     width: 33%;
+    height: 15%;
     position: absolute;
     left: 34%;
     top: 49%;
-    transform: rotate(0deg);
+    border-radius: 100%;
+    overflow: hidden;
 }
 
 /* DOOR 3

@@ -49,6 +49,7 @@
 
         <page id="intro" data-sound="story-1" data-bg-audio="bg-intro">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-skip" data-page="start" ></button>
             </toolbar>  
             <menu>
@@ -57,6 +58,7 @@
         </page>
         <page id="intro2" data-sound="story-2" data-bg-audio="bg-intro">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-skip" data-page="start" ></button>
             </toolbar>  
             <menu>
@@ -66,6 +68,7 @@
         <page id="intro3" data-sound="story-3" data-bg-audio="bg-intro">
 
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-skip" data-page="start" ></button>
             </toolbar>  
             <menu>
@@ -92,6 +95,7 @@
         </div>
         <page id="house" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
             <div class="rooms">
@@ -141,6 +145,7 @@
 
         <page id="house2" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
             <div class="rooms">
@@ -207,6 +212,7 @@
 
         <page id="house3" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
             <div class="rooms">
@@ -304,6 +310,7 @@
 
         <page id="house4" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
             <div class="rooms">
@@ -347,10 +354,46 @@
         <!-- DOOR 1 - RECORDING STUDIO (DAY 1) -->
         <page id="door1" data-sound="1"  data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
-            <helper data-id="helper" data-hide="helper">
+
+            <hints data-id="hints">
+                <header>
+                    <h2>Hints</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper"></button>
+                </header>
+                <details>
+                    <summary>Hint 1</summary>
+                    <p>Looks like headphones are normally worn in here. But there doesn't appear to be any power...</p>
+                </details>
+                <details>
+                    <summary>Hint 2</summary>
+                    <p>What does the L and R mean? And why is the L highlighted green...</p>
+                </details>
+                <details>
+                    <summary>Hint 3</summary>
+                    <p>Tap the power switch on and then connect headphones to your device. Listen to the left earpiece only to hear the code.</p>
+                </details>
+                <details>
+                    <summary>Solution</summary>
+                    <p>
+                    Door:
+                    <span class="material-symbols-rounded">
+                        water_drop
+                    </span>
+                    <br/>
+                    Code: 764
+                    </p>
+                </details>
+            </hints>
+
+            <helper data-id="helper">
+                <header>
+                    <h2>Story</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper"></button>
+                </header>
                 This is my recording studio, but I haven't used it much since I lost my Christmas spirit. Maybe something in here can help you find it? I'm sure what's <em>left</em> is working...
             </helper>
 
@@ -361,20 +404,57 @@
         <!-- DOOR 2 - WASHING ROOM (DAY 2) -->
         <page id="door2" data-sound="2" data-enter-func="day2" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
-            <helper class="oranges" data-id="helper" data-hide="helper">
+
+
+            <hints data-id="hints">
+                <header>
+                    <h2>Hints</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper"></button>
+                </header>
+                <details>
+                    <summary>Hint 1</summary>
+                    <p>Laundry is such a <em>drag</em>, let's get it out of the way even though it's nice watching the water move.</p>
+                </details>
+                <details>
+                    <summary>Hint 2</summary>
+                    <p>I wonder what <em>number</em> of clothes are in the machine. And what's that weird symbol on the bottom of the machine? Best just follow the washing instructions...</p>
+                </details>
+                <details>
+                    <summary>Hint 3</summary>
+                    <p>Drag the laundry out the way, and then rotate your device to move the water to reveal the clothes. The clothes should reveal some numbers. The order the numbers should be entered is shown in the washing instructions. The symbol for the door is on the lower part of the washing machine.</p>
+                </details>
+                <details>
+                    <summary>Solution</summary>
+                    <p>
+                    Door:
+                    <span class="material-symbols-rounded">
+                        casino
+                    </span>
+                    <br/>
+                    Code: 043
+                    </p>
+                </details>
+            </hints>
+            <helper class="oranges" data-id="helper">
+                <header>
+                    <h2>Story</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper"></button>
+                </header>
                 Now now, I don't think we'll find the Queen's Christmas spirit in here! That said, I suppose it couldn't hurt to look...
             </helper>
 
             <a class="laundry-button" data-drag-x="true"></a>
-            <div id="waterElement" class="water a-rotating"></div>
+            <div class="waterCover"><div id="waterElement" class="water a-rotating"></div></div>
         </page>
 
         <!-- DOOR 3 - GAME ROOM (DAY 3) -->
         <page id="door3" data-sound="3" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
@@ -402,6 +482,7 @@
         <!-- DOOR 4 - YOGA STUDIO (DAY 4) -->
         <page id="door4" data-sound="4" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
@@ -415,6 +496,7 @@
         <!-- DOOR 8 - POWER BOX (DAY 8) -->
         <page id="door8" data-enter-func="isDisconnected" data-sound="8" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
@@ -432,6 +514,7 @@
         <!-- DOOR 7 - CINEMA (DAY 7) -->
         <page id="door7" data-sound="7" data-bg-audio="bg-intro">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-stop="video" data-page="house2"></button>
             </toolbar>
@@ -462,6 +545,7 @@
         <!-- DOOR 5 - CONSERVATORY (DAY 5) -->
         <page id="door5" data-enter-func="door5" data-sound="5" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="endCamera" data-page="house2"></button>
             </toolbar>
@@ -480,6 +564,7 @@
         <!-- DOOR 9 - GALLERY (DAY 9) -->
         <page id="door9" data-sound="9" data-enter-func="door9" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house2"></button>
             </toolbar>
@@ -504,6 +589,7 @@
         <!-- DOOR 10 - ICE ROOM (DAY 10) -->
         <page id="door10" data-sound="10" data-enter-func="door10" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house2"></button>
             </toolbar>
@@ -521,6 +607,7 @@
         <!-- DOOR 6 - BATHROOM (DAY 6) -->
         <page id="door6" data-enter-func="door6" data-sound="6" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="stopMic" data-page="house2"></button>
             </toolbar>
@@ -537,6 +624,7 @@
         <!-- DOOR 11 - Writing room (DAY 11) -->
         <page id="door11" data-sound="11" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -566,6 +654,7 @@
         <!-- DOOR 12 - MUSIC ROOM (DAY 12) -->
         <page id="door12" data-sound="12" data-enter-func="door12">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -585,6 +674,7 @@
         <!-- DOOR 13 - OFFICE (DAY 13) -->  
         <page id="door13" data-sound="13" data-enter-func="door13" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -604,6 +694,7 @@
         <!-- DOOR 14 - OBSERVATORY (DAY 14) -->
         <page id="door14" data-sound="14" data-enter-func="door14" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -632,6 +723,7 @@
         <!-- DOOR 15 - CHANGING ROOM (DAY 15) -->
         <page id="door15" data-sound="15" data-enter-func="door15" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -655,6 +747,7 @@
         <!-- DOOR 16 - Bedroom (DAY 16) -->
         <page id="door16" data-enter-func="door16" data-sound="16" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="endCamera" data-page="house3"></button>
             </toolbar>
@@ -669,6 +762,7 @@
         <!-- DOOR 17 - LIBRARY (DAY 17) -->  
         <page id="door17" data-sound="17" data-enter-func="door17" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -706,6 +800,7 @@
         <!-- DOOR 18 - WORK ROOM (DAY 18) -->
         <page id="door18" data-sound="18" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -718,6 +813,7 @@
         <!-- DOOR 19 - KITCHEN (DAY 19) -->
         <page id="door19" data-enter-func="door19" data-sound="19" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-hide="note" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house3"></button>
             </toolbar>
@@ -749,6 +845,7 @@
         <!-- DOOR 20 - BALCONY (DAY 20) -->
         <page id="door20" data-sound="20" data-enter-func="door20" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="removeScreenLock" data-page="house3"></button>
             </toolbar>
@@ -782,6 +879,7 @@
         <!-- DOOR 21 - WRAPPING ROOM (DAY 21) -->
         <page id="door21" data-sound="21" data-enter-func="door21" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
             </toolbar>
@@ -844,6 +942,7 @@
         <!-- DOOR 22 - BAR (DAY 22) -->
         <page id="door22" data-sound="22" data-enter-func="door22" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
             </toolbar>
@@ -881,6 +980,7 @@
 
         <page id="door23" data-sound="23" data-enter-func="door23" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="removeScreenLock" data-page="house4"></button>
             </toolbar>
@@ -896,6 +996,7 @@
         <!-- DOOR 24 - SANTA'S GROTTO (DAY 24) -->
         <page id="door24" data-sound="24" data-enter-func="door24" data-bg-audio="bg-intro">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
             </toolbar>
@@ -1084,6 +1185,7 @@
         <!-- DOOR 25 - SANTA'S GROTTO (DAY 25) -->  
         <page id="door25" data-sound="25" data-bg-audio="bg-generic">
             <toolbar>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-hide="note" data-toggle="helper"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
             </toolbar>

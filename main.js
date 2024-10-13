@@ -9,7 +9,7 @@ $(document).ready(function() {
             if($(this).attr('data-enabled') == 'true') {
                 playSoundFx('open');
             }else{
-               // return;
+                return;
             }
         }
         goToPage(target, scrollNumber);
@@ -289,8 +289,8 @@ function startGame(){
     );
 
     // adventDay = new Date().getDate();
-    unlockedDays = localStorage.getItem('unlockedDays') ?? 1;
-    adventDay = unlockedDays;
+    unlockedDays = 25;//localStorage.getItem('unlockedDays') ?? 1;
+    adventDay = 25; //unlockedDays;
 
     $('body').attr('data-adventday', adventDay);
     $('body').attr('data-unlockedday', adventDay);
