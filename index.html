@@ -417,15 +417,15 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>Laundry is such a <em>drag</em>, let's get it out of the way even though it's nice watching the water move.</p>
+                    <p>We should probably move the laundry out of the way first, it looks like it's in the way...</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>I wonder what <em>number</em> of clothes are in the machine. And what's that weird symbol on the bottom of the machine? Best just follow the washing instructions...</p>
+                    <p>I wonder what's inside the washing machine, did they follow the washing instructions? And what's that weird symbol on the washing machine? I've never seen that brand...</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>Drag the laundry out the way, and then rotate your device to move the water to reveal the clothes. The clothes should reveal some numbers. The order the numbers should be entered is shown in the washing instructions. The symbol for the door is on the lower part of the washing machine.</p>
+                    <p>Drag the laundry out the way, and then rotate your device to move the water to reveal the clothes which have some numbers hidden, each in a different colour. The correct order the numbers should be entered is shown in the washing instructions. The symbol for the door is on the lower part of the washing machine.</p>
                 </details>
                 <details>
                     <summary>Solution</summary>
@@ -454,24 +454,62 @@
         <!-- DOOR 3 - GAME ROOM (DAY 3) -->
         <page id="door3" data-sound="3" data-bg-audio="bg-generic">
             <toolbar>
-                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
-                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints" data-hide="note,answer,helper"></button>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"  data-hide="note,answer,hints"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
             </toolbar>
-            <helper class="cinnamon" data-id="helper" data-hide="helper">
+
+
+            <hints data-id="hints">
+                <header>
+                    <h2>Hints</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper,note,answer"></button>
+                </header>
+                <details>
+                    <summary>Hint 1</summary>
+                    <p>Why are the words 'Leave the game' emphasised...maybe just leaving the room isn't all we have to do?</p>
+                </details>
+                <details>
+                    <summary>Hint 2</summary>
+                    <p>Maybe we should do something else on our phone while we wait. Then maybe when we come back, something will have changed?</p>
+                </details>
+                <details>
+                    <summary>Hint 3</summary>
+                    <p>You will need to leave the app (do not close it, just go to your homescreen or another app). Then, after 10 seconds, come back to the app and tap the present.</p>
+                </details>
+                <details>
+                    <summary>Solution</summary>
+                    <p>
+                    Door:
+                    <span class="material-symbols-rounded">
+                        self_improvement
+                    </span>
+                    <br/>
+                    Code: 241
+                    </p>
+                </details>
+            </hints>
+            <helper class="cinnamon" data-id="helper">
+                <header>
+                    <h2>Story</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper,note,answer"></button>
+                </header>
                 I loved playing games! Hide and seek used to be my favourite, but I don't think I can play that anymore. I'm not sure I can even remember how to play...
             </helper>
             <helper data-id="note" data-hide="note">
                 <h2>How to play hide and seek:</h2>
                <ol>
-                    <li>Leave and count to 10</li>
-                    <li>Come back and find what might present itself</li>    
+                    <li><em>Leave the game</em> room and count to 10</li>
+                    <li>Why not go check your emails, or make a tea while you wait?</li>
+                    <li>Come back and find what might <em>present</em> itself</li>    
                     <li>That's it! No looking!</li>
                 </ol>
             </helper>
             <helper data-id="answer">
-                <h2>You found me!</h2>
-                You're two good four this! You're one Person to watch!
+                <h2> <span class="material-symbols-rounded">
+                    self_improvement
+                </span>You found me!</h2>
+                You're two good four this! You're one to watch!
             </helper>
 
             <a class="paper-button" data-id="paper-button" data-sound-fx="paper" data-enabled="true" data-toggle="note" data-run="windowFocus"></a>

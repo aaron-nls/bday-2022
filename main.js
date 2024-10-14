@@ -157,6 +157,8 @@ $(document).ready(function() {
     function onEnd() {
         document.removeEventListener('mousemove', onMove);
         document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('mousemove', onMoveX);
+        document.removeEventListener('touchmove', onMoveX);
         document.removeEventListener('mouseup', onEnd);
         document.removeEventListener('touchend', onEnd);
     }

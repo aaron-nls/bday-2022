@@ -810,13 +810,13 @@ body[data-adventday="29"] #start{
 }
 
 #door3 .present-button {
-    position: absolute;   
+    position: absolute;
     bottom: 28.3%;
     right: 0%;
-    aspect-ratio: 149/165;
     width: 13.7%;
+    height: 7%;
     background-image: url(images/3-present.jpg);
-    background-size: contain;
+    background-size: 100% 100%;
 }
 
 #door3 .present-button[data-enabled="false"] {
