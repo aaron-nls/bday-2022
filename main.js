@@ -328,6 +328,7 @@ function windowFocus() {
         const focusTime = new Date();
         const elapsedSeconds = (focusTime - blurTime) / 1000;
         if (elapsedSeconds >= 10 && $('#door3:visible').length > 0) {
+            hideElement('paper-button');
             enableElement('present-button');
             playSoundFx('sparkle');
         }
@@ -335,7 +336,6 @@ function windowFocus() {
 
     window.addEventListener("blur", function(event) {
         blurTime = new Date();
-        hideElement('paper-button');
         hideElement('note');
     }, false);
 }
