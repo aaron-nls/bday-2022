@@ -833,7 +833,7 @@ body[data-adventday="29"] #start{
 
 #door4 .clock{    
     width: 20%;
-    aspect-ratio: 1/1;
+    height: 9%;
     position: absolute;
     left: 40%;
     bottom: 67.8%;

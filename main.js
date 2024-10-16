@@ -537,48 +537,66 @@ function measureBrightness(stream) {
         video.srcObject = stream;
         video.play();
 
-        videoStream = stream;
-
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-        video.addEventListener('play', function() {
-            videoInterval = setInterval(() => {
-                ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-                let brightness = 0;
 
-                for (let i = 0; i < imageData.length; i += 4) {
-                    brightness += (0.3 * imageData[i] + 0.5 * imageData[i + 1] + 0.2 * imageData[i + 2]);
-                }
+            video.addEventListener('play', function () {
+                // Measure brightness more frequently, e.g., every 100ms
+                const interval = 100;
+                videoInterval = setInterval(() => {
+                    // Downsample to smaller region for faster brightness calculation
+                    const sampleWidth = 50;
+                    const sampleHeight = 50;
 
-                brightness /= (imageData.length / 4);
-                brightness = brightness / 255;; // Normalize to -1 to 1
-                if(brightness > 0.5) {
-                    let currentPlant = document.querySelector('#door5 [data-enabled="true"]');
+                    ctx.drawImage(video, 0, 0, sampleWidth, sampleHeight);
+                    const imageData = ctx.getImageData(0, 0, sampleWidth, sampleHeight).data;
+                    let brightness = 0;
 
-                    if(!currentPlant) return;
-
-                    let currentScale = parseFloat(getComputedStyle(currentPlant).getPropertyValue('--scale'));
-
-                    if(currentScale>=1){
-                        currentPlant.setAttribute('data-enabled', 'false');
-                    }else{
-                        // Increment the value
-                        currentScale += 0.025 * brightness; 
-                        // Set the new value
-                        currentPlant.style.setProperty('--scale', currentScale);
+                    for (let i = 0; i < imageData.length; i += 4) {
+                        // Calculate brightness with weighted RGB channels
+                        brightness += (0.3 * imageData[i] + 0.5 * imageData[i + 1] + 0.2 * imageData[i + 2]);
                     }
 
-                }
-                glowElement.style.opacity = brightness;
-                resolve(brightness);
-            }, 500); // Measure brightness every 1 second
+                    // Normalize brightness value
+                    brightness /= (imageData.length / 4);
+                    brightness = brightness / 255;
 
-            video.addEventListener('ended', () => clearInterval(interval));
+                    if (brightness > 0.4) {
+                        let currentPlant = document.querySelector('#door5 [data-enabled="true"]');
+
+                        if (!currentPlant) return;
+
+                        let currentScale = parseFloat(getComputedStyle(currentPlant).getPropertyValue('--scale'));
+
+                        if (currentScale >= 1) {
+                            currentPlant.setAttribute('data-enabled', 'false');
+                        } else {
+                            // Increment scale with brightness factor
+                            currentScale += 0.025 * brightness;
+                            currentPlant.style.setProperty('--scale', currentScale);
+                        }
+
+                        glowElement.style.opacity = brightness + 0.25;
+                    }else{
+
+                        glowElement.style.opacity = brightness;
+                    }
+                    // Update glow element's opacity based on brightness
+
+                    resolve(brightness);
+                }, interval);
+
+                video.addEventListener('ended', () => clearInterval(videoInterval));
+            });
+
+        video.addEventListener('error', (err) => {
+            clearInterval(videoInterval);
+            reject(err);
         });
-    }); 
+    });
 }
+
 
 let videoStream;
 let videoInterval;
