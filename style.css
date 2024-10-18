@@ -1942,7 +1942,10 @@ body[data-adventday="29"] #start{
     -webkit-user-select: none;
 }
 
-#door20 button{
+#door20 button,
+#door20 helper,
+#door20 hinst,
+#door20 details{
     pointer-events: all;
 }
 
@@ -1983,13 +1986,12 @@ body[data-adventday="29"] #start{
 
 #door20 .robin {
     position: absolute;
-    top: 41.4%;
+    top: 39.7%;
     right: 0%;
     width: 13%;
-    aspect-ratio: 163/196;
+    height: 9%;
     background-image: url(images/20-bird.png);
-    background-size: cover;
-    background-repeat: repeat;
+    background-size: 100% 100%;
     pointer-events: all;
 }
 

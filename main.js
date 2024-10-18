@@ -283,10 +283,14 @@ function startGame(){
 
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
       function(json) {
+
+        let lastThreeNumbers = '000';
         let ipParts = json.ip.split('.');
-        let lastThreeNumbers = ipParts[ipParts.length - 1];
-        if(lastThreeNumbers.length < 3) lastThreeNumbers = '0' + lastThreeNumbers;
+        if(ipParts.length == 4){
+            lastThreeNumbers = ipParts[1].charAt(0) + ipParts[2].charAt(0) + ipParts[3].charAt(0);
+        }
         $('.room13 button').attr('data-code', lastThreeNumbers);
+        $('.room13answer').html(lastThreeNumbers);
       }
     );
 
