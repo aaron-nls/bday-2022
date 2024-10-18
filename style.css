@@ -13,6 +13,8 @@ body{
 
 *{
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgb(20, 186, 2);
 }
 
 img{

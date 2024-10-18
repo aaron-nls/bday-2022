@@ -824,10 +824,10 @@ function door16(){
 function door17(){
     document.addEventListener('copy', (event) => {
         event.preventDefault();
-        const pagelink = `The answer you need is 7`;
+        const pagelink = `The first number you need is 7`;
         navigator.clipboard.writeText(pagelink)
         .then(() => console.log('Copied to clipboard'))
-        .catch(err => console.error('Error copying text: ', err));
+        .catch(err => alert('The first number you need is 7'));
     });
 }
 
