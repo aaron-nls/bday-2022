@@ -34,7 +34,7 @@ h2{
     border: 3px solid #902222;
     outline: none;
     -webkit-appearance: none;
-    padding: 13px 25px 15px 25px;
+    padding: 13px 20px 15px 20px;
     line-height: 1em;
     color: white;
     font-family: 'Grenze Gotisch', sans-serif;
@@ -328,7 +328,9 @@ body[data-unlockedday="1"] #warning .btn[data-page="start"]{
     font-family: 'Rancho', sans-serif;
     width: auto;
     margin-right: auto;
-    opacity: 0.9;
+    opacity: 0.85;
+    transform: scale(.85);
+    transform-origin: left top;
 }
 
 body[data-adventday="10"] #start,
@@ -364,14 +366,16 @@ body[data-adventday="29"] #start{
     background-image: url(images/bg-start-24.jpg);
 }
 
-#start menu{
-    bottom: 38%;
+#start menu {
+    bottom: 25%;
+    transform: translateY(-50%);
 }
 
 #start img{
     position: absolute;
     top: 19%;
     left: 3.5%;
+    height: 23vh;
     width: 90%;
 }
 
@@ -541,15 +545,15 @@ body[data-adventday="29"] #start{
     pointer-events: none;
     transition: all 0.5s ease-in-out;
     opacity: 1;
-    aspect-ratio: 47/83;
     display: block;
     position: absolute;
     top: 58.4%;
-    left: 17%;
+    left: 16%;
     background-image: url(images/padlock.jpg);
-    background-size: contain;
+    background-size: 100% 100%;
     background-position: center;
-    width: 16px;
+    width: 9%;
+    height: 9.6%;
     border: 0;
 }
 
@@ -565,7 +569,7 @@ body[data-adventday="29"] #start{
 
 #house2 .door span{
     top: 38.5%;
-    left: 38.6%;
+    left: 48.6%;
     color: #d3bd7f;
     text-shadow: 1px 1px 0px #5c3b038c;
     font-size: 4vh;
@@ -575,7 +579,7 @@ body[data-adventday="29"] #start{
     background-image: url(images/padlock2.jpg);
     top: 52.8%;
     left: 6.5%;
-    aspect-ratio: 76/86;
+    height: 10%;
     width: 15%;
 }
 
@@ -586,12 +590,12 @@ body[data-adventday="29"] #start{
     font-size: 2.1vh;
 }
 
-#house3 .door span{
-    top: 2.8%;
-    left: 40.9%;
+#house3 .door span{    
+    top: 3.4%;
+    left: 47.9%;
     color: #d3bd7f;
     text-shadow: 1px 1px 0px #5c3b038c;
-    font-size: 2.4vh;
+    font-size: 2.2vh;
     background: black;
     border-radius: 100%;
     padding: 2px 2px 0;
@@ -603,15 +607,15 @@ body[data-adventday="29"] #start{
 #house3 .door:after{
     background-image: url(images/padlock3.jpg);
     top: 61.8%;
-    left: 40.6%;
-    aspect-ratio: 77/114;
-    width: 14.6%;
+    left: 40.3%;
+    height: 12%;
+    width: 14.9%;
     transform: rotateY(180deg);
 }
 #house3 .door.door.door-odd:after{
     left: 39.7%;
     transform: none;
-    width: 14.9%;
+    width: 15.3%;
 }
 
 #house4 .exit{
@@ -641,7 +645,7 @@ body[data-adventday="29"] #start{
 
 #house4 .door span{
     top: 51.5%;
-    left: 41.3%;
+    left: 48.3%;
     color: #92572d;
     text-shadow: 1px 1px 0px #6a522954;
     font-size: 3vh;
@@ -649,9 +653,9 @@ body[data-adventday="29"] #start{
 
 #house4 .door:after{
     background-image: url(images/padlock4.png);
-    top: 53.4%;
-    left: 72.5%;
-    aspect-ratio: 74/155;
+    top: 55.4%;
+    left: 72.6%;
+    height: 14%;
     width: 14.5%;
 }
 
@@ -945,10 +949,10 @@ body[data-adventday="29"] #start{
     position: absolute;
     top: 49.6%;
     left: 30.3%;
-    aspect-ratio: 422/233;
+    height: 10%;
     width: 39%;
     background-image: url(images/7-projector.png);
-    background-size: contain;
+    background-size: 100% 100%;
     opacity: 0;
     transform: scale(0);
     transform-origin: center bottom;
@@ -963,9 +967,9 @@ body[data-adventday="29"] #start{
 #door7 .videoplayer {
     position: absolute;
     top: 41.7%;
-    left: 33.5%;
-    aspect-ratio: 422/233;
-    width: 33%;
+    left: 32.5%;
+    height: 9%;
+    width: 35%;
     overflow: hidden;
     pointer-events: none;
     opacity: 0;
@@ -984,6 +988,7 @@ body[data-adventday="29"] #start{
     height: auto;
     position: absolute;
     bottom: 0;
+    background: black;
 }
 
 #door7 .videoplayer:hover .controllbar{
@@ -2804,18 +2809,27 @@ body[data-adventday="29"] #start{
     top: 1%;
     padding: 0;
     left: 31%;
-    z-index: 99;
+    z-index: 2;
 }
 
 .door-roof div{
     display: none !important;
 }
 
-#house2 .door-roof::after{background: transparent;width: 117%;left: -8%;top: 14%;aspect-ratio: 617/1850;transition: none;pointer-events: none;}
+#house2 .door-roof::after{
+    background: transparent;
+    width: 117%;
+    left: -8%;
+    height: 74vh;
+    top: 14%;
+    transition: none;
+    pointer-events: none;
+}
+
 #house2 .door-roof[data-enabled="true"]::after{
     background: url(images/24-doorunlocked.png);
     opacity: 1;
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }   
 

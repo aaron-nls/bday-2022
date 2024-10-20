@@ -295,8 +295,8 @@ function startGame(){
     );
 
     // adventDay = new Date().getDate();
-    unlockedDays = 25;//localStorage.getItem('unlockedDays') ?? 1;
-    adventDay = 25; //unlockedDays;
+    unlockedDays = 24;//localStorage.getItem('unlockedDays') ?? 1;
+    adventDay = 24; //unlockedDays;
 
     $('body').attr('data-adventday', adventDay);
     $('body').attr('data-unlockedday', adventDay);
