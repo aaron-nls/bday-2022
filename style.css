@@ -91,6 +91,21 @@ h2{
     content: '\eb8b';
 }
 
+.btn-play:before {
+    content: '\e1c4';
+}
+
+.btn-play::before {
+    font-family: 'Material Symbols Rounded';
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    margin-right: 5px;
+}
+.btn-play::after{
+    display: none;
+}
+
 .btn-close {
     box-shadow: none;
     background: linear-gradient(to bottom, #ea3348 0%,#a90329 49%,#6d0019 49%,#8c0015 49%,#8f0222 100%);
@@ -307,6 +322,13 @@ body[data-unlockedday="1"] #warning .btn[data-page="start"]{
     background-image: url(images/bg-start.jpg);
     padding: 20px;
     gap: 50px;
+}
+
+#start .btn-play {
+    font-family: 'Rancho', sans-serif;
+    width: auto;
+    margin-right: auto;
+    opacity: 0.9;
 }
 
 body[data-adventday="10"] #start,

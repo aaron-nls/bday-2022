@@ -55,6 +55,7 @@
                 <button class="btn" data-page="intro2" data-sound-fx="sparkle" >Next</button>
             </menu>
         </page>
+
         <page id="intro2" data-sound="story-2" data-bg-audio="bg-intro">
             <toolbar>
                 <button class="btn-icon btn-skip" data-page="start" ></button>
@@ -63,6 +64,7 @@
                 <button class="btn" data-page="intro3"  data-sound-fx="sparkle" >Next</button>
             </menu>
         </page>
+
         <page id="intro3" data-sound="story-3" data-bg-audio="bg-intro">
 
             <toolbar>
@@ -72,6 +74,7 @@
                 <button class="btn" data-page="intro4"  data-sound-fx="sparkle">Next</button>
             </menu>
         </page>
+
         <page id="intro4" data-sound="story-4" data-bg-audio="bg-intro">
             <menu>
                 <button class="btn animate__animated animate__fadeIn animate__delay-5s" data-page="start" >Begin your adventure</button>
@@ -79,11 +82,37 @@
         </page>
 
         <page id="start" data-sound="start" data-bg-audio="bg-intro" data-bg-volume="1">
+
+            <toolbar>
+                <button class="btn-icon btn-play" data-page="intro"> Play Intro</button>
+            </toolbar>  
             <img class="animate__animated animate__jackInTheBox" src="images/logo.png" alt="Countdown to Christmas">
             <menu class="row">
                 <button class="btn btn-green" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="house">Start</button>
-                <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-page="intro" >Play Intro</button>
+                <button class="btn" class="animate__animated animate__fadeInUp animate__delay-1s" data-toggle="helper">Instructions</button>
             </menu>
+
+            <hints data-id="helper">
+                <header>
+                    <h2>Instructions</h2>
+                    <button class="btn-icon btn-close" data-hide="instructions"></button>
+                </header>
+                
+                <p>Inside the castle are 23 doors which are all locked and numbered.</p>
+                <p>The first door in unlocked, this is where you start your adventure.</p>
+                <p>Each door holds a unique puzzle to solve which will tell you the door icon, the symbol which appears on the door, and the door code, the code used to unlock it.</p>
+                <p>Each day, enter the most recently unlock door, solve the puzzle and unlock the next door. You will be able to enter the next door when the date matches the door number. For example, you can only complete door 2 when it is the 2nd of December, door 20 on the 20th of December.</p>
+                <p>Inside each room, you will have to use logic and your mobile device features. If you get stuck, click the '
+                    <span class="material-symbols-rounded">
+                        question_mark
+                    </span>' button for hints. Click the '
+                    <span class="material-symbols-rounded">
+                        contract
+                    </span>' button to read the narration.</p>
+
+                <p>Each floor of the castle, there are some stairs or an exit sign, which will move you up and down the floors.</p>
+                <p>For support please email: admin@abrosis.com</p>
+            </hints>
         </page>
 
         <div class="doorPadlock">
@@ -302,7 +331,6 @@
             </div>
         </page>
 
-
         <page id="house4" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
@@ -512,7 +540,6 @@
             <a class="present-button" data-id="present-button" data-show="answer" data-enabled="false"></a>
         </page>
 
-
         <!-- DOOR 4 - YOGA STUDIO (DAY 4) -->
         <page id="door4" data-sound="4" data-bg-audio="bg-generic">
             <toolbar>
@@ -667,7 +694,6 @@
             </div>
         </page>
 
-
         <!-- DOOR 5 - CONSERVATORY (DAY 5) -->
         <page id="door5" data-enter-func="door5" data-sound="5" data-bg-audio="bg-generic">
             <toolbar>
@@ -772,7 +798,6 @@
             </div>
 
         </page>
-
 
         <!-- DOOR 10 - ICE ROOM (DAY 10) -->
         <page id="door10" data-sound="10" data-enter-func="door10" data-bg-audio="bg-generic">
@@ -1090,7 +1115,6 @@
             </div>
         </page>
 
-
         <!-- DOOR 15 - CHANGING ROOM (DAY 15) -->
         <page id="door15" data-sound="15" data-enter-func="door15" data-bg-audio="bg-generic">
             <toolbar>
@@ -1188,7 +1212,6 @@
            
             <div class="lightsout"></div>
         </page>
-
 
         <!-- DOOR 17 - LIBRARY (DAY 17) -->  
         <page id="door17" data-sound="17" data-enter-func="door17" data-bg-audio="bg-generic">
@@ -1324,7 +1347,6 @@
             </helper>
         </page>
 
-
         <!-- DOOR 19 - KITCHEN (DAY 19) -->
         <page id="door19" data-enter-func="door19" data-sound="19" data-bg-audio="bg-generic">
             <toolbar>
@@ -1386,7 +1408,6 @@
             <div class="fire" data-id="fire" data-enabled="false"></div>
             <div class="paper" data-toggle="note"></div>
         </page>
-
 
         <!-- DOOR 20 - BALCONY (DAY 20) -->
         <page id="door20" data-sound="20" data-enter-func="door20" data-bg-audio="bg-generic">
@@ -1531,7 +1552,6 @@
             </div>
         </page>
 
-
         <!-- DOOR 22 - BAR (DAY 22) -->
         <page id="door22" data-sound="22" data-enter-func="door22" data-bg-audio="bg-generic">
             <toolbar>
@@ -1547,25 +1567,25 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>Why are the words 'Leave the game' emphasised...maybe just leaving the room isn't all we have to do?</p>
+                    <p>Lets follow the recipes. The colour of the cocktails are important and similar to something else in the room.</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>Maybe we should do something else on our phone while we wait. Then maybe when we come back, something will have changed?</p>
+                    <p>I wonder what happens when there is a 5 somewhere in the clock and we press the button?</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>You will need to leave the app (do not close it, just go to your homescreen or another app). Then, after 10 seconds, come back to the app and tap the present.</p>
+                    <p>Make the cocktails in order of the recipe book. The colour of the cocktails matches colours seen on the dart board. Count the score the darts on those colours add up to (red bullseye = 50, green outer bulleyes = 25) - that is the code for the next door. Press the red button when the current time has a number 5 in it. A disco ball will appear showing the next door icon in the light.</p>
                 </details>
                 <details>
                     <summary>Solution</summary>
                     <p>
                     Door:
                     <span class="material-symbols-rounded">
-                        self_improvement
+                        fitness_center
                     </span>
                     <br/>
-                    Code: 241
+                    Code: 100
                     </p>
                 </details>
             </hints>
@@ -1602,6 +1622,7 @@
 
         </page>
 
+        <!-- DOOR 23 - WEIGHT ROOM (DAY 23) -->
         <page id="door23" data-sound="23" data-enter-func="door23" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
@@ -1616,25 +1637,25 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>Why are the words 'Leave the game' emphasised...maybe just leaving the room isn't all we have to do?</p>
+                    <p>You should lift weights slowly...</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>Maybe we should do something else on our phone while we wait. Then maybe when we come back, something will have changed?</p>
+                    <p>There's probably something behind the weights. There doesn't seem to be any sign of a door icon anywhere.</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>You will need to leave the app (do not close it, just go to your homescreen or another app). Then, after 10 seconds, come back to the app and tap the present.</p>
+                    <p>Lift the weights really slowly, behind each weight is a number. There is no door icon in this room, as there's only one door left.</p>
                 </details>
                 <details>
                     <summary>Solution</summary>
                     <p>
                     Door:
                     <span class="material-symbols-rounded">
-                        self_improvement
+                        question_mark
                     </span>
                     <br/>
-                    Code: 241
+                    Code: 547
                     </p>
                 </details>
             </hints>
@@ -1663,25 +1684,22 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>Why are the words 'Leave the game' emphasised...maybe just leaving the room isn't all we have to do?</p>
+                    <p>Tap the phone and read the messages. One chat has a message which is unsent...</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>Maybe we should do something else on our phone while we wait. Then maybe when we come back, something will have changed?</p>
+                    <p>Maybe we should finishing sharing the location to D. I wonder if there's any hints when we share our location...</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>You will need to leave the app (do not close it, just go to your homescreen or another app). Then, after 10 seconds, come back to the app and tap the present.</p>
+                    <p>Look at the mssages from D. Parton and click the 'Share' button. This will allow you to share something with someone. Tap a person to share with (you don't have to actually share anything) and look at the preview of what you're about to share. Do you notice any useful hints?</p>
                 </details>
                 <details>
                     <summary>Solution</summary>
                     <p>
-                    Door:
-                    <span class="material-symbols-rounded">
-                        self_improvement
-                    </span>
+                    Door: The attic hatch on the second floor, above the window. It has subtly foot prints beneath it. Tap the hatch to unlock the room.
                     <br/>
-                    Code: 241
+                    Code: 999
                     </p>
                 </details>
             </hints>
@@ -1820,11 +1838,11 @@
                 <div class="mobilescreen message" data-id="message3" data-enabled="false">
                     <a class="backbutton" data-disable="message3" data-enable="messages"></a>
                     <div class="title">
-                        Papa Johns
+                        Mama Joans
                     </div>
                     <div class="messagepane">
                         <div class="messageblock left">
-                            <p>Thank you for your order! Your XXL Pepperoni Passion, Ben & Jerry's Christmas Chunk, Potato wedges, Cheesey Garlic Bread, 2L Coca-Cola Bottle, is being prepared. Thank you for your order.</p>
+                            <p>Thank you for your order! Your XXXL Pepperoni Passion, Christmas Chunk ice cream, potato wedges, cheesey garlic bread, 2L cola (bottle), is being prepared. Thank you for your custom!</p>
                         </div>
                     </div>
                     <div class="send">Send</div>
@@ -1833,15 +1851,15 @@
                 <div class="mobilescreen message" data-id="message4" data-enabled="false">
                     <a class="backbutton" data-disable="message4" data-enable="messages"></a>
                     <div class="title">
-                        Elon Musk
+                        Leon Musk
                     </div>
                     <div class="messagepane">
                         <div class="messageblock left">
-                            <p>Hey Mariah</p>
+                            <p>Hey M</p>
                             <p>iM tryen 2 do that AI stuff like the other cool kids, could I borrow ur xmas spirit so I can make it lern what xmas is?</p>
                         </div>
                         <div class="messageblock right">
-                            <p>Piss off edge lord</p>
+                            <p>Go away edge lord</p>
                             <p>And it's queen to you 👸🏻</p>
                         </div>
                     </div>
@@ -1851,11 +1869,11 @@
                 <div class="mobilescreen message" data-id="message5" data-enabled="false">
                     <a class="backbutton" data-disable="message5" data-enable="messages"></a>
                     <div class="title">
-                        Truth Social
+                        Lies Social
                     </div>
                     <div class="messagepane">
                         <div class="messageblock left">
-                            <p>Your one-time passcode is 187-096. Don't share it with the libtards, illuminati, big pharma or snowflakes.</p>
+                            <p>Your one-time passcode is 187-096. Don't share it with the illuminati, big pharma or snowflakes.</p>
                         </div>
                         <div class="messageblock right">
                             <p>UNSUBSCRIBE</p>
@@ -1883,26 +1901,19 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>Why are the words 'Leave the game' emphasised...maybe just leaving the room isn't all we have to do?</p>
+                    <p>Tap the ice pick.</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>Maybe we should do something else on our phone while we wait. Then maybe when we come back, something will have changed?</p>
+                    <p>Tap the ice.</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>You will need to leave the app (do not close it, just go to your homescreen or another app). Then, after 10 seconds, come back to the app and tap the present.</p>
+                    <p>You can do it....just keep tapping....</p>
                 </details>
                 <details>
                     <summary>Solution</summary>
-                    <p>
-                    Door:
-                    <span class="material-symbols-rounded">
-                        self_improvement
-                    </span>
-                    <br/>
-                    Code: 241
-                    </p>
+                    <p>Seriously, tap the ice pick and then keep tapping the ice till it's gone.</p>
                 </details>
             </hints>
 
@@ -1918,7 +1929,6 @@
                 <source src="audio/25.mp4" type="video/mp4">
             </video>
         </page>
-
     </main>
     <div class="door11code">
         875
