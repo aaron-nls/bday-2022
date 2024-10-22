@@ -729,12 +729,12 @@ body[data-adventday="29"] #start{
 
 .doorCodeInput{
     font-size: 7.2vh;
-    letter-spacing: 4.5vh;
-    width: 100%;
+    letter-spacing: 1ch;
+    width: 6ch;
     box-shadow: inset 0 0 10px 5px #000000de;
     border-radius: 1.5vh;
     -webkit-appearance: none;
-    padding: 0 0 0 4.1vh;
+    padding: 0 0.5ch 0 0.5ch;
     font-family: monospace;
      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     background: linear-gradient(to right, #ffffff 0%,#ffffff 30%,#424242 33%,#ffffff 36%,#ffffff 63%,#3a3a3a 66%,#ffffff 69%,#ffffff 100%);
