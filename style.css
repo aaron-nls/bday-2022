@@ -1348,10 +1348,10 @@ body[data-adventday="29"] #start{
     position: absolute;
     top: 59%;
     left: 7.1%;
-    aspect-ratio: 560/94;
+    height: 4%;
     width: 48.7%;
     background-image: url(images/6-water.png);
-    background-size: contain;
+    background-size: 100% 100%;
     opacity: 0;
     transition: all 1s ease-in-out;
     transition-duration: 5s;
@@ -1364,12 +1364,12 @@ body[data-adventday="29"] #start{
 
 #door6 .fog {
     position: absolute;
-    top: 32.2%;
-    left: 69.2%;
-    aspect-ratio: 266/431;
+    top: 32%;
+    left: 69%;
+    height: 18%;
     width: 23%;
     background-image: url(images/6-fog.png);
-    background-size: contain;
+    background-size: 100% 100%;
     opacity: 0;
 }
 
@@ -1628,7 +1628,8 @@ body[data-adventday="29"] #start{
 
 #door14 .telescope {
     background-image: url(images/14-telescope.png);
-    background-size: contain;
+    background-size: 100% auto;
+    background-position: center center;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -1643,10 +1644,11 @@ body[data-adventday="29"] #start{
 #door14 .sky{
     --stepAddition: calc(0.5 * var(--step));
     aspect-ratio: 1/1;
-    width: 80%;
+    width: 90%;
     position: absolute;
-    left: 10%;
-    top: 36%;
+    left: 5%;
+    top: 55%;
+    transform: translateY(-50%);
     background: radial-gradient(ellipse at center, #222f40 0%,#19152c 50%,#000000 100%);
     opacity: 0;
     transition: all 0.5s ease-in-out;
@@ -1707,10 +1709,11 @@ body[data-adventday="29"] #start{
     height: 58vh;
 }
 
+
 #door15 .clothes:after{
     content: '';
     background-position: center top;
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
     left: 50%;
@@ -1725,7 +1728,7 @@ body[data-adventday="29"] #start{
 }
 #door15 .clothes1:after{
     background-image: url(images/15-clothes-1.png);
-    aspect-ratio: 313/1236;
+    height: 90%;
     width: 211%;
 }
 
@@ -1734,7 +1737,7 @@ body[data-adventday="29"] #start{
 }
 #door15 .clothes2:after{
     background-image: url(images/15-clothes-2.png);
-    aspect-ratio: 327/1236;
+    height: 90%;
     width: 220%;
 }
 
@@ -1743,7 +1746,7 @@ body[data-adventday="29"] #start{
 }
 #door15 .clothes3:after{
     background-image: url(images/15-clothes-3.png);
-    aspect-ratio: 440/1340;
+    height: 95%;
     width: 291%;
 }   
 
@@ -1752,7 +1755,7 @@ body[data-adventday="29"] #start{
 }
 #door15 .clothes4:after{
     background-image: url(images/15-clothes-4.png);
-    aspect-ratio: 374/1236;
+    height: 88%;
     width: 247%;
 }   
 
@@ -1761,7 +1764,7 @@ body[data-adventday="29"] #start{
 }
 #door15 .clothes5:after{
     background-image: url(images/15-clothes-5.png);
-    aspect-ratio: 374/1236;
+    height: 88%;
     width: 247%;
 }       
 
@@ -1770,7 +1773,7 @@ body[data-adventday="29"] #start{
 }
 #door15 .clothes6:after{
     background-image: url(images/15-clothes-6.png);
-    aspect-ratio: 325/1254;
+    height: 92%;
     width: 222%;
 }   
 
@@ -1779,7 +1782,7 @@ body[data-adventday="29"] #start{
 }
 #door15 .clothes7:after{
     background-image: url(images/15-clothes-7.png);
-    aspect-ratio: 325/1254;
+    height: 92%;
     width: 222%;
 }   
 
@@ -1872,7 +1875,7 @@ body[data-adventday="29"] #start{
 #door19 .fire{
     position: absolute;
     background-image: url(images/19-fire.png);
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     top: 27.4%;
     left: 42%;
@@ -2173,15 +2176,15 @@ body[data-adventday="29"] #start{
 
 #door21 .wrapping{
     position: absolute;
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
 #door21 .wrapping1{
-    top: 53.5%;
-    left: 39%;
-    width: 17%;
-    aspect-ratio: 194/20;
+    top: 52.4%;
+    left: 35%;
+    width: 24%;
+    height: 2%;
     background-image: url(images/21-roll1.png);
 }
 
@@ -2189,7 +2192,7 @@ body[data-adventday="29"] #start{
     top: 60%;
     left: 0;
     width: 10%;
-    aspect-ratio: 116/240;
+    height: 9.5%;
     background-image: url(images/21-roll2.png);
 }
 
@@ -2197,7 +2200,7 @@ body[data-adventday="29"] #start{
     top: 62.5%;
     left: 36.5%;
     width: 33.7%;
-    aspect-ratio: 380/37;
+    height: 2%;
     background-image: url(images/21-roll3.png);
 }
 
@@ -2351,7 +2354,7 @@ body[data-adventday="29"] #start{
     top: 56%;
     right: 9%;
     width: 10%;
-    aspect-ratio: 1/1;
+    height: 5%;
     position: absolute;
 }
 
@@ -2359,7 +2362,7 @@ body[data-adventday="29"] #start{
     top: 76%;
     left: 5%;
     width: 34%;
-    aspect-ratio: 2/1;
+    height: 7%;
     position: absolute;
 }
 
@@ -2372,7 +2375,7 @@ body[data-adventday="29"] #start{
 #door22 .bottle{
     position: absolute;
     width: 8%;
-    aspect-ratio: 89/254;
+    height: 10.3%;
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 1;
@@ -2524,7 +2527,7 @@ body[data-adventday="29"] #start{
     top: 58%;
     left: 56%;
     width: 13%;
-    aspect-ratio: 161/262;
+    height: 10%;
     background-image: url(images/22-shaker.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -2565,7 +2568,6 @@ body[data-adventday="29"] #start{
 }
 
 
-
 /* DOOR 23
 */
 
@@ -2589,19 +2591,21 @@ body[data-adventday="29"] #start{
     bottom: 7%;
     left: 8%;
     width: 18%;
-    aspect-ratio: 256/373;
+    height: 15%;
     background-image: url(images/23-dumbell.png);
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     pointer-events: all;
 }
 #door23 .dumbell2{
     left: 37%;
     width: 22%;
+    height: 18%;
 }
 #door23 .dumbell3{
     left: 68%;
     width: 25%;
+    height: 21%;
 }
 
 /* DOOR 24
