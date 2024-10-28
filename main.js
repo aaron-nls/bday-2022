@@ -2,6 +2,30 @@ $(document).ready(function() {
 
     startGame();
 
+    let defferedPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault()
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e
+    })
+
+    $('[data-install]').click(function() {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+            });
+        }
+    });
+    
+
     $('button[data-page]').click(function() {
         var target = $(this).attr('data-page');
         var scrollNumber = $(this).attr('data-scroll') ?? null;
@@ -274,8 +298,7 @@ function startGame(){
     if (window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning');
     } else {
-        // goToPage('homescreen');
-        goToPage('warning');
+        goToPage('homescreen');
     }
 
 
@@ -295,8 +318,8 @@ function startGame(){
     );
 
     // adventDay = new Date().getDate();
-    unlockedDays = 24;//localStorage.getItem('unlockedDays') ?? 1;
-    adventDay = 24; //unlockedDays;
+    unlockedDays = localStorage.getItem('unlockedDays') ?? 1;
+    adventDay = unlockedDays;
 
     $('body').attr('data-adventday', adventDay);
     $('body').attr('data-unlockedday', adventDay);
