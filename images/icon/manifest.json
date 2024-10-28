@@ -3,7 +3,7 @@
  "display": "standalone",
  "orientation": "portrait",
  "start_url": "/",
- "description": "Countdown to Christmas with this immersive escape room advent calendar."
+ "description": "Countdown to Christmas with this immersive escape room advent calendar.",
  "icons": [
   {
    "src": "/android-icon-36x36.png",
