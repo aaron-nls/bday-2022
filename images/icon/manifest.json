@@ -2,7 +2,8 @@
  "name": "⏰ 2 🎄",
  "display": "standalone",
  "orientation": "portrait",
- "start_url": "https://abrosis.github.io/index.html",
+ "start_url": "/",
+ "description": "Countdown to Christmas with this immersive escape room advent calendar."
  "icons": [
   {
    "src": "/android-icon-36x36.png",
