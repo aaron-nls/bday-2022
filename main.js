@@ -319,7 +319,7 @@ function startGame(){
     if (window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning');
     } else {
-        // goToPage('warning');
+        //goToPage('warning');
         goToPage('homescreen');
     }
 
