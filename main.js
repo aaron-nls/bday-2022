@@ -2,29 +2,50 @@ $(document).ready(function() {
 
     startGame();
 
-    let defferedPrompt;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent Chrome 67 and earlier from automatically showing the prompt
-        e.preventDefault()
-        // Stash the event so it can be triggered later.
-        deferredPrompt = e
-    })
+    window.AddToHomeScreenInstance = window.AddToHomeScreen({
+        appName: 'Countdown to Christmas',
+        appNameDisplay: 'standalone',             
+        appIconUrl: 'images/icon/apple-icon.png',     
+        assetUrl: 'https://cdn.jsdelivr.net/gh/philfung/add-to-homescreen@2.3/dist/assets/img/',
+        maxModalDisplayCount: -1                                              
+    });
+      
 
     $('[data-install]').click(function() {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the A2HS prompt');
-                } else {
-                    console.log('User dismissed the A2HS prompt');
-                }
-                deferredPrompt = null;
-            });
+        window.AddToHomeScreenInstance.show('en');
+    });
+
+    window.addEventListener('blur', function() {
+        if (bgAudioPlayer) {
+            bgAudioPlayer.pause();
+        }
+
+        if (soundFxAudioPlayer) {
+            soundFxAudioPlayer.pause();
+        }
+
+        if (soundAudioPlayer) {
+            soundAudioPlayer.pause();
+        }
+
+
+    });
+
+    window.addEventListener('focus', function() {
+        if (bgAudioPlayer && bgAudio) {
+            bgAudioPlayer.play();
+        }
+
+        if (soundFxAudioPlayer && soundFxAudio) {
+            soundFxAudioPlayer.play();
+        }
+
+        if (soundAudioPlayer && soundAudio) {
+            soundAudioPlayer.play();
         }
     });
-    
+
 
     $('button[data-page]').click(function() {
         var target = $(this).attr('data-page');
@@ -298,6 +319,7 @@ function startGame(){
     if (window.matchMedia('(display-mode: standalone)').matches) {
         goToPage('warning');
     } else {
+        // goToPage('warning');
         goToPage('homescreen');
     }
 
@@ -318,8 +340,8 @@ function startGame(){
     );
 
     // adventDay = new Date().getDate();
-    unlockedDays = localStorage.getItem('unlockedDays') ?? 1;
-    adventDay = unlockedDays;
+    unlockedDays =  24; //localStorage.getItem('unlockedDays') ?? 1;
+    adventDay = 24; //unlockedDays;
 
     $('body').attr('data-adventday', adventDay);
     $('body').attr('data-unlockedday', adventDay);
@@ -417,15 +439,22 @@ function isDisconnected() {
 
 let javascriptNode = null;
 let micStream = null;
-function door4(){
-    if($('#door4 .clock').hasClass('a-code') || $('#door4 .clock').hasClass('a-rotating')) { return; }
-    navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
+let timeoutId;
+
+function door4() {
+    if ($('#door4 .clock').hasClass('a-code') || $('#door4 .clock').hasClass('a-rotating')) { 
+        return; 
+    }
+
+    const startAudioProcessing = (stream) => {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const analyser = audioContext.createAnalyser();
         const microphone = audioContext.createMediaStreamSource(stream);
         javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
         micStream = stream;
+
+        bgAudioPlayer.pause();
+        soundAudioPlayer.pause();
 
         analyser.smoothingTimeConstant = 0.8;
         analyser.fftSize = 1024;
@@ -434,13 +463,10 @@ function door4(){
         analyser.connect(javascriptNode);
         javascriptNode.connect(audioContext.destination);
 
-        let timeoutId;
         const startTimer = () => {
 
             $('#door4 .clock').stop().addClass('a-rotating');
             timeoutId = setTimeout(() => {
-                console.log('Success!');
-
                 $('#door4 .clock').removeClass('a-rotating').addClass('a-code');
                 stream.getTracks().forEach(track => track.stop());
                 javascriptNode.disconnect();
@@ -472,10 +498,40 @@ function door4(){
                 startTimer();
             }
         }
-    })
-    .catch(err => {
-        console.log('The following error occurred: ' + err.name)
-    });
+    };
+
+    if (micStream) {
+        micStream.getTracks().forEach(track => track.enabled = true);
+        startAudioProcessing(micStream);
+    } else {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                startAudioProcessing(stream);
+            })
+            .catch(err => {
+                console.error('Error accessing microphone:', err);
+            });
+    }
+}
+
+function endMic(){
+    if(micStream){
+        micStream.getTracks().forEach(track => track.stop());
+        micStream = null;
+    }
+    if(javascriptNode){
+        javascriptNode.disconnect();
+    }
+
+    if(timeoutId){
+        clearTimeout(timeoutId);
+        const clockElement = document.querySelector('#door4 .clock');
+        clockElement.classList.remove('a-rotating');
+        void clockElement.offsetWidth; // force a reflow
+    }
+
+
+    bgAudioPlayer.play();
 }
 
 function door6(){

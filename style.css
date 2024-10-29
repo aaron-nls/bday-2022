@@ -29,6 +29,15 @@ h2{
     font-size: 28px;
 }
 
+bubble{
+    position: absolute;
+    bottom: 2%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.adhs-button,
 .btn{
     border-radius: 15px;
     border: 3px solid #902222;

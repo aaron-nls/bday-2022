@@ -13,10 +13,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;700&family=Rancho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/philfung/add-to-homescreen@2.3/dist/add-to-homescreen.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/philfung/add-to-homescreen@2.3/dist/add-to-homescreen_en.min.js"></script>
     <script src="main.js"></script>
     <meta name="apple-mobile-web-app-title" content="⏰ 2 🎄">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" sizes="57x57" href="images/icon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/icon/apple-icon-60x60.png">
@@ -40,9 +43,11 @@
     <main>
         <page id="homescreen">
             <bubble>
-                Tap then click 'Add to Home Screen' to play.
-                <button class="btn" data-install="intro">Install app</button>
+               If you're on iPhone, please use Safari.
             </bubble>
+            <menu>
+                <button class="btn" data-install="intro">Install app</button>
+            </menu>
         </page>
 
         <page id="warning">
@@ -550,7 +555,7 @@
             <toolbar>
                 <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
-                <button class="btn-icon btn-back" data-sound-fx="open" data-page="house"></button>
+                <button class="btn-icon btn-back" data-sound-fx="open" data-run="endMic" data-page="house"></button>
             </toolbar>
 
             <hints data-id="hints">
