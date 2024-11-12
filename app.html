@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>⏰ 2 🎄</title>
+    <title>Countdown to Christmas</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -40,6 +40,7 @@
     <meta name="theme-color" content="#940e0b">
 </head>
 <body>
+    <div class="landscape"></div>
     <main>
         <page id="homescreen">
             <bubble>
@@ -109,11 +110,11 @@
                     <button class="btn-icon btn-close" data-hide="helper"></button>
                 </header>
                 
-                <p>Inside the castle are 23 doors which are all locked and numbered.</p>
-                <p>The first door in unlocked, this is where you start your adventure.</p>
+                <p>Inside the castle are 25 doors, many with icons on the front.</p>
+                <p>The first door is unlocked, this is where you start your adventure.</p>
                 <p>Each door holds a unique puzzle to solve which will tell you the door icon, the symbol which appears on the door, and the door code, the code used to unlock it.</p>
-                <p>Each day, enter the most recently unlock door, solve the puzzle and unlock the next door. You will be able to enter the next door when the date matches the door number. For example, you can only complete door 2 when it is the 2nd of December, door 20 on the 20th of December.</p>
-                <p>Inside each room, you will have to use logic and your mobile device features. If you get stuck, click the '
+                <p>Each day, enter the most recently unlocked door, solve the puzzle and unlock the next door ready for the next day.</p>
+                <p>Inside each room, you will have to use logic and features of your mobile device. If you get stuck, click the '
                     <span class="material-symbols-rounded">
                         question_mark
                     </span>' button for hints. Click the '
@@ -344,7 +345,6 @@
 
         <page id="house4" data-bg-audio="bg-generic">
             <toolbar>
-                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-back" data-page="start"></button>
             </toolbar>
             <div class="rooms">
@@ -566,7 +566,7 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>I wonder what the clock is used for? It's so quiet in here...</p>
+                    <p>I wonder if the clock does anything? It's so quiet in here...</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
@@ -853,7 +853,7 @@
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>Wait 3 minutes without your phone going to sleep and the ice block will melt, revealing the code. Move the pallet to reveal the door icon.</p>
+                    <p>Wait 2 minutes without your phone going to sleep and the ice block will melt, revealing the code. Move the pallet to reveal the door icon.</p>
                 </details>
                 <details>
                     <summary>Solution</summary>
@@ -884,7 +884,7 @@
         </page>
 
         <!-- DOOR 6 - BATHROOM (DAY 6) -->
-        <page id="door6" data-enter-func="door6" data-sound="6" data-bg-audio="bg-generic">
+        <page id="door6" data-sound="6" data-bg-audio="bg-generic">
             <toolbar>
                 <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
@@ -929,9 +929,10 @@
                 This bathroom used to be my little oasis. I can't remember the last time I let off steam, had a bath and relaxed in here... 
             </helper>
 
-            <a class="tap" data-id="tap" data-sound-fx="6-tap" data-enable="water"></a>
+            <a class="tap" data-id="tap" data-sound-fx="6-tap" onclick="door6();"  data-enable="water,fog-hint"></a>
             <div class="tapwater" data-id="water" data-enabled="false"></div>
             <div class="bathwater" data-id="water" data-enabled="false"></div>
+            <div data-id="fog-hint" class="fog-hint"></div>
             <div class="fog"></div>
         </page>
 
@@ -1126,11 +1127,11 @@
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>I wonder how we can zoom into the stars, it'll be cool to see all the patterns in space!</p>
+                    <p>I wonder how we can zoom into the stars, it'll be cool to see the different <em>number</em> of patterns in space!</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>Tap the telescope. You will then see constellations, slowly pinch to zoom into space, slowly revealing the door code and icon in patterns in the stars.</p>
+                    <p>Tap the telescope. You will then see constellations, slowly pinch to zoom into space, slowly revealing the door code and icon in patterns in the stars. </p>
                 </details>
                 <details>
                     <summary>Solution</summary>
@@ -1429,15 +1430,15 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>The note on the table has a recipe we should follow. But we don't know how many ingredients to use. I wonder where the cook left them and why the word 'prime' is highlighted?</p>
+                    <p>The note on the table has a recipe we should follow. But we don't know how many ingredients to use. I wonder where the cook left them and why the word 'prime' is highlighted? Maybe it's to do with prime numbers?</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>Maybe they're in another room? The word 'noted' is also highlighted - where could the cook note something?</p>
+                    <p>Maybe they're in the prime numbered rooms? The word 'noted' is also highlighted - where could the cook note something?</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
-                    <p>Go to rooms previously visited that have a prime door number and open the story notes. Count the ingredients and then turn on the cooker to reveal the next door icon.</p>
+                    <p>Go to rooms previously visited that have a prime door number and open the story notes. Count the ingredients, in order, to get the door code and then turn on the cooker to reveal the next door icon.</p>
                 </details>
                 <details>
                     <summary>Solution</summary>
@@ -1628,19 +1629,19 @@
         <!-- DOOR 22 - BAR (DAY 22) -->
         <page id="door22" data-sound="22" data-enter-func="door22" data-bg-audio="bg-generic">
             <toolbar>
-                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
-                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints" data-hide="recipes"></button>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper" data-hide="recipes"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-page="house4"></button>
             </toolbar>
 
             <hints data-id="hints">
                 <header>
                     <h2>Hints</h2>
-                    <button class="btn-icon btn-close" data-hide="hints,helper,note,answer"></button>
+                    <button class="btn-icon btn-close" data-hide="hints,helper,recipes"></button>
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>Lets follow the recipes. The colour of the cocktails are important and similar to something else in the room.</p>
+                    <p>Let's follow the recipes. The colour of the cocktails are important and similar to something else in the room.</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
@@ -1664,6 +1665,10 @@
             </hints>
 
             <helper data-id="helper" data-hide="helper">
+                <header>
+                    <h2>Story</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper,recipes"></button>
+                </header>
                 Seems like we must have angered the Queen a lot yesterday...or she had a bit too much fun in this bar as she's disturbingly missing today. I guess it's just us two...care for a drink? It's 5 in the clock somewhere after all...
             </helper>
 
@@ -1684,7 +1689,7 @@
             <div class="shaker"></div>
 
             <div class="recipebutton" data-toggle="recipes"></div>
-            <helper data-id="recipes" data-hide="recipes">
+            <helper data-id="recipes" data-hide="recipes,helper,hints">
                 <h3>1. Slippery Tipple</h3>
                 <img src="images/22-recipe-green.png" />
                 <h3>2. Festive Blush</h3>
@@ -1743,7 +1748,7 @@
         </page>
 
         <!-- DOOR 24 - SANTA'S GROTTO (DAY 24) -->
-        <page id="door24" data-sound="24" data-enter-func="door24" data-bg-audio="bg-intro">
+        <page id="door24" data-sound="24" data-bg-audio="bg-intro">
             <toolbar>
                 <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
                 <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>

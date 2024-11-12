@@ -342,37 +342,46 @@ body[data-unlockedday="1"] #warning .btn[data-page="start"]{
     transform-origin: left top;
 }
 
-body[data-adventday="10"] #start,
-body[data-adventday="11"] #start,
-body[data-adventday="12"] #start,
-body[data-adventday="13"] #start,
-body[data-adventday="14"] #start{
+body[data-unlockedday="10"] #start,
+body[data-unlockedday="11"] #start,
+body[data-unlockedday="12"] #start,
+body[data-unlockedday="13"] #start,
+body[data-unlockedday="14"] #start{
     background-image: url(images/bg-start-10.jpg);
 }
 
-body[data-adventday="15"] #start,
-body[data-adventday="16"] #start,
-body[data-adventday="17"] #start,
-body[data-adventday="18"] #start,
-body[data-adventday="19"] #start{
+body[data-unlockedday="15"] #start,
+body[data-unlockedday="16"] #start,
+body[data-unlockedday="17"] #start,
+body[data-unlockedday="18"] #start,
+body[data-unlockedday="19"] #start{
     background-image: url(images/bg-start-15.jpg);
 }
 
-body[data-adventday="20"] #start,
-body[data-adventday="21"] #start,
-body[data-adventday="22"] #start,
-body[data-adventday="23"] #start,
-body[data-adventday="24"] #start{
+body[data-unlockedday="20"] #start,
+body[data-unlockedday="21"] #start,
+body[data-unlockedday="22"] #start,
+body[data-unlockedday="23"] #start,
+body[data-unlockedday="24"] #start{
     background-image: url(images/bg-start-20.jpg);
 }
 
-body[data-adventday="24"] #start,
-body[data-adventday="25"] #start,
-body[data-adventday="26"] #start,
-body[data-adventday="27"] #start,
-body[data-adventday="28"] #start,
-body[data-adventday="29"] #start{
+body[data-unlockedday="24"] #start,
+body[data-unlockedday="25"] #start,
+body[data-unlockedday="26"] #start,
+body[data-unlockedday="27"] #start,
+body[data-unlockedday="28"] #start,
+body[data-unlockedday="29"] #start{
     background-image: url(images/bg-start-24.jpg);
+}
+
+.landscape {
+    background-color: black; 
+    display: none; 
+    background-image: url(images/bg-screenlock.jpg);
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
 }
 
 #start menu {
@@ -1233,7 +1242,7 @@ body[data-adventday="29"] #start{
 }
 
 #door10 .ice[data-enabled="true"]{
-    animation: melt 180s linear 1 forwards;
+    animation: melt 120s linear 1 forwards;
 }
 
 
@@ -1279,12 +1288,12 @@ body[data-adventday="29"] #start{
 
 @keyframes melt {
     0% {
-      height: 50%;
+      height: 40%;
       opacity: 1;
       transform: scale(1);
     }
     50% {
-      height: 25%;
+      height: 20%;
       opacity: 1;
       transform: scale(1);
     }
@@ -1381,6 +1390,23 @@ body[data-adventday="29"] #start{
     background-image: url(images/6-fog.png);
     background-size: 100% 100%;
     opacity: 0;
+}
+
+
+#door6 .fog-hint {
+    position: absolute;
+    top: 32%;
+    left: 69%;
+    height: 18%;
+    width: 23%;
+    background-image: url(images/6-fog-hint.png);
+    background-size: 100% 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+#door6 .fog-hint[data-enabled="true"] {
+    opacity: 1;
 }
 
 
@@ -1809,7 +1835,7 @@ body[data-adventday="29"] #start{
     transition: all 0.5s ease-in-out;
     width: 100%;
     height: 100%;
-    background-size: contain;
+    background-size: 100% 100%;
     opacity: 0;
 }   
 

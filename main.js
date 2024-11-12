@@ -10,6 +10,35 @@ $(document).ready(function() {
         assetUrl: 'https://cdn.jsdelivr.net/gh/philfung/add-to-homescreen@2.3/dist/assets/img/',
         maxModalDisplayCount: -1                                              
     });
+
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    function handleOrientationChange() {
+        if (window.matchMedia("(orientation: landscape)").matches && isMobile) {
+            $('.landscape').show();
+        } else {
+            $('.landscape').hide();
+        }
+    }
+    
+    // Initial check
+    handleOrientationChange();
+    
+    // Listen for resize events
+    window.addEventListener("resize", handleOrientationChange);
+
+    function updateUnlockedDays(day){
+        unlockedDays = day;
+        $('body').attr('data-unlockedday', unlockedDays);
+        document.cookie = `unlockedDays=${unlockedDays}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+
+        $.post("updateDays.php", { guid: guid, unlockedDays: unlockedDays })
+            .done(function(data) {
+                if (data == '0') {
+                    alert("Error saving");
+                }
+            });
+
+    }
       
 
     $('[data-install]').click(function() {
@@ -38,11 +67,15 @@ $(document).ready(function() {
         }
 
         if (soundFxAudioPlayer && soundFxAudio) {
-            soundFxAudioPlayer.play();
+            if(soundFxAudioPlayer.currentTime !== soundFxAudioPlayer.duration) {
+                soundFxAudioPlayer.play();
+            }
         }
 
         if (soundAudioPlayer && soundAudio) {
-            soundAudioPlayer.play();
+            if(soundAudioPlayer.currentTime !== soundAudioPlayer.duration) {
+                soundAudioPlayer.play();
+            }
         }
     });
 
@@ -125,18 +158,11 @@ $(document).ready(function() {
     $('.unlockDoor').click(function(event) {
         let userInput = $('.doorCodeInput').val();
         $('.doorPadlock').fadeOut(function() {  
-            if(doorCode == userInput && (doorNumber-1) <= adventDay) {
+            if(doorCode == userInput ) {
                 playSoundFx('unlock');
                 $(`[data-page="door${doorNumber}"]`).attr('data-enabled', 'true');
-                console.log(doorNumber);
-                console.log(adventDay);
-                console.log(userInput);
-                console.log(doorCode);
-                // Save doorNumber in localStorage
-                localStorage.setItem('unlockedDays', doorNumber);
 
-            }else if(doorCode == userInput && (doorNumber-1) > adventDay) {
-                playSoundFx('notyet');
+                updateUnlockedDays(doorNumber);
             }else{
                 playSoundFx('locked');
             }
@@ -212,8 +238,8 @@ $(document).ready(function() {
 
 });
 
-let adventDay = 1;
 let unlockedDays = 1;
+let guid = null;
 let bgAudio = null;
 let bgAudioPlayer = null;
 let soundAudio =  null; 
@@ -256,7 +282,7 @@ function scrollTo(page, scrollNumber) {
 }
 
 function playBackground(newBgAudio, bgVolume) {
-    if(adventDay==24){
+    if(unlockedDays>=24){
         newBgAudio = 'bg-peril';
     }
     if(newBgAudio && newBgAudio !== bgAudio) {
@@ -339,16 +365,25 @@ function startGame(){
       }
     );
 
-    // adventDay = new Date().getDate();
-    unlockedDays =  24; //localStorage.getItem('unlockedDays') ?? 1;
-    adventDay = 24; //unlockedDays;
 
-    $('body').attr('data-adventday', adventDay);
-    $('body').attr('data-unlockedday', adventDay);
+    unlockedDays = parseInt(getCookie('unlockedDays')) || 1;
+    guid = getCookie('guid') || '';
+
+    if (!guid) {
+        window.location.href = 'https://countdowntochristmas.app';
+    }
+
+    $('body').attr('data-unlockedday', unlockedDays);
 
     for(let i=0; i<unlockedDays; i++){
         $(`[data-page="door${i+1}"]`).attr('data-enabled', 'true');
     }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
 function showElement(element) {
@@ -452,9 +487,11 @@ function door4() {
         const microphone = audioContext.createMediaStreamSource(stream);
         javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
         micStream = stream;
-
+        
         bgAudioPlayer.pause();
+        bgAudio = null;
         soundAudioPlayer.pause();
+        soundAudio = null;
 
         analyser.smoothingTimeConstant = 0.8;
         analyser.fftSize = 1024;
@@ -535,6 +572,17 @@ function endMic(){
 }
 
 function door6(){
+    setTimeout(function() {
+        startFog();
+    }, 2000);
+}
+
+function startFog(){
+    bgAudioPlayer.pause();
+    bgAudio = null;
+    soundAudioPlayer.pause();
+    soundAudio = null;
+
     let fogOpacity = 0;
     const fogElement = document.querySelector('#door6 .fog');
     navigator.mediaDevices.getUserMedia({ audio: true })
@@ -565,7 +613,9 @@ function door6(){
 
             const average = values / length;
             
-            if (average > 30) {
+            if (average > 25) {
+                fogOpacity = fogOpacity >= 0.98 ? 1 : fogOpacity + 0.04;
+            }else if (average > 20) {
                 fogOpacity = fogOpacity >= 0.98 ? 1 : fogOpacity + 0.02;
             }else{
                 fogOpacity = fogOpacity <= 0.01 ? 0 : fogOpacity - 0.01 ;
@@ -727,7 +777,7 @@ function door10() {
     globalTimeout = setTimeout(function() {
         enableElement('pallet');
         disableElement('effects');
-    }, 175000);
+    }, 115000);
 }
 
 function addKey(e){
@@ -839,13 +889,14 @@ function measureDarkness(stream) {
 
                 brightness /= (imageData.length / 4);
                 brightness = brightness / 255;; // Normalize to -1 to 1
+                console.log(brightness);
                 if(brightness < 0.10) {
                     glowElement.style.opacity = 1 - (brightness * 10);
                 }else{
                     glowElement.style.opacity = 0;
                 }
                 resolve(brightness);
-            }, 500); // Measure brightness every 1 second
+            }, 250); // Measure brightness every 1 second
 
             video.addEventListener('ended', () => clearInterval(interval));
         });
@@ -997,7 +1048,7 @@ function door22(){
 
 function toggleDisco(){
     let currentTime = new Date();
-    let hours = currentTime.getHours().toString();
+    let hours = (currentTime.getHours() % 12 || 12).toString();
     let minutes = currentTime.getMinutes().toString();
     let fail = new Audio('audio/22-fail.mp3');
     let discoMusic = new Audio('audio/22-disco.mp3');
@@ -1140,7 +1191,7 @@ function sharePage() {
         navigator.share({
             title: 'Look to the sky outside...',
             text: '...then follow the FOOTPRINTS up!',
-            url: 'https://abrosis.github.io/location.html',
+            url: 'https://app.countdowntochristmas.app/location.html',
         })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
