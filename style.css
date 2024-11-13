@@ -1216,13 +1216,13 @@ body[data-unlockedday="29"] #start{
 
 #door10 .pallet{
     position: absolute;
-    left: 50%;
+    left: 0;
+    transform: translateX(50%);
     top: 70.7%;
     aspect-ratio: 516/217;
     background-image: url(images/10-pallet.png);
     background-size: contain;
     width: 50%;
-    margin-left: -25%;
 }
 
 #door10 .effects,

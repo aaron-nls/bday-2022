@@ -614,9 +614,9 @@ function startFog(){
             const average = values / length;
             
             if (average > 25) {
-                fogOpacity = fogOpacity >= 0.98 ? 1 : fogOpacity + 0.04;
-            }else if (average > 20) {
                 fogOpacity = fogOpacity >= 0.98 ? 1 : fogOpacity + 0.02;
+            }else if (average > 20) {
+                fogOpacity = fogOpacity >= 0.98 ? 1 : fogOpacity + 0.01;
             }else{
                 fogOpacity = fogOpacity <= 0.01 ? 0 : fogOpacity - 0.01 ;
             }
