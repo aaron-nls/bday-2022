@@ -272,6 +272,75 @@ details p{
     background-image: url(images/bg-warning.jpg);
 }
 
+#wait {
+    background-image: url(images/bg-december.jpg);
+}
+
+#success {
+    background-image: url(images/modal-success.png);
+    background-size: 100% 100%;
+    aspect-ratio: 911 / 499;
+    width: 100%;
+    z-index: 9999;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    display: none;
+    z-index: 99999;
+}
+
+#success .day.large{    
+    font-size: 4.2vh;
+    font-family: 'Grenze Gotisch';
+    color: #fff9dbde;
+    position: absolute;
+    left: 51%;
+    width: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 34%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 5px black;
+}
+
+
+
+#success h2{    
+    font-size: 3.5vh;
+    font-family: 'Grenze Gotisch';
+    color: #9a0000;
+    position: absolute;
+    left: 51%;
+    width: 100vw;
+    display: block;
+    text-align: center;
+    top: 56%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 4px #fff5c0;
+}
+
+
+#success h2 .day{
+    font-size: 130%;   
+}
+
+#success p{    
+    font-size: 2.75vh;
+    color: #431208;
+    position: absolute;
+    left: 51%;
+    width: 100vw;
+    display: block;
+    text-align: center;
+    top: 61%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 4px #fff5c0;
+}
+
+
 
 #warning .btn[data-page="intro"]{
     display: none
@@ -2618,7 +2687,9 @@ body[data-unlockedday="29"] #start{
 }
 
 #door23 button,
-#door23 helper{
+#door23 helper,
+#door23 hints,
+#door23 hints *{
     pointer-events: all;
 }
 
@@ -2849,7 +2920,7 @@ body[data-unlockedday="29"] #start{
     top: 1%;
     padding: 0;
     left: 31%;
-    z-index: 2;
+    z-index: 999;
 }
 
 .door-roof div{

@@ -59,6 +59,11 @@
             </menu>
         </page>
 
+
+
+        <page id="wait">
+        </page>
+
         <page id="intro" data-sound="story-1" data-bg-audio="bg-intro">
             <toolbar>
                 <button class="btn-icon btn-skip" data-page="start" ></button>
@@ -112,8 +117,9 @@
                 
                 <p>Inside the castle are 25 doors, many with icons on the front.</p>
                 <p>The first door is unlocked, this is where you start your adventure.</p>
-                <p>Each door holds a unique puzzle to solve which will tell you the door icon, the symbol which appears on the door, and the door code, the code used to unlock it.</p>
                 <p>Each day, enter the most recently unlocked door, solve the puzzle and unlock the next door ready for the next day.</p>
+                <p>Each door holds a unique puzzle to solve which will tell you the door icon, the symbol which appears on the door, and the door code, the code used to unlock it, for the next day's door.</p>
+      
                 <p>Inside each room, you will have to use logic and features of your mobile device. If you get stuck, click the '
                     <span class="material-symbols-rounded">
                         question_mark
@@ -122,7 +128,7 @@
                         contract
                     </span>' button to read the narration.</p>
 
-                <p>Each floor of the castle, there are some stairs or an exit sign, which will move you up and down the floors.</p>
+                <p>For each floor of the castle, there are some stairs or an exit sign, which will move you between the floors.</p>
                 <p>For support please email: admin@abrosis.com</p>
             </hints>
         </page>
@@ -130,6 +136,12 @@
         <div class="doorPadlock">
             <input class="doorCodeInput" maxlength="3" type="text" placeholder="000">
             <button class="btn unlockDoor">Unlock</button>
+        </div>
+
+        <div id="success">
+            <span class="day large">1</span>
+            <h2>You completed day <span class="day">1</span>!</h2>
+            <p>The adventure continues tomorrow...</p>
         </div>
 
         <page id="house" data-bg-audio="bg-generic">
@@ -501,11 +513,11 @@
                 </header>
                 <details>
                     <summary>Hint 1</summary>
-                    <p>Why are the words 'Leave the game' emphasised...maybe just leaving the room isn't all we have to do?</p>
+                    <p>Why are the words 'Go outside the game' emphasised...maybe just leaving the room isn't enough?</p>
                 </details>
                 <details>
                     <summary>Hint 2</summary>
-                    <p>Maybe we should do something else on our phone while we wait. Then maybe when we come back, something will have changed?</p>
+                    <p>Maybe switching apps for a bit might help. Then maybe when we come back, something will have changed?</p>
                 </details>
                 <details>
                     <summary>Hint 3</summary>
@@ -534,8 +546,8 @@
             <helper data-id="note" data-hide="note">
                 <h2>How to play hide and seek:</h2>
                <ol>
-                    <li><em>Leave the game</em> room and count to 10</li>
-                    <li>Why not go check your emails, or make a tea while you wait?</li>
+                    <li><em>Go outside the game</em> room and count to 10</li>
+                    <li>No listening in the hallway, or outside the castle! I'll know!</li>
                     <li>Come back and find what might <em>present</em> itself</li>    
                     <li>That's it! No looking!</li>
                 </ol>
@@ -1703,15 +1715,15 @@
         <!-- DOOR 23 - WEIGHT ROOM (DAY 23) -->
         <page id="door23" data-sound="23" data-enter-func="door23" data-bg-audio="bg-generic">
             <toolbar>
-                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints"></button>
-                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper"></button>
+                <button class="btn-icon btn-hint" data-sound-fx="paper" data-toggle="hints" data-hide="helper"></button>
+                <button class="btn-icon btn-help" data-sound-fx="paper" data-toggle="helper" data-hide="hints"></button>
                 <button class="btn-icon btn-back" data-sound-fx="open" data-run="removeScreenLock" data-page="house4"></button>
             </toolbar>
 
             <hints data-id="hints">
                 <header>
                     <h2>Hints</h2>
-                    <button class="btn-icon btn-close" data-hide="hints,helper,note,answer"></button>
+                    <button class="btn-icon btn-close" data-hide="hints,helper"></button>
                 </header>
                 <details>
                     <summary>Hint 1</summary>
@@ -1728,17 +1740,21 @@
                 <details>
                     <summary>Solution</summary>
                     <p>
-                    Door:
-                    <span class="material-symbols-rounded">
-                        question_mark
-                    </span>
-                    <br/>
-                    Code: 547
+                        Door:
+                        <span class="material-symbols-rounded">
+                            question_mark
+                        </span>
+                        <br/>
+                        Code: 547
                     </p>
                 </details>
             </hints>
 
-            <helper data-id="helper" data-hide="helper">
+            <helper data-id="helper">
+                <header>
+                    <h2>Story</h2>
+                    <button class="btn-icon btn-close" data-hide="hints,helper"></button>
+                </header>
                 The Queen's nowhere to be found yet again and Christmas is fast approaching! I have a bad feeling about this place, let's not weight around any longer, lets check these last two rooms and leave. We're obviously in over our heads...
             </helper>
 

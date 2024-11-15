@@ -163,6 +163,8 @@ $(document).ready(function() {
                 $(`[data-page="door${doorNumber}"]`).attr('data-enabled', 'true');
 
                 updateUnlockedDays(doorNumber);
+
+                showSuccessMessage(doorNumber);
             }else{
                 playSoundFx('locked');
             }
@@ -234,6 +236,9 @@ $(document).ready(function() {
         document.removeEventListener('touchend', onEnd);
     }
 
+    $('#success').click(function() {
+        $(this).fadeOut();
+    });
 
 
 });
@@ -272,6 +277,14 @@ function goToPage(page, scrollNumber) {
         window[curFunction]();
     }
 
+}
+
+function showSuccessMessage(doorNumber){
+    $('#success .day').html(doorNumber-1);
+    $('#success').fadeIn();
+    setTimeout(function() {
+        $('#success').fadeOut();
+    }, 5000);
 }
 
 function scrollTo(page, scrollNumber) {
@@ -342,10 +355,17 @@ function playSoundFx(newSoundFxAudio) {
 
 function startGame(){
 
+    const currentDate = new Date();
+    const targetDate = new Date('2024-12-01');
+
     if (window.matchMedia('(display-mode: standalone)').matches) {
-        goToPage('warning');
+
+        if (currentDate >= targetDate) {
+            goToPage('warning');
+        } else {
+            goToPage('wait');
+        }
     } else {
-        //goToPage('warning');
         goToPage('homescreen');
     }
 
